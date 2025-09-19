@@ -590,6 +590,10 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .header {
+        padding: 15px 0;
+    }
+
     .header-container {
         flex-direction: column;
         gap: 15px;
@@ -607,7 +611,7 @@ body {
     }
 
     .main-content {
-        margin-top: 140px;
+        margin-top: 100px;
     }
 
     .hero h1 {
@@ -624,6 +628,46 @@ body {
 
     .cars-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Extra small screens (smartphones) */
+@media (max-width: 480px) {
+    .header {
+        padding: 10px 0;
+    }
+
+    .header-container {
+        gap: 10px;
+        padding: 5px 15px;
+    }
+
+    .logo {
+        height: 45px;
+        width: 160px;
+        font-size: 1.3rem;
+    }
+
+    .logo img {
+        max-height: 150%;
+        max-width: 150%;
+    }
+
+    .phone {
+        font-size: 1rem;
+    }
+
+    .social-links a {
+        font-size: 1.3rem;
+        padding: 6px;
+    }
+
+    .main-content {
+        margin-top: 85px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
     }
 }
 
