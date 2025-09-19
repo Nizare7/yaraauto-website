@@ -1,0 +1,178 @@
+{
+  "brands": [
+    {
+      "id": "fiat",
+      "name": "Fiat",
+      "logo": "images/fiat.png",
+      "cars": [
+        {
+          "id": "fiat-panda-1",
+          "title": "Fiat Panda 1.2",
+          "year": 2020,
+          "km": 35000,
+          "fuel": "Benzina",
+          "transmission": "Manuale",
+          "price": 12500,
+          "image": "cars/fiat-panda/main.jpg",
+          "gallery": ["cars/fiat-panda/main.jpg", "cars/fiat-panda/main1.jpg", "cars/fiat-panda/main2.jpg", "cars/fiat-panda/main3.jpg"]
+        },
+        {
+          "id": "fiat-500x-1",
+          "title": "Fiat 500X 1.4 T-Jet",
+          "year": 2019,
+          "km": 28000,
+          "fuel": "Benzina",
+          "transmission": "Automatico",
+          "price": 18900,
+          "image": "cars/autotest2.jpg",
+          "gallery": []
+        }
+      ]
+    },
+    {
+      "id": "volkswagen",
+      "name": "Volkswagen",
+      "logo": "images/volkswagen.png",
+      "cars": [
+        {
+          "id": "vw-golf-1",
+          "title": "VW Golf 1.6 TDI",
+          "year": 2021,
+          "km": 22000,
+          "fuel": "Diesel",
+          "transmission": "Manuale",
+          "price": 24500,
+          "image": "",
+          "gallery": []
+        },
+        {
+          "id": "vw-tiguan-1",
+          "title": "VW Tiguan 2.0 TDI",
+          "year": 2020,
+          "km": 45000,
+          "fuel": "Diesel",
+          "transmission": "Automatico",
+          "price": 32000,
+          "image": "",
+          "gallery": []
+        }
+      ]
+    },
+    {
+      "id": "ford",
+      "name": "Ford",
+      "logo": "images/ford.png",
+      "cars": [
+        {
+          "id": "ford-fiesta-1",
+          "title": "Ford Fiesta 1.5 TDCi",
+          "year": 2019,
+          "km": 38000,
+          "fuel": "Diesel",
+          "transmission": "Manuale",
+          "price": 16800,
+          "image": "",
+          "gallery": []
+        },
+        {
+          "id": "ford-kuga-1",
+          "title": "Ford Kuga 2.0 TDCi",
+          "year": 2021,
+          "km": 25000,
+          "fuel": "Diesel",
+          "transmission": "Automatico",
+          "price": 28500,
+          "image": "",
+          "gallery": []
+        }
+      ]
+    },
+    {
+      "id": "bmw",
+      "name": "BMW",
+      "logo": "images/bmw.png",
+      "cars": [
+        {
+          "id": "bmw-serie1-1",
+          "title": "BMW Serie 1 118d",
+          "year": 2020,
+          "km": 32000,
+          "fuel": "Diesel",
+          "transmission": "Automatico",
+          "price": 26900,
+          "image": "",
+          "gallery": []
+        },
+        {
+          "id": "bmw-x1-1",
+          "title": "BMW X1 sDrive18d",
+          "year": 2021,
+          "km": 18000,
+          "fuel": "Diesel",
+          "transmission": "Automatico",
+          "price": 35500,
+          "image": "",
+          "gallery": []
+        }
+      ]
+    },
+    {
+      "id": "audi",
+      "name": "Audi",
+      "logo": "images/audi.png",
+      "cars": [
+        {
+          "id": "audi-a3-1",
+          "title": "Audi A3 1.6 TDI",
+          "year": 2020,
+          "km": 29000,
+          "fuel": "Diesel",
+          "transmission": "Manuale",
+          "price": 28500,
+          "image": "",
+          "gallery": []
+        },
+        {
+          "id": "audi-q3-1",
+          "title": "Audi Q3 2.0 TDI",
+          "year": 2021,
+          "km": 21000,
+          "fuel": "Diesel",
+          "transmission": "Automatico",
+          "price": 38900,
+          "image": "",
+          "gallery": []
+        }
+      ]
+    },
+    {
+      "id": "mercedes",
+      "name": "Mercedes",
+      "logo": "images/mercedes.png",
+      "cars": [
+        {
+          "id": "mercedes-classea-1",
+          "title": "Mercedes Classe A 180d",
+          "year": 2020,
+          "km": 34000,
+          "fuel": "Diesel",
+          "transmission": "Automatico",
+          "price": 31500,
+          "image": "",
+          "gallery": []
+        },
+        {
+          "id": "mercedes-gla-1",
+          "title": "Mercedes GLA 200d",
+          "year": 2021,
+          "km": 26000,
+          "fuel": "Diesel",
+          "transmission": "Automatico",
+          "price": 42000,
+          "image": "",
+          "gallery": []
+        }
+      ]
+    }
+  ]
+}
