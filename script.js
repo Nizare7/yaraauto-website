@@ -6,6 +6,9 @@ class CarDealer {
         this.lightbox = null; // Reference to lightbox
         this.currentLightboxImages = []; // Current images in lightbox
         this.currentLightboxIndex = 0; // Current index in lightbox
+        this.carDetailModal = null; // Reference to car detail modal
+        this.currentCarDetailImages = []; // Current images in car detail modal
+        this.currentCarDetailIndex = 0; // Current index in car detail carousel
         this.init();
     }
 
@@ -17,6 +20,7 @@ class CarDealer {
             this.generateCarSections();
             this.setupScrollBehavior();
             this.createLightbox();
+            this.createCarDetailModal();
         } catch (error) {
             console.error('Errore durante l\'inizializzazione:', error);
             this.showError('Errore nel caricamento dei dati');
@@ -215,10 +219,19 @@ class CarDealer {
         carCard.appendChild(carImage);
         carCard.appendChild(carInfo);
 
+        // Add click listener to open car detail modal
+        carCard.addEventListener('click', (e) => {
+            // Prevent propagation for carousel controls
+            if (e.target.closest('.carousel-nav') || e.target.closest('.carousel-dot')) {
+                return;
+            }
+            this.openCarDetailModal(car);
+        });
+
         // Entry animation
         carCard.style.opacity = '0';
         carCard.style.transform = 'translateY(20px)';
-        carCard.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        carCard.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
 
         return carCard;
     }
@@ -572,10 +585,7 @@ class CarDealer {
             }
         });
 
-        // Add listeners for clickable images
-        setTimeout(() => {
-            this.addImageClickListeners();
-        }, 100); // Small delay to ensure everything is rendered
+        // Note: Removed addImageClickListeners to avoid conflict with car detail modal
     }
 
     // Fallback emojis for brands
@@ -621,6 +631,245 @@ class CarDealer {
             errorDiv.textContent = message;
             mainContent.insertBefore(errorDiv, mainContent.firstChild);
         }
+    }
+
+    // Create car detail modal
+    createCarDetailModal() {
+        const modal = document.createElement('div');
+        modal.className = 'car-detail-modal';
+        modal.innerHTML = `
+            <div class="car-detail-content">
+                <button class="car-detail-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="car-detail-images">
+                    <div class="car-detail-carousel">
+                        <div class="car-detail-track"></div>
+                        <button class="car-detail-nav car-detail-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="car-detail-nav car-detail-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="car-detail-indicators"></div>
+                    </div>
+                </div>
+                <div class="car-detail-info">
+                    <div class="car-detail-header">
+                        <h2 class="car-detail-title"></h2>
+                        <div class="car-detail-price"></div>
+                    </div>
+                    <div class="car-detail-specs">
+                        <h3>Specifiche Tecniche</h3>
+                        <div class="car-specs-grid"></div>
+                    </div>
+                    <div class="car-detail-contact">
+                        <h3>Contattami</h3>
+                        <div class="contact-info-direct">
+                            <a href="tel:+39 320 613 8044" class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                +39 320 613 8044
+                            </a>
+                            <a href="mailto:info@yaraauto.it" class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                info@yaraauto.it
+                            </a>
+                            <a href="https://www.instagram.com/yaraauto_srl/" target="_blank" class="contact-item">
+                                <i class="fab fa-instagram"></i>
+                                @yaraauto_srl
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        this.carDetailModal = modal;
+        this.setupCarDetailModalEvents();
+    }
+
+    // Setup events for car detail modal
+    setupCarDetailModalEvents() {
+        const modal = this.carDetailModal;
+        const closeBtn = modal.querySelector('.car-detail-close');
+        const prevBtn = modal.querySelector('.car-detail-prev');
+        const nextBtn = modal.querySelector('.car-detail-next');
+
+        // Close modal
+        closeBtn.addEventListener('click', () => this.closeCarDetailModal());
+        
+        // Click on background to close
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                this.closeCarDetailModal();
+            }
+        });
+
+        // Navigation
+        prevBtn.addEventListener('click', () => this.carDetailPrev());
+        nextBtn.addEventListener('click', () => this.carDetailNext());
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    this.closeCarDetailModal();
+                    break;
+                case 'ArrowLeft':
+                    this.carDetailPrev();
+                    break;
+                case 'ArrowRight':
+                    this.carDetailNext();
+                    break;
+            }
+        });
+    }
+
+    // Open car detail modal
+    openCarDetailModal(car) {
+        this.updateCarDetailContent(car);
+        this.carDetailModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close car detail modal
+    closeCarDetailModal() {
+        this.carDetailModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Previous image in car detail modal
+    carDetailPrev() {
+        if (this.currentCarDetailImages.length <= 1) return;
+        this.currentCarDetailIndex = (this.currentCarDetailIndex - 1 + this.currentCarDetailImages.length) % this.currentCarDetailImages.length;
+        this.updateCarDetailCarousel();
+    }
+
+    // Next image in car detail modal
+    carDetailNext() {
+        if (this.currentCarDetailImages.length <= 1) return;
+        this.currentCarDetailIndex = (this.currentCarDetailIndex + 1) % this.currentCarDetailImages.length;
+        this.updateCarDetailCarousel();
+    }
+
+    // Update car detail modal content
+    updateCarDetailContent(car) {
+        const modal = this.carDetailModal;
+        const title = modal.querySelector('.car-detail-title');
+        const price = modal.querySelector('.car-detail-price');
+        const specsGrid = modal.querySelector('.car-specs-grid');
+        const track = modal.querySelector('.car-detail-track');
+        const indicators = modal.querySelector('.car-detail-indicators');
+        const prevBtn = modal.querySelector('.car-detail-prev');
+        const nextBtn = modal.querySelector('.car-detail-next');
+
+        // Update title and price
+        title.textContent = car.title;
+        price.textContent = `€ ${car.price.toLocaleString('it-IT')}`;
+
+        // Update specs
+        specsGrid.innerHTML = `
+            <div class="car-spec-item">
+                <span class="car-spec-label">Anno:</span>
+                <span class="car-spec-value">${car.year}</span>
+            </div>
+            <div class="car-spec-item">
+                <span class="car-spec-label">Chilometri:</span>
+                <span class="car-spec-value">${car.km.toLocaleString('it-IT')}</span>
+            </div>
+            <div class="car-spec-item">
+                <span class="car-spec-label">Alimentazione:</span>
+                <span class="car-spec-value">${car.fuel}</span>
+            </div>
+            <div class="car-spec-item">
+                <span class="car-spec-label">Cambio:</span>
+                <span class="car-spec-value">${car.transmission}</span>
+            </div>
+        `;
+
+        // Setup images
+        this.currentCarDetailImages = car.gallery && car.gallery.length > 0 ? car.gallery : [car.image || ''];
+        this.currentCarDetailIndex = 0;
+
+        // Clear existing slides and indicators
+        track.innerHTML = '';
+        indicators.innerHTML = '';
+
+        // Create slides
+        this.currentCarDetailImages.forEach((imageSrc, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'car-detail-slide';
+
+            if (imageSrc && imageSrc.trim() !== '') {
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.alt = `${car.title} - Foto ${index + 1}`;
+                img.onerror = () => {
+                    slide.innerHTML = this.getCarEmoji();
+                    slide.style.fontSize = '4rem';
+                    slide.style.display = 'flex';
+                    slide.style.alignItems = 'center';
+                    slide.style.justifyContent = 'center';
+                    slide.style.color = '#666';
+                };
+                slide.appendChild(img);
+            } else {
+                slide.innerHTML = this.getCarEmoji();
+                slide.style.fontSize = '4rem';
+                slide.style.display = 'flex';
+                slide.style.alignItems = 'center';
+                slide.style.justifyContent = 'center';
+                slide.style.color = '#666';
+            }
+
+            track.appendChild(slide);
+
+            // Create indicator if multiple images
+            if (this.currentCarDetailImages.length > 1) {
+                const dot = document.createElement('div');
+                dot.className = 'car-detail-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => this.goToCarDetailSlide(index));
+                indicators.appendChild(dot);
+            }
+        });
+
+        // Show/hide navigation controls
+        if (this.currentCarDetailImages.length <= 1) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            indicators.style.display = 'none';
+        } else {
+            prevBtn.style.display = 'flex';
+            nextBtn.style.display = 'flex';
+            indicators.style.display = 'flex';
+        }
+
+        this.updateCarDetailCarousel();
+    }
+
+    // Go to specific slide in car detail modal
+    goToCarDetailSlide(index) {
+        this.currentCarDetailIndex = index;
+        this.updateCarDetailCarousel();
+    }
+
+    // Update car detail carousel
+    updateCarDetailCarousel() {
+        const track = this.carDetailModal.querySelector('.car-detail-track');
+        const dots = this.carDetailModal.querySelectorAll('.car-detail-dot');
+
+        // Update carousel position
+        const translateX = -this.currentCarDetailIndex * 100;
+        track.style.transform = `translateX(${translateX}%)`;
+
+        // Update indicators
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentCarDetailIndex);
+        });
     }
 }
 
