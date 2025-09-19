@@ -152,9 +152,9 @@ body {
 
 .brands-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 160px));
     gap: 20px;
-    justify-items: center;
+    justify-content: center;
 }
 
 .brand-link {
@@ -169,6 +169,9 @@ body {
     color: #0D0D0D;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    width: 160px;
+    height: 180px;
+    justify-content: center;
 }
 
 .brand-link:hover {
@@ -207,6 +210,11 @@ body {
 .brand-name {
     font-weight: 600;
     font-size: 1.1rem;
+    text-align: center;
+    max-width: 120px;
+    word-wrap: break-word;
+    line-height: 1.2;
+    margin-top: 8px;
 }
 
 /* Sezioni auto */
@@ -366,6 +374,172 @@ body {
 
 .carousel-dot:hover {
     background: rgba(217, 56, 41, 0.8);
+}
+
+/* Lightbox Modal */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+}
+
+.lightbox-nav:hover {
+    background: rgba(217, 56, 41, 0.8);
+    border-color: rgba(217, 56, 41, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+}
+
+.lightbox-close:hover {
+    background: rgba(217, 56, 41, 0.8);
+    border-color: rgba(217, 56, 41, 0.8);
+    transform: scale(1.1);
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-title {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    max-width: 400px;
+}
+
+/* Cursor pointer per immagini cliccabili */
+.carousel-slide img, .car-image img {
+    cursor: pointer;
+}
+
+.car-image {
+    cursor: pointer;
+}
+
+/* Responsive lightbox */
+@media (max-width: 768px) {
+    .lightbox-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .lightbox-prev {
+        left: 10px;
+    }
+    
+    .lightbox-next {
+        right: 10px;
+    }
+    
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 85%;
+    }
+    
+    .lightbox-title {
+        font-size: 1rem;
+        max-width: 300px;
+    }
 }
 
 .car-info {

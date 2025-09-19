@@ -3,6 +3,9 @@ class CarDealer {
     constructor() {
         this.data = null;
         this.carousels = new Map(); // Mappa per gestire i caroselli
+        this.lightbox = null; // Riferimento al lightbox
+        this.currentLightboxImages = []; // Immagini correnti nel lightbox
+        this.currentLightboxIndex = 0; // Indice corrente nel lightbox
         this.init();
     }
 
@@ -13,6 +16,7 @@ class CarDealer {
             this.generateBrands();
             this.generateCarSections();
             this.setupScrollBehavior();
+            this.createLightbox();
         } catch (error) {
             console.error('Errore durante l\'inizializzazione:', error);
             this.showError('Errore nel caricamento dei dati');
@@ -40,7 +44,10 @@ class CarDealer {
 
         brandsGrid.innerHTML = '';
         
-        this.data.brands.forEach(brand => {
+        // Ordina le marche alfabeticamente
+        const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
+        
+        sortedBrands.forEach(brand => {
             const brandElement = this.createBrandElement(brand);
             brandsGrid.appendChild(brandElement);
         });
@@ -86,7 +93,10 @@ class CarDealer {
         // Trova dove inserire le sezioni auto (dopo la navigazione marche)
         const brandsNav = document.querySelector('.brands-nav');
         
-        this.data.brands.forEach(brand => {
+        // Ordina le marche alfabeticamente
+        const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
+        
+        sortedBrands.forEach(brand => {
             const sectionElement = this.createBrandSection(brand);
             brandsNav.insertAdjacentElement('afterend', sectionElement);
         });
@@ -105,7 +115,10 @@ class CarDealer {
         const carsGrid = document.createElement('div');
         carsGrid.className = 'cars-grid';
 
-        brand.cars.forEach(car => {
+        // Ordina le auto alfabeticamente per titolo
+        const sortedCars = [...brand.cars].sort((a, b) => a.title.localeCompare(b.title));
+
+        sortedCars.forEach(car => {
             const carElement = this.createCarCard(car);
             carsGrid.appendChild(carElement);
         });
@@ -313,6 +326,179 @@ class CarDealer {
         });
     }
 
+    // Crea il lightbox modal
+    createLightbox() {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <div class="lightbox-content">
+                <div class="lightbox-title"></div>
+                <button class="lightbox-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img class="lightbox-image" src="" alt="">
+                <button class="lightbox-nav lightbox-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="lightbox-nav lightbox-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="lightbox-counter"></div>
+            </div>
+        `;
+
+        document.body.appendChild(lightbox);
+        this.lightbox = lightbox;
+
+        // Setup event listeners per lightbox
+        this.setupLightboxEvents();
+    }
+
+    // Setup eventi per il lightbox
+    setupLightboxEvents() {
+        const lightbox = this.lightbox;
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+        const prevBtn = lightbox.querySelector('.lightbox-prev');
+        const nextBtn = lightbox.querySelector('.lightbox-next');
+
+        // Chiudi lightbox
+        closeBtn.addEventListener('click', () => this.closeLightbox());
+        
+        // Click su sfondo per chiudere
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                this.closeLightbox();
+            }
+        });
+
+        // Navigazione
+        prevBtn.addEventListener('click', () => this.lightboxPrev());
+        nextBtn.addEventListener('click', () => this.lightboxNext());
+
+        // Tasti da tastiera
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    this.closeLightbox();
+                    break;
+                case 'ArrowLeft':
+                    this.lightboxPrev();
+                    break;
+                case 'ArrowRight':
+                    this.lightboxNext();
+                    break;
+            }
+        });
+    }
+
+    // Apri lightbox con immagini
+    openLightbox(images, startIndex = 0, title = '') {
+        this.currentLightboxImages = images;
+        this.currentLightboxIndex = startIndex;
+        
+        this.updateLightboxContent(title);
+        this.lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Blocca scroll della pagina
+    }
+
+    // Chiudi lightbox
+    closeLightbox() {
+        this.lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Riabilita scroll della pagina
+    }
+
+    // Immagine precedente nel lightbox
+    lightboxPrev() {
+        this.currentLightboxIndex = (this.currentLightboxIndex - 1 + this.currentLightboxImages.length) % this.currentLightboxImages.length;
+        this.updateLightboxContent();
+    }
+
+    // Immagine successiva nel lightbox
+    lightboxNext() {
+        this.currentLightboxIndex = (this.currentLightboxIndex + 1) % this.currentLightboxImages.length;
+        this.updateLightboxContent();
+    }
+
+    // Aggiorna contenuto del lightbox
+    updateLightboxContent(title = '') {
+        const lightbox = this.lightbox;
+        const img = lightbox.querySelector('.lightbox-image');
+        const counter = lightbox.querySelector('.lightbox-counter');
+        const titleElement = lightbox.querySelector('.lightbox-title');
+        const prevBtn = lightbox.querySelector('.lightbox-prev');
+        const nextBtn = lightbox.querySelector('.lightbox-next');
+
+        // Aggiorna immagine
+        img.src = this.currentLightboxImages[this.currentLightboxIndex];
+        
+        // Aggiorna contatore
+        counter.textContent = `${this.currentLightboxIndex + 1} / ${this.currentLightboxImages.length}`;
+        
+        // Aggiorna titolo
+        if (title) {
+            titleElement.textContent = title;
+        }
+
+        // Mostra/nascondi controlli navigazione
+        if (this.currentLightboxImages.length <= 1) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            counter.style.display = 'none';
+        } else {
+            prevBtn.style.display = 'flex';
+            nextBtn.style.display = 'flex';
+            counter.style.display = 'block';
+        }
+    }
+
+    // Aggiungi event listeners per le immagini cliccabili
+    addImageClickListeners() {
+        // Per tutte le immagini delle auto (sia singole che nei caroselli)
+        document.querySelectorAll('.car-image').forEach(carImage => {
+            carImage.addEventListener('click', (e) => {
+                const carCard = carImage.closest('.car-card');
+                if (!carCard) return;
+
+                // Trova i dati dell'auto
+                const carTitle = carCard.querySelector('.car-title')?.textContent || '';
+                
+                // Controlla se è un carosello o immagine singola
+                const carousel = carImage.querySelector('.image-carousel');
+                if (carousel) {
+                    // È un carosello - prendi tutte le immagini
+                    const slides = carousel.querySelectorAll('.carousel-slide img');
+                    const images = Array.from(slides).map(img => img.src).filter(src => src);
+                    const currentTrack = carousel.querySelector('.carousel-track');
+                    const currentIndex = this.getCurrentCarouselIndex(currentTrack);
+                    
+                    if (images.length > 0) {
+                        this.openLightbox(images, currentIndex, carTitle);
+                    }
+                } else {
+                    // È un'immagine singola
+                    const img = carImage.querySelector('img');
+                    if (img && img.src) {
+                        this.openLightbox([img.src], 0, carTitle);
+                    }
+                }
+            });
+        });
+    }
+
+    // Trova l'indice corrente del carosello
+    getCurrentCarouselIndex(track) {
+        const transform = track.style.transform;
+        if (!transform) return 0;
+        
+        const match = transform.match(/translateX\((-?\d+)%\)/);
+        if (!match) return 0;
+        
+        const translatePercent = parseInt(match[1]);
+        return Math.abs(translatePercent / 100);
+    }
+
     // Setup comportamento scroll e animazioni
     setupScrollBehavior() {
         // Scroll smooth per i link delle marche
@@ -360,6 +546,11 @@ class CarDealer {
                 backToTop.classList.remove('visible');
             }
         });
+
+        // Aggiungi listener per le immagini cliccabili
+        setTimeout(() => {
+            this.addImageClickListeners();
+        }, 100); // Piccolo delay per assicurarsi che tutto sia renderizzato
     }
 
     // Emoji di fallback per le marche
