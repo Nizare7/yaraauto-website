@@ -230,35 +230,6 @@
       "cars": []
     },
     {
-      "id": "mercedes",
-      "name": "Mercedes",
-      "logo": "images/mercedes.png",
-      "cars": [
-        {
-          "id": "mercedes-classea-1",
-          "title": "Mercedes Classe A 180d",
-          "year": 2020,
-          "km": 34000,
-          "fuel": "Diesel",
-          "transmission": "Automatico",
-          "price": 31500,
-          "image": "",
-          "gallery": []
-        },
-        {
-          "id": "mercedes-gla-1",
-          "title": "Mercedes GLA 200d",
-          "year": 2021,
-          "km": 26000,
-          "fuel": "Diesel",
-          "transmission": "Automatico",
-          "price": 42000,
-          "image": "",
-          "gallery": []
-        }
-      ]
-    },
-    {
       "id": "mini",
       "name": "Mini",
       "logo": "images/mini.png",
@@ -390,6 +361,18 @@
       "id": "volvo",
       "name": "Volvo",
       "logo": "images/volvo.png",
+      "cars": []
+    },
+    {
+      "id": "jaguar",
+      "name": "Jaguar",
+      "logo": "images/jaguar.png",
+      "cars": []
+    },
+    {
+      "id": "lancia",
+      "name": "Lancia",
+      "logo": "images/lancia.png",
       "cars": []
     },
     {
