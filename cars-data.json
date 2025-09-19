@@ -1,6 +1,18 @@
 {
   "brands": [
     {
+      "id": "abarth",
+      "name": "Abarth",
+      "logo": "images/abarth.png",
+      "cars": []
+    },
+    {
+      "id": "alfa-romeo",
+      "name": "Alfa Romeo",
+      "logo": "images/alfa-romeo.png",
+      "cars": []
+    },
+    {
       "id": "audi",
       "name": "Audi",
       "logo": "images/audi.png",
@@ -53,6 +65,36 @@
           "fuel": "Diesel",
           "transmission": "Automatico",
           "price": 35500,
+          "image": "",
+          "gallery": []
+        }
+      ]
+    },
+    {
+      "id": "citroen",
+      "name": "Citroën",
+      "logo": "images/citroen.png",
+      "cars": []
+    },
+    {
+      "id": "dacia",
+      "name": "Dacia",
+      "logo": "images/dacia.png",
+      "cars": []
+    },
+    {
+      "id": "ferrari",
+      "name": "Ferrari",
+      "logo": "images/ferrari.png",
+      "cars": [
+        {
+          "id": "ferrari-488-1",
+          "title": "Ferrari 488 GTB",
+          "year": 2018,
+          "km": 8500,
+          "fuel": "Benzina",
+          "transmission": "Automatico",
+          "price": 245000,
           "image": "",
           "gallery": []
         }
@@ -144,6 +186,211 @@
           "gallery": []
         }
       ]
+    },
+    {
+      "id": "honda",
+      "name": "Honda",
+      "logo": "images/honda.png",
+      "cars": []
+    },
+    {
+      "id": "hyundai",
+      "name": "Hyundai",
+      "logo": "images/hyundai.png",
+      "cars": []
+    },
+    {
+      "id": "jeep",
+      "name": "Jeep",
+      "logo": "images/jeep.png",
+      "cars": []
+    },
+    {
+      "id": "kia",
+      "name": "Kia",
+      "logo": "images/kia.png",
+      "cars": []
+    },
+    {
+      "id": "land-rover",
+      "name": "Land Rover",
+      "logo": "images/land-rover.png",
+      "cars": []
+    },
+    {
+      "id": "maserati",
+      "name": "Maserati",
+      "logo": "images/maserati.png",
+      "cars": []
+    },
+    {
+      "id": "mazda",
+      "name": "Mazda",
+      "logo": "images/mazda.png",
+      "cars": []
+    },
+    {
+      "id": "mercedes",
+      "name": "Mercedes",
+      "logo": "images/mercedes.png",
+      "cars": [
+        {
+          "id": "mercedes-classea-1",
+          "title": "Mercedes Classe A 180d",
+          "year": 2020,
+          "km": 34000,
+          "fuel": "Diesel",
+          "transmission": "Automatico",
+          "price": 31500,
+          "image": "",
+          "gallery": []
+        },
+        {
+          "id": "mercedes-gla-1",
+          "title": "Mercedes GLA 200d",
+          "year": 2021,
+          "km": 26000,
+          "fuel": "Diesel",
+          "transmission": "Automatico",
+          "price": 42000,
+          "image": "",
+          "gallery": []
+        }
+      ]
+    },
+    {
+      "id": "mini",
+      "name": "Mini",
+      "logo": "images/mini.png",
+      "cars": []
+    },
+    {
+      "id": "mitsubishi",
+      "name": "Mitsubishi",
+      "logo": "images/mitsubishi.png",
+      "cars": []
+    },
+    {
+      "id": "nissan",
+      "name": "Nissan",
+      "logo": "images/nissan.png",
+      "cars": []
+    },
+    {
+      "id": "opel",
+      "name": "Opel",
+      "logo": "images/opel.png",
+      "cars": []
+    },
+    {
+      "id": "peugeot",
+      "name": "Peugeot",
+      "logo": "images/peugeot.png",
+      "cars": []
+    },
+    {
+      "id": "porsche",
+      "name": "Porsche",
+      "logo": "images/porsche.png",
+      "cars": []
+    },
+    {
+      "id": "renault",
+      "name": "Renault",
+      "logo": "images/renault.png",
+      "cars": []
+    },
+    {
+      "id": "seat",
+      "name": "Seat",
+      "logo": "images/seat.png",
+      "cars": []
+    },
+    {
+      "id": "skoda",
+      "name": "Škoda",
+      "logo": "images/skoda.png",
+      "cars": []
+    },
+    {
+      "id": "smart",
+      "name": "Smart",
+      "logo": "images/smart.png",
+      "cars": []
+    },
+    {
+      "id": "tesla",
+      "name": "Tesla",
+      "logo": "images/tesla.png",
+      "cars": []
+    },
+    {
+      "id": "toyota",
+      "name": "Toyota",
+      "logo": "images/toyota.png",
+      "cars": [
+        {
+          "id": "toyota-yaris-1",
+          "title": "Toyota Yaris 1.5 Hybrid",
+          "year": 2022,
+          "km": 15000,
+          "fuel": "Ibrida",
+          "transmission": "Automatico",
+          "price": 22500,
+          "image": "",
+          "gallery": []
+        },
+        {
+          "id": "toyota-corolla-1",
+          "title": "Toyota Corolla 1.8 Hybrid",
+          "year": 2021,
+          "km": 28000,
+          "fuel": "Ibrida",
+          "transmission": "Automatico",
+          "price": 26500,
+          "image": "",
+          "gallery": []
+        },
+        {
+          "id": "toyota-rav4-1",
+          "title": "Toyota RAV4 2.5 Hybrid",
+          "year": 2022,
+          "km": 12000,
+          "fuel": "Ibrida",
+          "transmission": "Automatico",
+          "price": 38900,
+          "image": "",
+          "gallery": []
+        },
+        {
+          "id": "toyota-camry-1",
+          "title": "Toyota Camry 2.5 Hybrid",
+          "year": 2021,
+          "km": 22000,
+          "fuel": "Ibrida",
+          "transmission": "Automatico",
+          "price": 32500,
+          "image": "",
+          "gallery": []
+        },
+        {
+          "id": "toyota-highlander-1",
+          "title": "Toyota Highlander 3.5 V6",
+          "year": 2020,
+          "km": 35000,
+          "fuel": "Benzina",
+          "transmission": "Automatico",
+          "price": 45000,
+          "image": "",
+          "gallery": []
+        }
+      ]
+    },
+    {
+      "id": "volvo",
+      "name": "Volvo",
+      "logo": "images/volvo.png",
+      "cars": []
     },
     {
       "id": "volkswagen",

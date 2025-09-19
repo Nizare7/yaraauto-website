@@ -1,15 +1,15 @@
-// Classe principale per gestire il sito auto
+// Main class to manage the car dealership website
 class CarDealer {
     constructor() {
         this.data = null;
-        this.carousels = new Map(); // Mappa per gestire i caroselli
-        this.lightbox = null; // Riferimento al lightbox
-        this.currentLightboxImages = []; // Immagini correnti nel lightbox
-        this.currentLightboxIndex = 0; // Indice corrente nel lightbox
+        this.carousels = new Map(); // Map to manage carousels
+        this.lightbox = null; // Reference to lightbox
+        this.currentLightboxImages = []; // Current images in lightbox
+        this.currentLightboxIndex = 0; // Current index in lightbox
         this.init();
     }
 
-    // Inizializza l'applicazione
+    // Initialize the application
     async init() {
         try {
             await this.loadData();
@@ -23,7 +23,7 @@ class CarDealer {
         }
     }
 
-    // Carica i dati JSON
+    // Load JSON data
     async loadData() {
         try {
             const response = await fetch('cars-data.json');
@@ -37,14 +37,14 @@ class CarDealer {
         }
     }
 
-    // Genera la griglia delle marche
+    // Generate brands grid
     generateBrands() {
         const brandsGrid = document.querySelector('.brands-grid');
         if (!brandsGrid || !this.data) return;
 
         brandsGrid.innerHTML = '';
         
-        // Ordina le marche alfabeticamente
+        // Sort brands alphabetically
         const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
         
         sortedBrands.forEach(brand => {
@@ -53,7 +53,7 @@ class CarDealer {
         });
     }
 
-    // Crea elemento singola marca
+    // Create single brand element
     createBrandElement(brand) {
         const brandLink = document.createElement('a');
         brandLink.href = `#${brand.id}`;
@@ -85,24 +85,35 @@ class CarDealer {
         return brandLink;
     }
 
-    // Genera tutte le sezioni auto
+    // Generate all car sections
     generateCarSections() {
         const mainContent = document.querySelector('.main-content');
         if (!mainContent || !this.data) return;
 
-        // Trova dove inserire le sezioni auto (dopo la navigazione marche)
+        // Find where to insert car sections (after brands navigation)
         const brandsNav = document.querySelector('.brands-nav');
         
-        // Ordina le marche alfabeticamente
+        // Sort brands alphabetically
         const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
         
-        sortedBrands.forEach(brand => {
+        // Create all sections and insert them in correct order
+        sortedBrands.forEach((brand, index) => {
             const sectionElement = this.createBrandSection(brand);
-            brandsNav.insertAdjacentElement('afterend', sectionElement);
+            
+            if (index === 0) {
+                // Insert first section after brands navigation
+                brandsNav.insertAdjacentElement('afterend', sectionElement);
+            } else {
+                // Insert subsequent sections after the previous section
+                const previousSection = document.getElementById(sortedBrands[index - 1].id);
+                if (previousSection) {
+                    previousSection.insertAdjacentElement('afterend', sectionElement);
+                }
+            }
         });
     }
 
-    // Crea sezione per una marca
+    // Create section for a brand
     createBrandSection(brand) {
         const section = document.createElement('section');
         section.id = brand.id;
@@ -115,13 +126,27 @@ class CarDealer {
         const carsGrid = document.createElement('div');
         carsGrid.className = 'cars-grid';
 
-        // Ordina le auto alfabeticamente per titolo
-        const sortedCars = [...brand.cars].sort((a, b) => a.title.localeCompare(b.title));
+        // Check if brand has cars
+        if (brand.cars && brand.cars.length > 0) {
+            // Sort cars alphabetically by title
+            const sortedCars = [...brand.cars].sort((a, b) => a.title.localeCompare(b.title));
 
-        sortedCars.forEach(car => {
-            const carElement = this.createCarCard(car);
-            carsGrid.appendChild(carElement);
-        });
+            sortedCars.forEach(car => {
+                const carElement = this.createCarCard(car);
+                carsGrid.appendChild(carElement);
+            });
+        } else {
+            // Create "no cars available" message
+            const noCarsMsgDiv = document.createElement('div');
+            noCarsMsgDiv.className = 'no-cars-message';
+            noCarsMsgDiv.innerHTML = `
+                <div class="no-cars-content">
+                    <i class="fas fa-car" style="font-size: 3rem; color: #666; margin-bottom: 1rem;"></i>
+                    <p>Nessuna auto disponibile al momento</p>
+                </div>
+            `;
+            carsGrid.appendChild(noCarsMsgDiv);
+        }
 
         section.appendChild(title);
         section.appendChild(carsGrid);
@@ -129,21 +154,21 @@ class CarDealer {
         return section;
     }
 
-    // Crea card singola auto
+    // Create single car card
     createCarCard(car) {
         const carCard = document.createElement('div');
         carCard.className = 'car-card';
 
-        // Immagine auto con carosello
+        // Car image with carousel
         const carImage = document.createElement('div');
         carImage.className = 'car-image';
 
-        // Se ha una gallery con più immagini, crea il carosello
+        // If it has a gallery with multiple images, create carousel
         if (car.gallery && car.gallery.length > 1) {
             const carousel = this.createImageCarousel(car);
             carImage.appendChild(carousel);
         } else {
-            // Singola immagine o fallback
+            // Single image or fallback
             if (car.image && car.image.trim() !== '') {
                 const img = document.createElement('img');
                 img.src = car.image;
@@ -162,7 +187,7 @@ class CarDealer {
             }
         }
 
-        // Informazioni auto
+        // Car information
         const carInfo = document.createElement('div');
         carInfo.className = 'car-info';
 
@@ -190,7 +215,7 @@ class CarDealer {
         carCard.appendChild(carImage);
         carCard.appendChild(carInfo);
 
-        // Animazione di entrata
+        // Entry animation
         carCard.style.opacity = '0';
         carCard.style.transform = 'translateY(20px)';
         carCard.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -198,7 +223,7 @@ class CarDealer {
         return carCard;
     }
 
-    // Crea carosello per più immagini
+    // Create carousel for multiple images
     createImageCarousel(car) {
         const carousel = document.createElement('div');
         carousel.className = 'image-carousel';
@@ -206,7 +231,7 @@ class CarDealer {
         const track = document.createElement('div');
         track.className = 'carousel-track';
 
-        // Crea slide per ogni immagine
+        // Create slide for each image
         car.gallery.forEach((imageSrc, index) => {
             const slide = document.createElement('div');
             slide.className = 'carousel-slide';
@@ -228,7 +253,7 @@ class CarDealer {
 
         carousel.appendChild(track);
 
-        // Controlli di navigazione
+        // Navigation controls
         if (car.gallery.length > 1) {
             const prevBtn = document.createElement('button');
             prevBtn.className = 'carousel-nav carousel-prev';
@@ -238,7 +263,7 @@ class CarDealer {
             nextBtn.className = 'carousel-nav carousel-next';
             nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
 
-            // Indicatori
+            // Indicators
             const indicators = document.createElement('div');
             indicators.className = 'carousel-indicators';
 
@@ -252,14 +277,14 @@ class CarDealer {
             carousel.appendChild(nextBtn);
             carousel.appendChild(indicators);
 
-            // Inizializza il carosello
+            // Initialize carousel
             this.initCarousel(carousel, car.id);
         }
 
         return carousel;
     }
 
-    // Inizializza la logica del carosello
+    // Initialize carousel logic
     initCarousel(carouselElement, carId) {
         const track = carouselElement.querySelector('.carousel-track');
         const slides = carouselElement.querySelectorAll('.carousel-slide');
@@ -273,7 +298,7 @@ class CarDealer {
             const translateX = -currentIndex * 100;
             track.style.transform = `translateX(${translateX}%)`;
 
-            // Aggiorna indicatori
+            // Update indicators
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentIndex);
             });
@@ -361,21 +386,21 @@ class CarDealer {
         const prevBtn = lightbox.querySelector('.lightbox-prev');
         const nextBtn = lightbox.querySelector('.lightbox-next');
 
-        // Chiudi lightbox
+        // Close lightbox
         closeBtn.addEventListener('click', () => this.closeLightbox());
         
-        // Click su sfondo per chiudere
+        // Click on background to close
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
                 this.closeLightbox();
             }
         });
 
-        // Navigazione
+        // Navigation
         prevBtn.addEventListener('click', () => this.lightboxPrev());
         nextBtn.addEventListener('click', () => this.lightboxNext());
 
-        // Tasti da tastiera
+        // Keyboard controls
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('active')) return;
             
@@ -393,35 +418,35 @@ class CarDealer {
         });
     }
 
-    // Apri lightbox con immagini
+    // Open lightbox with images
     openLightbox(images, startIndex = 0, title = '') {
         this.currentLightboxImages = images;
         this.currentLightboxIndex = startIndex;
         
         this.updateLightboxContent(title);
         this.lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Blocca scroll della pagina
+        document.body.style.overflow = 'hidden'; // Block page scroll
     }
 
-    // Chiudi lightbox
+    // Close lightbox
     closeLightbox() {
         this.lightbox.classList.remove('active');
-        document.body.style.overflow = ''; // Riabilita scroll della pagina
+        document.body.style.overflow = ''; // Re-enable page scroll
     }
 
-    // Immagine precedente nel lightbox
+    // Previous image in lightbox
     lightboxPrev() {
         this.currentLightboxIndex = (this.currentLightboxIndex - 1 + this.currentLightboxImages.length) % this.currentLightboxImages.length;
         this.updateLightboxContent();
     }
 
-    // Immagine successiva nel lightbox
+    // Next image in lightbox
     lightboxNext() {
         this.currentLightboxIndex = (this.currentLightboxIndex + 1) % this.currentLightboxImages.length;
         this.updateLightboxContent();
     }
 
-    // Aggiorna contenuto del lightbox
+    // Update lightbox content
     updateLightboxContent(title = '') {
         const lightbox = this.lightbox;
         const img = lightbox.querySelector('.lightbox-image');
@@ -430,18 +455,18 @@ class CarDealer {
         const prevBtn = lightbox.querySelector('.lightbox-prev');
         const nextBtn = lightbox.querySelector('.lightbox-next');
 
-        // Aggiorna immagine
+        // Update image
         img.src = this.currentLightboxImages[this.currentLightboxIndex];
         
-        // Aggiorna contatore
+        // Update counter
         counter.textContent = `${this.currentLightboxIndex + 1} / ${this.currentLightboxImages.length}`;
         
-        // Aggiorna titolo
+        // Update title
         if (title) {
             titleElement.textContent = title;
         }
 
-        // Mostra/nascondi controlli navigazione
+        // Show/hide navigation controls
         if (this.currentLightboxImages.length <= 1) {
             prevBtn.style.display = 'none';
             nextBtn.style.display = 'none';
@@ -453,21 +478,21 @@ class CarDealer {
         }
     }
 
-    // Aggiungi event listeners per le immagini cliccabili
+    // Add event listeners for clickable images
     addImageClickListeners() {
-        // Per tutte le immagini delle auto (sia singole che nei caroselli)
+        // For all car images (both single and in carousels)
         document.querySelectorAll('.car-image').forEach(carImage => {
             carImage.addEventListener('click', (e) => {
                 const carCard = carImage.closest('.car-card');
                 if (!carCard) return;
 
-                // Trova i dati dell'auto
+                // Find car data
                 const carTitle = carCard.querySelector('.car-title')?.textContent || '';
                 
-                // Controlla se è un carosello o immagine singola
+                // Check if it's a carousel or single image
                 const carousel = carImage.querySelector('.image-carousel');
                 if (carousel) {
-                    // È un carosello - prendi tutte le immagini
+                    // It's a carousel - get all images
                     const slides = carousel.querySelectorAll('.carousel-slide img');
                     const images = Array.from(slides).map(img => img.src).filter(src => src);
                     const currentTrack = carousel.querySelector('.carousel-track');
@@ -477,7 +502,7 @@ class CarDealer {
                         this.openLightbox(images, currentIndex, carTitle);
                     }
                 } else {
-                    // È un'immagine singola
+                    // It's a single image
                     const img = carImage.querySelector('img');
                     if (img && img.src) {
                         this.openLightbox([img.src], 0, carTitle);
@@ -487,7 +512,7 @@ class CarDealer {
         });
     }
 
-    // Trova l'indice corrente del carosello
+    // Find current carousel index
     getCurrentCarouselIndex(track) {
         const transform = track.style.transform;
         if (!transform) return 0;
@@ -499,9 +524,9 @@ class CarDealer {
         return Math.abs(translatePercent / 100);
     }
 
-    // Setup comportamento scroll e animazioni
+    // Setup scroll behavior and animations
     setupScrollBehavior() {
-        // Scroll smooth per i link delle marche
+        // Smooth scroll for brand links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -517,7 +542,7 @@ class CarDealer {
             });
         });
 
-        // Animazione delle card al scroll
+        // Card animation on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -532,12 +557,12 @@ class CarDealer {
             });
         }, observerOptions);
 
-        // Osserva tutte le card delle auto
+        // Observe all car cards
         document.querySelectorAll('.car-card').forEach(card => {
             observer.observe(card);
         });
 
-        // Pulsante torna su
+        // Back to top button
         window.addEventListener('scroll', function() {
             const backToTop = document.getElementById('backToTop');
             if (window.pageYOffset > 300) {
@@ -547,31 +572,39 @@ class CarDealer {
             }
         });
 
-        // Aggiungi listener per le immagini cliccabili
+        // Add listeners for clickable images
         setTimeout(() => {
             this.addImageClickListeners();
-        }, 100); // Piccolo delay per assicurarsi che tutto sia renderizzato
+        }, 100); // Small delay to ensure everything is rendered
     }
 
-    // Emoji di fallback per le marche
+    // Fallback emojis for brands
     getBrandEmoji(brandId) {
         const emojis = {
-            'fiat': '🚗',
-            'volkswagen': '🚙',
-            'ford': '🚐',
-            'bmw': '🏎️',
+            'abarth': '🏁',
+            'alfa-romeo': '🏎️',
             'audi': '🚘',
-            'mercedes': '🚖'
+            'bmw': '🏎️',
+            'citroen': '🚗',
+            'dacia': '🚙',
+            'ferrari': '🏎️',
+            'fiat': '�',
+            'ford': '🚐',
+            'honda': '🚙',
+            'hyundai': '🚗',
+            'jeep': '�',
+            'mercedes': '🚖',
+            'volkswagen': '🚙'
         };
         return emojis[brandId] || '🚗';
     }
 
-    // Emoji di fallback per le auto
+    // Fallback emoji for cars
     getCarEmoji() {
         return '🚗';
     }
 
-    // Mostra errore all'utente
+    // Show error to user
     showError(message) {
         const mainContent = document.querySelector('.main-content');
         if (mainContent) {
@@ -591,7 +624,7 @@ class CarDealer {
     }
 }
 
-// Avvia l'applicazione quando il DOM è caricato
+// Start the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new CarDealer();
 });
