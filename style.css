@@ -1605,6 +1605,31 @@ html {
     overflow-y: auto;
     height: 100%;
     background: #F2F2E4;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(217, 56, 41, 0.7) transparent;
+}
+
+/* Personalizzazione scrollbar per Webkit (Chrome, Safari, Edge) */
+.car-detail-info::-webkit-scrollbar {
+    width: 8px;
+}
+
+.car-detail-info::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.car-detail-info::-webkit-scrollbar-thumb {
+    background: rgba(217, 56, 41, 0.7);
+    border-radius: 10px;
+    border: none;
+}
+
+.car-detail-info::-webkit-scrollbar-thumb:hover {
+    background: rgba(217, 56, 41, 0.9);
+}
+
+.car-detail-info::-webkit-scrollbar-corner {
+    background: transparent;
 }
 
 .car-detail-header {
@@ -1786,13 +1811,23 @@ html {
         height: 40px;
         font-size: 1.1rem;
     }
+    
+    /* Mantieni scrollbar arrotondata anche su tablet */
+    .car-detail-info::-webkit-scrollbar {
+        width: 7px;
+    }
+    
+    .car-detail-info::-webkit-scrollbar-thumb {
+        background: rgba(217, 56, 41, 0.7);
+        border-radius: 10px;
+    }
 }
 
 @media (max-width: 480px) {
     .car-detail-content {
         width: 100vw;
         height: 85vh;
-        border-radius: 0;
+        border-radius: 12px;
         grid-template-rows: 40vh 1fr;
     }
     
@@ -1809,6 +1844,16 @@ html {
         padding: 12px;
         height: auto;
         max-height: 45vh;
+    }
+    
+    /* Mantieni scrollbar arrotondata anche su mobile */
+    .car-detail-info::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .car-detail-info::-webkit-scrollbar-thumb {
+        background: rgba(217, 56, 41, 0.7);
+        border-radius: 10px;
     }
     
     .car-detail-title {
