@@ -1,0 +1,1009 @@
+{
+  "brands": [
+    {
+      "id": "abarth",
+      "name": "Abarth",
+      "logo": "images/abarth.png",
+      "cars": [
+        {
+          "id": "abarth-595-1",
+          "title": "Abarth 595 Competizione",
+          "chilometraggio": 18000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Benzina",
+          "cilindrata": 1368,
+          "cavalli": 180,
+          "kw": 132,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 4,
+          "prezzo": 24500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "alfa-romeo",
+      "name": "Alfa Romeo",
+      "logo": "images/alfa-romeo.png",
+      "cars": [
+        {
+          "id": "alfa-giulia-1",
+          "title": "Alfa Romeo Giulia 2.2 JTDm",
+          "chilometraggio": 35000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Diesel",
+          "cilindrata": 2143,
+          "cavalli": 150,
+          "kw": 110,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 32000,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "audi",
+      "name": "Audi",
+      "logo": "images/audi.png",
+      "cars": [
+        {
+          "id": "audi-a3-1",
+          "title": "Audi A3 1.6 TDI",
+          "chilometraggio": 29000,
+          "condizioni": "Ottimo",
+          "anno": 2020,
+          "carburante": "Diesel",
+          "cilindrata": 1598,
+          "cavalli": 115,
+          "kw": 85,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 28500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        },
+        {
+          "id": "audi-q3-1",
+          "title": "Audi Q3 2.0 TDI",
+          "chilometraggio": 21000,
+          "condizioni": "Eccellente",
+          "anno": 2021,
+          "carburante": "Diesel",
+          "cilindrata": 1968,
+          "cavalli": 150,
+          "kw": 110,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 38900,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "bmw",
+      "name": "BMW",
+      "logo": "images/bmw.png",
+      "cars": [
+        {
+          "id": "bmw-serie1-1",
+          "title": "BMW Serie 1 118d",
+          "chilometraggio": 32000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Diesel",
+          "cilindrata": 1995,
+          "cavalli": 150,
+          "kw": 110,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 26900,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        },
+        {
+          "id": "bmw-x1-1",
+          "title": "BMW X1 sDrive18d",
+          "chilometraggio": 18000,
+          "condizioni": "Eccellente",
+          "anno": 2021,
+          "carburante": "Diesel",
+          "cilindrata": 1995,
+          "cavalli": 150,
+          "kw": 110,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 35500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "citroen",
+      "name": "Citroën",
+      "logo": "images/citroen.png",
+      "cars": [
+        {
+          "id": "citroen-c3-1",
+          "title": "Citroën C3 1.2 PureTech",
+          "chilometraggio": 25000,
+          "condizioni": "Buono",
+          "anno": 2021,
+          "carburante": "Benzina",
+          "cilindrata": 1199,
+          "cavalli": 82,
+          "kw": 60,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 15500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "dacia",
+      "name": "Dacia",
+      "logo": "images/dacia.png",
+      "cars": [
+        {
+          "id": "dacia-sandero-1",
+          "title": "Dacia Sandero 1.0 TCe",
+          "chilometraggio": 30000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Benzina",
+          "cilindrata": 999,
+          "cavalli": 90,
+          "kw": 66,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 13500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "ferrari",
+      "name": "Ferrari",
+      "logo": "images/ferrari.png",
+      "cars": [
+        {
+          "id": "ferrari-488-1",
+          "title": "Ferrari 488 GTB",
+          "chilometraggio": 8500,
+          "condizioni": "Eccellente",
+          "anno": 2018,
+          "carburante": "Benzina",
+          "cilindrata": 3902,
+          "cavalli": 670,
+          "kw": 492,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 2,
+          "prezzo": 245000,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "fiat",
+      "name": "Fiat",
+      "logo": "images/fiat.png",
+      "cars": [
+        {
+          "id": "fiat-panda-1",
+          "title": "Fiat Panda 1.2",
+          "chilometraggio": 35000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Benzina",
+          "cilindrata": 1242,
+          "cavalli": 69,
+          "kw": 51,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 12500,
+          "neopatentati": "SI",
+          "image": "cars/fiat-panda/main.jpg",
+          "gallery": ["cars/fiat-panda/main.jpg", "cars/fiat-panda/main1.jpg", "cars/fiat-panda/main2.jpg", "cars/fiat-panda/main3.jpg"]
+        },
+        {
+          "id": "fiat-500x-1",
+          "title": "Fiat 500X 1.4 T-Jet",
+          "chilometraggio": 28000,
+          "condizioni": "Buono",
+          "anno": 2019,
+          "carburante": "Benzina",
+          "cilindrata": 1368,
+          "cavalli": 140,
+          "kw": 103,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 18900,
+          "neopatentati": "NO",
+          "image": "cars/autotest2.jpg",
+          "gallery": []
+        }
+      ]
+    },
+    {
+      "id": "ford",
+      "name": "Ford",
+      "logo": "images/ford.png",
+      "cars": [
+        {
+          "id": "ford-fiesta-1",
+          "title": "Ford Fiesta 1.5 TDCi",
+          "chilometraggio": 38000,
+          "condizioni": "Discreto",
+          "anno": 2019,
+          "carburante": "Diesel",
+          "cilindrata": 1499,
+          "cavalli": 85,
+          "kw": 63,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 16800,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        },
+        {
+          "id": "ford-kuga-1",
+          "title": "Ford Kuga 2.0 TDCi",
+          "chilometraggio": 25000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Diesel",
+          "cilindrata": 1997,
+          "cavalli": 150,
+          "kw": 110,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 28500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "mercedes",
+      "name": "Mercedes",
+      "logo": "images/mercedes.png",
+      "cars": [
+        {
+          "id": "mercedes-classea-1",
+          "title": "Mercedes Classe A 180d",
+          "chilometraggio": 34000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Diesel",
+          "cilindrata": 1461,
+          "cavalli": 116,
+          "kw": 85,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 31500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        },
+        {
+          "id": "mercedes-gla-1",
+          "title": "Mercedes GLA 200d",
+          "chilometraggio": 26000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Diesel",
+          "cilindrata": 1950,
+          "cavalli": 150,
+          "kw": 110,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 42000,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "honda",
+      "name": "Honda",
+      "logo": "images/honda.png",
+      "cars": [
+        {
+          "id": "honda-civic-1",
+          "title": "Honda Civic 1.5 VTEC Turbo",
+          "chilometraggio": 22000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Benzina",
+          "cilindrata": 1498,
+          "cavalli": 182,
+          "kw": 134,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 27500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "hyundai",
+      "name": "Hyundai",
+      "logo": "images/hyundai.png",
+      "cars": [
+        {
+          "id": "hyundai-i20-1",
+          "title": "Hyundai i20 1.2 MPi",
+          "chilometraggio": 28000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Benzina",
+          "cilindrata": 1197,
+          "cavalli": 84,
+          "kw": 62,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 16800,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "jeep",
+      "name": "Jeep",
+      "logo": "images/jeep.png",
+      "cars": [
+        {
+          "id": "jeep-compass-1",
+          "title": "Jeep Compass 1.4 MultiAir",
+          "chilometraggio": 32000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Benzina",
+          "cilindrata": 1368,
+          "cavalli": 140,
+          "kw": 103,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 24500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "kia",
+      "name": "Kia",
+      "logo": "images/kia.png",
+      "cars": [
+        {
+          "id": "kia-rio-1",
+          "title": "Kia Rio 1.2 MPI",
+          "chilometraggio": 26000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Benzina",
+          "cilindrata": 1248,
+          "cavalli": 84,
+          "kw": 62,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 15900,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "land-rover",
+      "name": "Land Rover",
+      "logo": "images/land-rover.png",
+      "cars": [
+        {
+          "id": "landrover-evoque-1",
+          "title": "Land Rover Range Rover Evoque 2.0 TD4",
+          "chilometraggio": 45000,
+          "condizioni": "Buono",
+          "anno": 2019,
+          "carburante": "Diesel",
+          "cilindrata": 1999,
+          "cavalli": 150,
+          "kw": 110,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 38500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "maserati",
+      "name": "Maserati",
+      "logo": "images/maserati.png",
+      "cars": [
+        {
+          "id": "maserati-ghibli-1",
+          "title": "Maserati Ghibli 3.0 V6 Diesel",
+          "chilometraggio": 42000,
+          "condizioni": "Ottimo",
+          "anno": 2019,
+          "carburante": "Diesel",
+          "cilindrata": 2987,
+          "cavalli": 275,
+          "kw": 202,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 65000,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "mazda",
+      "name": "Mazda",
+      "logo": "images/mazda.png",
+      "cars": [
+        {
+          "id": "mazda-mx5-1",
+          "title": "Mazda MX-5 2.0 Skyactiv-G",
+          "chilometraggio": 18000,
+          "condizioni": "Eccellente",
+          "anno": 2021,
+          "carburante": "Benzina",
+          "cilindrata": 1998,
+          "cavalli": 184,
+          "kw": 135,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 2,
+          "prezzo": 32500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "mini",
+      "name": "Mini",
+      "logo": "images/mini.png",
+      "cars": [
+        {
+          "id": "mini-cooper-1",
+          "title": "Mini Cooper 1.5 TwinPower Turbo",
+          "chilometraggio": 24000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Benzina",
+          "cilindrata": 1499,
+          "cavalli": 136,
+          "kw": 100,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 4,
+          "prezzo": 26500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "mitsubishi",
+      "name": "Mitsubishi",
+      "logo": "images/mitsubishi.png",
+      "cars": [
+        {
+          "id": "mitsubishi-outlander-1",
+          "title": "Mitsubishi Outlander PHEV 2.4",
+          "chilometraggio": 35000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Ibrida Plug-in",
+          "cilindrata": 2360,
+          "cavalli": 135,
+          "kw": 99,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 7,
+          "prezzo": 34500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "nissan",
+      "name": "Nissan",
+      "logo": "images/nissan.png",
+      "cars": [
+        {
+          "id": "nissan-micra-1",
+          "title": "Nissan Micra 1.0 IG-T",
+          "chilometraggio": 31000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Benzina",
+          "cilindrata": 999,
+          "cavalli": 92,
+          "kw": 68,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 14800,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "opel",
+      "name": "Opel",
+      "logo": "images/opel.png",
+      "cars": [
+        {
+          "id": "opel-corsa-1",
+          "title": "Opel Corsa 1.2 Turbo",
+          "chilometraggio": 19000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Benzina",
+          "cilindrata": 1199,
+          "cavalli": 100,
+          "kw": 74,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 18500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "peugeot",
+      "name": "Peugeot",
+      "logo": "images/peugeot.png",
+      "cars": [
+        {
+          "id": "peugeot-208-1",
+          "title": "Peugeot 208 1.2 PureTech",
+          "chilometraggio": 27000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Benzina",
+          "cilindrata": 1199,
+          "cavalli": 100,
+          "kw": 74,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 17500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "porsche",
+      "name": "Porsche",
+      "logo": "images/porsche.png",
+      "cars": [
+        {
+          "id": "porsche-911-1",
+          "title": "Porsche 911 Carrera 3.0",
+          "chilometraggio": 12000,
+          "condizioni": "Eccellente",
+          "anno": 2022,
+          "carburante": "Benzina",
+          "cilindrata": 2981,
+          "cavalli": 385,
+          "kw": 283,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 4,
+          "prezzo": 125000,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "renault",
+      "name": "Renault",
+      "logo": "images/renault.png",
+      "cars": [
+        {
+          "id": "renault-clio-1",
+          "title": "Renault Clio 1.0 TCe",
+          "chilometraggio": 23000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Benzina",
+          "cilindrata": 999,
+          "cavalli": 90,
+          "kw": 66,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 16800,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "seat",
+      "name": "Seat",
+      "logo": "images/seat.png",
+      "cars": [
+        {
+          "id": "seat-ibiza-1",
+          "title": "Seat Ibiza 1.0 TSI",
+          "chilometraggio": 29000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Benzina",
+          "cilindrata": 999,
+          "cavalli": 95,
+          "kw": 70,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 15200,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "skoda",
+      "name": "Škoda",
+      "logo": "images/skoda.png",
+      "cars": [
+        {
+          "id": "skoda-fabia-1",
+          "title": "Škoda Fabia 1.0 MPI",
+          "chilometraggio": 26000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Benzina",
+          "cilindrata": 999,
+          "cavalli": 75,
+          "kw": 55,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 14900,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "smart",
+      "name": "Smart",
+      "logo": "images/smart.png",
+      "cars": [
+        {
+          "id": "smart-fortwo-1",
+          "title": "Smart ForTwo EQ Electric",
+          "chilometraggio": 15000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Elettrica",
+          "cilindrata": 0,
+          "cavalli": 82,
+          "kw": 60,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 0",
+          "posti": 2,
+          "prezzo": 18500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "tesla",
+      "name": "Tesla",
+      "logo": "images/tesla.png",
+      "cars": [
+        {
+          "id": "tesla-model3-1",
+          "title": "Tesla Model 3 Standard Range",
+          "chilometraggio": 28000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Elettrica",
+          "cilindrata": 0,
+          "cavalli": 325,
+          "kw": 239,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 0",
+          "posti": 5,
+          "prezzo": 45000,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "toyota",
+      "name": "Toyota",
+      "logo": "images/toyota.png",
+      "cars": [
+        {
+          "id": "toyota-yaris-1",
+          "title": "Toyota Yaris 1.5 Hybrid",
+          "chilometraggio": 15000,
+          "condizioni": "Eccellente",
+          "anno": 2022,
+          "carburante": "Ibrida",
+          "cilindrata": 1490,
+          "cavalli": 116,
+          "kw": 85,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 22500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        },
+        {
+          "id": "toyota-corolla-1",
+          "title": "Toyota Corolla 1.8 Hybrid",
+          "chilometraggio": 28000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Ibrida",
+          "cilindrata": 1798,
+          "cavalli": 122,
+          "kw": 90,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 26500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        },
+        {
+          "id": "toyota-rav4-1",
+          "title": "Toyota RAV4 2.5 Hybrid",
+          "chilometraggio": 12000,
+          "condizioni": "Eccellente",
+          "anno": 2022,
+          "carburante": "Ibrida",
+          "cilindrata": 2487,
+          "cavalli": 218,
+          "kw": 160,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 38900,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        },
+        {
+          "id": "toyota-camry-1",
+          "title": "Toyota Camry 2.5 Hybrid",
+          "chilometraggio": 22000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Ibrida",
+          "cilindrata": 2487,
+          "cavalli": 218,
+          "kw": 160,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 32500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        },
+        {
+          "id": "toyota-highlander-1",
+          "title": "Toyota Highlander 3.5 V6",
+          "chilometraggio": 35000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Benzina",
+          "cilindrata": 3456,
+          "cavalli": 295,
+          "kw": 217,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 8,
+          "prezzo": 45000,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "volvo",
+      "name": "Volvo",
+      "logo": "images/volvo.png",
+      "cars": [
+        {
+          "id": "volvo-xc40-1",
+          "title": "Volvo XC40 T3 Geartronic",
+          "chilometraggio": 24000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Benzina",
+          "cilindrata": 1477,
+          "cavalli": 163,
+          "kw": 120,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 34500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "jaguar",
+      "name": "Jaguar",
+      "logo": "images/jaguar.png",
+      "cars": [
+        {
+          "id": "jaguar-xe-1",
+          "title": "Jaguar XE 2.0 D Prestige",
+          "chilometraggio": 38000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Diesel",
+          "cilindrata": 1999,
+          "cavalli": 180,
+          "kw": 132,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 36500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "lancia",
+      "name": "Lancia",
+      "logo": "images/lancia.png",
+      "cars": [
+        {
+          "id": "lancia-ypsilon-1",
+          "title": "Lancia Ypsilon 1.2 Gold",
+          "chilometraggio": 42000,
+          "condizioni": "Discreto",
+          "anno": 2019,
+          "carburante": "Benzina",
+          "cilindrata": 1242,
+          "cavalli": 69,
+          "kw": 51,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 11500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "volkswagen",
+      "name": "Volkswagen",
+      "logo": "images/volkswagen.png",
+      "cars": [
+        {
+          "id": "vw-golf-1",
+          "title": "VW Golf 1.6 TDI",
+          "chilometraggio": 22000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Diesel",
+          "cilindrata": 1598,
+          "cavalli": 115,
+          "kw": 85,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 24500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+        },
+        {
+          "id": "vw-tiguan-1",
+          "title": "VW Tiguan 2.0 TDI",
+          "chilometraggio": 45000,
+          "condizioni": "Discreto",
+          "anno": 2020,
+          "carburante": "Diesel",
+          "cilindrata": 1968,
+          "cavalli": 150,
+          "kw": 110,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 32000,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+        }
+      ]
+    }
+  ]
+}

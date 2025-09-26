@@ -30,7 +30,7 @@ class CarDealer {
     // Load JSON data
     async loadData() {
         try {
-            const response = await fetch('cars-data.json');
+            const response = await fetch('cars-data2.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -41,52 +41,56 @@ class CarDealer {
         }
     }
 
-    // Generate brands grid
+    // Generate brands horizontal scroll
     generateBrands() {
-        const brandsGrid = document.querySelector('.brands-grid');
-        if (!brandsGrid || !this.data) return;
+        const brandsScrollTrack = document.querySelector('.brands-scroll-track');
+        if (!brandsScrollTrack || !this.data) return;
 
-        brandsGrid.innerHTML = '';
+        brandsScrollTrack.innerHTML = '';
         
         // Sort brands alphabetically
         const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
         
         sortedBrands.forEach(brand => {
             const brandElement = this.createBrandElement(brand);
-            brandsGrid.appendChild(brandElement);
+            brandsScrollTrack.appendChild(brandElement);
         });
+
+        // Setup scroll functionality
+        this.setupBrandScroll();
     }
 
     // Create single brand element
     createBrandElement(brand) {
-        const brandLink = document.createElement('a');
-        brandLink.href = `#${brand.id}`;
-        brandLink.className = 'brand-link';
-
-        const brandLogo = document.createElement('div');
-        brandLogo.className = 'brand-logo';
+        const brandItem = document.createElement('div');
+        brandItem.className = 'brand-item';
+        brandItem.setAttribute('data-brand', brand.id);
 
         const logoImg = document.createElement('img');
         logoImg.src = brand.logo;
         logoImg.alt = brand.name;
         logoImg.onerror = () => {
             logoImg.style.display = 'none';
-            brandLogo.innerHTML = this.getBrandEmoji(brand.id);
-            brandLogo.style.fontSize = '2rem';
-            brandLogo.style.fontWeight = 'bold';
-            brandLogo.style.color = '#0D0D0D';
+            const placeholder = document.createElement('div');
+            placeholder.innerHTML = this.getBrandEmoji(brand.id);
+            placeholder.style.fontSize = '2rem';
+            placeholder.style.fontWeight = 'bold';
+            placeholder.style.color = '#0D0D0D';
+            brandItem.replaceChild(placeholder, logoImg);
         };
 
-        brandLogo.appendChild(logoImg);
-
         const brandName = document.createElement('span');
-        brandName.className = 'brand-name';
         brandName.textContent = brand.name;
 
-        brandLink.appendChild(brandLogo);
-        brandLink.appendChild(brandName);
+        brandItem.appendChild(logoImg);
+        brandItem.appendChild(brandName);
 
-        return brandLink;
+        // Add click event to scroll to brand section
+        brandItem.addEventListener('click', () => {
+            this.scrollToBrand(brand.id);
+        });
+
+        return brandItem;
     }
 
     // Generate all car sections
@@ -202,15 +206,15 @@ class CarDealer {
         const carDetails = document.createElement('p');
         carDetails.className = 'car-details';
         carDetails.innerHTML = `
-            Anno: ${car.year}<br>
-            Km: ${car.km.toLocaleString('it-IT')}<br>
-            Alimentazione: ${car.fuel}<br>
-            Cambio: ${car.transmission}
+            Anno: ${car.anno}<br>
+            Km: ${car.chilometraggio.toLocaleString('it-IT')}<br>
+            Alimentazione: ${car.carburante}<br>
+            Cambio: ${car.tipo_cambio}
         `;
 
         const carPrice = document.createElement('div');
         carPrice.className = 'car-price';
-        carPrice.textContent = `€ ${car.price.toLocaleString('it-IT')}`;
+        carPrice.textContent = `€ ${car.prezzo.toLocaleString('it-IT')}`;
 
         carInfo.appendChild(carTitle);
         carInfo.appendChild(carDetails);
@@ -612,6 +616,122 @@ class CarDealer {
         // Note: Removed addImageClickListeners to avoid conflict with car detail modal
     }
 
+    // Setup brand scroll functionality
+    setupBrandScroll() {
+        const container = document.querySelector('.brands-scroll-container');
+        const track = document.querySelector('.brands-scroll-track');
+        
+        if (!container || !track) return;
+
+        // Create progress bar if not exists
+        let progressBar = container.querySelector('.scroll-progress-bar');
+        if (!progressBar) {
+            progressBar = document.createElement('div');
+            progressBar.className = 'scroll-progress-bar';
+            container.appendChild(progressBar);
+        }
+
+        // Create navigation arrows
+        let leftArrow = container.querySelector('.scroll-arrow-left');
+        let rightArrow = container.querySelector('.scroll-arrow-right');
+        
+        if (!leftArrow) {
+            leftArrow = document.createElement('button');
+            leftArrow.className = 'scroll-arrow scroll-arrow-left';
+            leftArrow.innerHTML = '‹';
+            leftArrow.setAttribute('aria-label', 'Scorri a sinistra');
+            container.appendChild(leftArrow);
+        }
+        
+        if (!rightArrow) {
+            rightArrow = document.createElement('button');
+            rightArrow.className = 'scroll-arrow scroll-arrow-right';
+            rightArrow.innerHTML = '›';
+            rightArrow.setAttribute('aria-label', 'Scorri a destra');
+            container.appendChild(rightArrow);
+        }
+
+        // Create fade elements if not exist
+        let fadeLeft = container.querySelector('.scroll-fade-left');
+        let fadeRight = container.querySelector('.scroll-fade-right');
+        
+        if (!fadeLeft) {
+            fadeLeft = document.createElement('div');
+            fadeLeft.className = 'scroll-fade-left';
+            container.appendChild(fadeLeft);
+        }
+        
+        if (!fadeRight) {
+            fadeRight = document.createElement('div');
+            fadeRight.className = 'scroll-fade-right';
+            container.appendChild(fadeRight);
+        }
+
+        // Update scroll state
+        const updateScroll = () => {
+            const scrollLeft = track.scrollLeft;
+            const scrollWidth = track.scrollWidth;
+            const clientWidth = track.clientWidth;
+            const maxScroll = scrollWidth - clientWidth;
+
+            // Update progress bar
+            if (maxScroll > 0) {
+                const progress = scrollLeft / maxScroll;
+                progressBar.style.transform = `scaleX(${progress})`;
+                container.classList.add('scrolling');
+            } else {
+                container.classList.remove('scrolling');
+            }
+
+            // Update fade indicators
+            container.classList.toggle('can-scroll-left', scrollLeft > 0);
+            container.classList.toggle('can-scroll-right', scrollLeft < maxScroll);
+        };
+
+        // Arrow click handlers
+        const scrollAmount = 200;
+        
+        leftArrow.addEventListener('click', () => {
+            track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+        
+        rightArrow.addEventListener('click', () => {
+            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        // Mouse wheel horizontal scroll
+        track.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                track.scrollBy({ left: e.deltaY, behavior: 'smooth' });
+            }
+        });
+
+        // Listen to scroll events
+        track.addEventListener('scroll', updateScroll);
+        
+        // Initial update
+        setTimeout(updateScroll, 100);
+        
+        // Update on resize
+        window.addEventListener('resize', updateScroll);
+    }
+
+    // Scroll to specific brand section
+    scrollToBrand(brandId) {
+        const brandSection = document.getElementById(brandId);
+        if (brandSection) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const targetPosition = brandSection.offsetTop - headerHeight - 20;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+
+
     // Fallback emojis for brands
     getBrandEmoji(brandId) {
         const emojis = {
@@ -792,25 +912,49 @@ class CarDealer {
 
         // Update title and price
         title.textContent = car.title;
-        price.textContent = `€ ${car.price.toLocaleString('it-IT')}`;
+        price.textContent = `€ ${car.prezzo.toLocaleString('it-IT')}`;
 
-        // Update specs
+        // Update specs with all new fields
         specsGrid.innerHTML = `
             <div class="car-spec-item">
                 <span class="car-spec-label">Anno:</span>
-                <span class="car-spec-value">${car.year}</span>
+                <span class="car-spec-value">${car.anno}</span>
             </div>
             <div class="car-spec-item">
-                <span class="car-spec-label">Chilometri:</span>
-                <span class="car-spec-value">${car.km.toLocaleString('it-IT')}</span>
+                <span class="car-spec-label">Chilometraggio:</span>
+                <span class="car-spec-value">${car.chilometraggio.toLocaleString('it-IT')} km</span>
             </div>
             <div class="car-spec-item">
-                <span class="car-spec-label">Alimentazione:</span>
-                <span class="car-spec-value">${car.fuel}</span>
+                <span class="car-spec-label">Condizioni:</span>
+                <span class="car-spec-value">${car.condizioni}</span>
+            </div>
+            <div class="car-spec-item">
+                <span class="car-spec-label">Carburante:</span>
+                <span class="car-spec-value">${car.carburante}</span>
             </div>
             <div class="car-spec-item">
                 <span class="car-spec-label">Cambio:</span>
-                <span class="car-spec-value">${car.transmission}</span>
+                <span class="car-spec-value">${car.tipo_cambio}</span>
+            </div>
+            <div class="car-spec-item">
+                <span class="car-spec-label">Cilindrata:</span>
+                <span class="car-spec-value">${car.cilindrata > 0 ? car.cilindrata + ' cc' : 'N/A'}</span>
+            </div>
+            <div class="car-spec-item">
+                <span class="car-spec-label">Potenza:</span>
+                <span class="car-spec-value">${car.cavalli} CV (${car.kw} kW)</span>
+            </div>
+            <div class="car-spec-item">
+                <span class="car-spec-label">Euro:</span>
+                <span class="car-spec-value">${car.euro}</span>
+            </div>
+            <div class="car-spec-item">
+                <span class="car-spec-label">Posti:</span>
+                <span class="car-spec-value">${car.posti}</span>
+            </div>
+            <div class="car-spec-item ${car.neopatentati === 'SI' ? 'neopatentati-si' : 'neopatentati-no'}">
+                <span class="car-spec-label">Neopatentati:</span>
+                <span class="car-spec-value">${car.neopatentati === 'SI' ? '✅ SI' : '❌ NO'}</span>
             </div>
         `;
 
