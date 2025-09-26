@@ -18,7 +18,7 @@ body {
     left: 0;
     right: 0;
     background: #0D0D0D;
-    padding: 35px 0;
+    padding: 20px 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     transition: transform 0.3s ease-in-out;
@@ -43,7 +43,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     height: 100%; 
-    width: 260px;
+    width: 200px;
     background: #F2F2E4;
     border-radius: 8px;
     display: flex;
@@ -85,8 +85,10 @@ body {
 
 .social-column {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 5px;
 }
 
 .phone {
@@ -121,16 +123,22 @@ body {
 
 .social-links {
     display: flex;
-    gap: 15px;
+    gap: 8px;
 }
 
 .social-links a {
     color: #F2F2E4;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     transition: all 0.3s ease;
-    padding: 8px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     background: rgba(255,255,255,0.1);
+    text-decoration: none;
+    border-bottom: none;
 }
 
 .social-links a:hover {
@@ -141,7 +149,7 @@ body {
 
 /* Main content */
 .main-content {
-    margin-top: 100px;
+    margin-top: 85px;
     padding: 40px 20px;
 }
 
@@ -1089,6 +1097,37 @@ body {
     font-size: 1.2rem;
 }
 
+/* Social contact row in car detail modal */
+.social-contact-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
+    margin-bottom: 8px;
+}
+
+.social-contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(217, 56, 41, 0.05);
+    color: #D93829;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(217, 56, 41, 0.1);
+}
+
+.social-contact-item:hover {
+    background: rgba(217, 56, 41, 0.1);
+    transform: translateY(-2px);
+    border-color: rgba(217, 56, 41, 0.3);
+    box-shadow: 0 4px 12px rgba(217, 56, 41, 0.15);
+}
+
 .car-detail-close {
     position: fixed;
     top: 30px;
@@ -1161,8 +1200,8 @@ body {
     }
     
     .car-detail-close {
-        top: 15px;
-        right: 15px;
+        top: 10px;
+        right: 10px;
         width: 50px;
         height: 50px;
         font-size: 1.3rem;
@@ -1262,7 +1301,7 @@ body {
     }
 
     .main-content {
-        margin-top: 100px;
+        margin-top: 140px;
     }
 
     .hero h1 {
@@ -1326,12 +1365,13 @@ body {
     }
 
     .social-links a {
-        font-size: 1.3rem;
-        padding: 6px;
+        font-size: 1.1rem;
+        width: 30px;
+        height: 30px;
     }
 
     .main-content {
-        margin-top: 85px;
+        margin-top: 120px;
     }
 
     .hero h1 {
@@ -1419,7 +1459,7 @@ html {
 }
 
 .car-detail-content {
-    background: #F2F2E4;
+    background: white;
     border-radius: 12px;
     max-width: 95vw;
     width: 95vw;
@@ -1460,7 +1500,7 @@ html {
 
 .car-detail-images {
     position: relative;
-    background: #f8f8f8;
+    background: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1564,6 +1604,7 @@ html {
     padding: 30px;
     overflow-y: auto;
     height: 100%;
+    background: #F2F2E4;
 }
 
 .car-detail-header {
@@ -1609,7 +1650,7 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.6);
+    background: white;
     border-radius: 6px;
     border-left: 3px solid #D93829;
 }
@@ -1682,22 +1723,25 @@ html {
 @media (max-width: 768px) {
     .car-detail-content {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 45vh 1fr;
         width: 98vw;
-        height: 98vh;
+        height: 90vh;
         padding: 0;
     }
     
     .car-detail-images {
         padding: 15px;
+        height: 45vh;
     }
     
     .car-detail-carousel {
-        max-height: 400px;
+        max-height: 350px;
     }
     
     .car-detail-info {
-        padding: 20px;
+        padding: 15px;
+        height: auto;
+        max-height: 45vh;
     }
     
     .car-detail-title {
@@ -1731,25 +1775,40 @@ html {
         font-size: 0.8rem;
         margin-bottom: 4px;
     }
+    
+    .social-contact-row {
+        gap: 10px;
+        padding: 8px 0;
+    }
+    
+    .social-contact-item {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 480px) {
     .car-detail-content {
         width: 100vw;
-        height: 100vh;
+        height: 85vh;
         border-radius: 0;
+        grid-template-rows: 40vh 1fr;
     }
     
     .car-detail-images {
         padding: 10px;
+        height: 40vh;
     }
     
     .car-detail-carousel {
-        max-height: 300px;
+        max-height: 250px;
     }
     
     .car-detail-info {
-        padding: 15px;
+        padding: 12px;
+        height: auto;
+        max-height: 45vh;
     }
     
     .car-detail-title {

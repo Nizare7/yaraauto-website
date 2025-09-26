@@ -818,10 +818,17 @@ class CarDealer {
                                 <i class="fas fa-envelope"></i>
                                 info@yaraauto.it
                             </a>
-                            <a href="https://www.instagram.com/yaraauto_srl/" target="_blank" class="contact-item">
-                                <i class="fab fa-instagram"></i>
-                                @yaraauto_srl
-                            </a>
+                            <div class="social-contact-row">
+                                <a href="https://www.facebook.com/marketplace" target="_blank" class="social-contact-item">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="https://www.instagram.com/yaraauto_srl/" target="_blank" class="social-contact-item">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://wa.me/393206138044" target="_blank" class="social-contact-item">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
