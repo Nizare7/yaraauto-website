@@ -575,10 +575,34 @@ class CarDealer {
             observer.observe(card);
         });
 
-        // Back to top button
+        // Header hide/show on scroll and back to top button
+        let lastScrollTop = 0;
+        let isScrollingDown = false;
+        
         window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const header = document.querySelector('.header');
             const backToTop = document.getElementById('backToTop');
-            if (window.pageYOffset > 300) {
+            
+            // Header hide/show logic
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down and past 100px
+                if (!isScrollingDown) {
+                    header.classList.add('header-hidden');
+                    isScrollingDown = true;
+                }
+            } else if (scrollTop < lastScrollTop) {
+                // Scrolling up
+                if (isScrollingDown) {
+                    header.classList.remove('header-hidden');
+                    isScrollingDown = false;
+                }
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+            
+            // Back to top button
+            if (scrollTop > 300) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
@@ -871,9 +895,43 @@ class CarDealer {
             dot.classList.toggle('active', index === this.currentCarDetailIndex);
         });
     }
+    // Setup brands scrollbar behavior
+    setupBrandsScrollbar() {
+        const brandsGrid = document.querySelector('.brands-grid');
+        if (!brandsGrid) return;
+
+        let scrollTimeout;
+
+        // Show scrollbar only when scrolling
+        const showScrollbar = () => {
+            brandsGrid.classList.add('scrolling');
+            
+            // Clear any existing timeout
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            
+            // Hide scrollbar after 1.5 seconds of scroll inactivity
+            scrollTimeout = setTimeout(() => {
+                brandsGrid.classList.remove('scrolling');
+            }, 1500);
+        };
+
+        // Event listeners - only scroll events
+        brandsGrid.addEventListener('scroll', showScrollbar);
+        
+        // Touch events for mobile scrolling
+        brandsGrid.addEventListener('touchstart', showScrollbar);
+        brandsGrid.addEventListener('touchmove', showScrollbar);
+    }
 }
 
 // Start the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new CarDealer();
+    const carDealer = new CarDealer();
+    
+    // Setup brands scrollbar after DOM is ready
+    setTimeout(() => {
+        carDealer.setupBrandsScrollbar();
+    }, 100);
 });
