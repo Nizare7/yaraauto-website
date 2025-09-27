@@ -814,12 +814,12 @@ class CarDealer {
                                 <i class="fas fa-phone"></i>
                                 +39 320 613 8044
                             </a>
-                            <a href="mailto:info@yaraauto.it" class="contact-item">
+                            <a href="mailto:yaraautoo@gmail.com" class="contact-item">
                                 <i class="fas fa-envelope"></i>
-                                info@yaraauto.it
+                                yaraautoo@gmail.com
                             </a>
                             <div class="social-contact-row">
-                                <a href="https://www.facebook.com/marketplace" target="_blank" class="social-contact-item">
+                                <a href="https://www.facebook.com/yaraautoo" target="_blank" class="social-contact-item">
                                     <i class="fab fa-facebook"></i>
                                 </a>
                                 <a href="https://www.instagram.com/yaraauto_srl/" target="_blank" class="social-contact-item">

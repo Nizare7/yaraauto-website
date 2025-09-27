@@ -249,8 +249,8 @@
           "posti": 5,
           "prezzo": 18900,
           "neopatentati": "NO",
-          "image": "cars/autotest2.jpg",
-          "gallery": []
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
         }
       ]
     },
@@ -303,22 +303,22 @@
       "logo": "images/mercedes.png",
       "cars": [
         {
-          "id": "mercedes-classea-1",
-          "title": "Mercedes Classe A 180d",
-          "chilometraggio": 34000,
-          "condizioni": "Buono",
-          "anno": 2020,
+          "id": "mercedes-classec220-164000",
+          "title": "Mercedes Classe C 220",
+          "chilometraggio": 164000,
+          "condizioni": "Usato Nuovo",
+          "anno": 2010,
           "carburante": "Diesel",
-          "cilindrata": 1461,
-          "cavalli": 116,
-          "kw": 85,
-          "tipo_cambio": "Automatico",
-          "euro": "Euro 6",
+          "cilindrata": 2100,
+          "cavalli": 170,
+          "kw": 125,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5",
           "posti": 5,
-          "prezzo": 31500,
-          "neopatentati": "SI",
-          "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "prezzo": 7999,
+          "neopatentati": "NO",
+          "image": "cars/mercedes-classec220-164000/main1_resized.jpeg",
+          "gallery": ["cars/mercedes-classec220-164000/main1_resized.jpeg", "cars/mercedes-classec220-164000/main2_resized.jpeg", "cars/mercedes-classec220-164000/main3_resized.jpeg", "cars/mercedes-classec220-164000/main4_resized.jpeg", "cars/mercedes-classec220-164000/main5_resized.jpeg", "cars/mercedes-classec220-164000/main6_resized.jpeg", "cars/mercedes-classec220-164000/main7_resized.jpeg", "cars/mercedes-classec220-164000/main8_resized.jpeg", "cars/mercedes-classec220-164000/main9_resized.jpeg", "cars/mercedes-classec220-164000/main10_resized.jpeg", "cars/mercedes-classec220-164000/main11_resized.jpeg", "cars/mercedes-classec220-164000/main12_resized.jpeg"]
         },
         {
           "id": "mercedes-gla-1",
@@ -521,22 +521,22 @@
       "logo": "images/mini.png",
       "cars": [
         {
-          "id": "mini-cooper-1",
-          "title": "Mini Cooper 1.5 TwinPower Turbo",
-          "chilometraggio": 24000,
-          "condizioni": "Ottimo",
-          "anno": 2021,
+          "id": "mini-one-239000",
+          "title": "Mini One",
+          "chilometraggio": 239000,
+          "condizioni": "Usato Nuovo",
+          "anno": 2011,
           "carburante": "Benzina",
-          "cilindrata": 1499,
-          "cavalli": 136,
-          "kw": 100,
-          "tipo_cambio": "Automatico",
-          "euro": "Euro 6",
+          "cilindrata": 1600,
+          "cavalli": 75,
+          "kw": 55,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5",
           "posti": 4,
-          "prezzo": 26500,
-          "neopatentati": "NO",
-          "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "prezzo": 3900,
+          "neopatentati": "SI",
+          "image": "cars/mini-one-239000/main1_resized.jpeg",
+          "gallery": ["cars/mini-one-239000/main1_resized.jpeg", "cars/mini-one-239000/main2_resized.jpeg", "cars/mini-one-239000/main3_resized.jpeg", "cars/mini-one-239000/main4_resized.jpeg", "cars/mini-one-239000/main5_resized.jpeg", "cars/mini-one-239000/main6_resized.jpeg", "cars/mini-one-239000/main7_resized.jpeg", "cars/mini-one-239000/main8_resized.jpeg", "cars/mini-one-239000/main9_resized.jpeg", "cars/mini-one-239000/main10_resized.jpeg", "cars/mini-one-239000/main11_resized.jpeg", "cars/mini-one-239000/main12_resized.jpeg", "cars/mini-one-239000/main13_resized.jpeg", "cars/mini-one-239000/main14_resized.jpeg"]
         }
       ]
     },
