@@ -21,6 +21,7 @@ class CarDealer {
             this.setupScrollBehavior();
             this.createLightbox();
             this.createCarDetailModal();
+            this.setupFilters(); // Add filter functionality
         } catch (error) {
             console.error('Errore durante l\'inizializzazione:', error);
             this.showError('Errore nel caricamento dei dati');
@@ -94,30 +95,62 @@ class CarDealer {
     }
 
     // Generate all car sections
-    generateCarSections() {
+    generateCarSections(filters = {}) {
         const mainContent = document.querySelector('.main-content');
         if (!mainContent || !this.data) return;
 
-        // Find where to insert car sections (after brands navigation)
-        const brandsNav = document.querySelector('.brands-nav');
+        // Remove existing car sections
+        document.querySelectorAll('.cars-section').forEach(section => section.remove());
+
+        // Find where to insert car sections (after filters section)
+        const filtersSection = document.querySelector('.filters-section');
+        const insertionPoint = filtersSection || document.querySelector('.brands-nav');
         
         // Sort brands alphabetically
         const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
         
         // Create all sections and insert them in correct order
         sortedBrands.forEach((brand, index) => {
-            const sectionElement = this.createBrandSection(brand);
+            // Apply filters to brand cars
+            let filteredCars = brand.cars || [];
             
-            if (index === 0) {
-                // Insert first section after brands navigation
-                brandsNav.insertAdjacentElement('afterend', sectionElement);
-            } else {
-                // Insert subsequent sections after the previous section
-                const previousSection = document.getElementById(sortedBrands[index - 1].id);
-                if (previousSection) {
-                    previousSection.insertAdjacentElement('afterend', sectionElement);
+            if (Object.keys(filters).length > 0) {
+                filteredCars = this.applyFilters(filteredCars, filters);
+            }
+            
+            // Only show brand section if it has cars after filtering
+            if (filteredCars.length > 0 || Object.keys(filters).length === 0) {
+                const sectionElement = this.createBrandSection({...brand, cars: filteredCars});
+                
+                if (index === 0) {
+                    // Insert first section after filters section
+                    insertionPoint.insertAdjacentElement('afterend', sectionElement);
+                } else {
+                    // Find the last inserted section
+                    const lastSection = document.querySelector('.cars-section:last-of-type');
+                    if (lastSection) {
+                        lastSection.insertAdjacentElement('afterend', sectionElement);
+                    } else {
+                        insertionPoint.insertAdjacentElement('afterend', sectionElement);
+                    }
                 }
             }
+        });
+
+        // Trigger animations for all car cards after they are inserted
+        setTimeout(() => {
+            this.animateCarCards();
+        }, 50);
+    }
+
+    // Animate car cards entrance
+    animateCarCards() {
+        const carCards = document.querySelectorAll('.car-card');
+        carCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100); // Stagger animation
         });
     }
 
@@ -1074,6 +1107,128 @@ class CarDealer {
         // Touch events for mobile scrolling
         brandsGrid.addEventListener('touchstart', showScrollbar);
         brandsGrid.addEventListener('touchmove', showScrollbar);
+    }
+
+    // Setup filter functionality
+    setupFilters() {
+        const form = document.getElementById('carFilters');
+        const resetBtn = document.getElementById('resetFilters');
+        const expandBtn = document.getElementById('expandFilters');
+        const advancedFilters = document.getElementById('advancedFilters');
+        
+        if (!form) return;
+
+        // Handle expand/collapse advanced filters
+        if (expandBtn && advancedFilters) {
+            expandBtn.addEventListener('click', () => {
+                const isExpanded = advancedFilters.classList.contains('show');
+                
+                if (isExpanded) {
+                    // Collapse
+                    advancedFilters.classList.remove('show');
+                    expandBtn.classList.remove('expanded');
+                    form.classList.remove('expanded');
+                    expandBtn.innerHTML = '<i class="fas fa-plus"></i> Altri filtri';
+                } else {
+                    // Expand
+                    advancedFilters.classList.add('show');
+                    expandBtn.classList.add('expanded');
+                    form.classList.add('expanded');
+                    expandBtn.innerHTML = '<i class="fas fa-minus"></i> Meno filtri';
+                }
+            });
+        }
+
+        // Handle form submission (apply filters)
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const filters = {
+                prezzoMin: parseInt(formData.get('prezzoMin')) || 0,
+                prezzoMax: parseInt(formData.get('prezzoMax')) || Infinity,
+                annoMin: parseInt(formData.get('annoMin')) || 0,
+                annoMax: parseInt(formData.get('annoMax')) || Infinity,
+                kmMin: parseInt(formData.get('kmMin')) || 0,
+                kmMax: parseInt(formData.get('kmMax')) || Infinity,
+                cavalliMin: parseInt(formData.get('cavalliMin')) || 0,
+                cavalliMax: parseInt(formData.get('cavalliMax')) || Infinity,
+                carburante: formData.get('carburante') || '',
+                cambio: formData.get('cambio') || '',
+                neopatentati: formData.get('neopatentati') || '',
+                euro: formData.get('euro') || ''
+            };
+
+            this.generateCarSections(filters);
+            
+            // Scroll to first car section after filtering
+            setTimeout(() => {
+                const firstCarSection = document.querySelector('.cars-section');
+                if (firstCarSection) {
+                    firstCarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        });
+
+        // Handle reset button
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                form.reset();
+                this.generateCarSections(); // Regenerate without filters
+                console.log('Filtri rimossi');
+            });
+        }
+    }
+
+    // Apply filters to car array
+    applyFilters(cars, filters) {
+        return cars.filter(car => {
+            // Price filter
+            const prezzo = parseInt(car.prezzo) || 0;
+            if (prezzo < filters.prezzoMin || prezzo > filters.prezzoMax) {
+                return false;
+            }
+
+            // Year filter
+            const anno = parseInt(car.anno) || 0;
+            if (anno < filters.annoMin || anno > filters.annoMax) {
+                return false;
+            }
+
+            // Mileage filter
+            const chilometraggio = parseInt(car.chilometraggio) || 0;
+            if (chilometraggio < filters.kmMin || chilometraggio > filters.kmMax) {
+                return false;
+            }
+
+            // Power filter
+            const cavalli = parseInt(car.cavalli) || 0;
+            if (cavalli < filters.cavalliMin || cavalli > filters.cavalliMax) {
+                return false;
+            }
+
+            // Fuel type filter
+            if (filters.carburante && car.carburante !== filters.carburante) {
+                return false;
+            }
+
+            // Transmission filter
+            if (filters.cambio && car.tipo_cambio !== filters.cambio) {
+                return false;
+            }
+
+            // Beginner driver filter
+            if (filters.neopatentati && car.neopatentati !== filters.neopatentati) {
+                return false;
+            }
+
+            // Euro category filter
+            if (filters.euro && car.euro !== filters.euro) {
+                return false;
+            }
+
+            return true;
+        });
     }
 }
 

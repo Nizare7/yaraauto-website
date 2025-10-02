@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YARAAUTO - Trova la tua auto</title>
+
+    <link rel="icon" type="image/png" href="images/minilogo.png">
+    <link rel="shortcut icon" type="image/png" href="images/minilogo.png">
+    <link rel="apple-touch-icon" href="images/minilogo.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a id="top"></a>
+<!-- Fixed header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <!-- Logo cliccabile che riporta alla home -->
+                <img src="images/logo3.png" alt="Logo AutoDealer" style="display: block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="logo-text" style="display: none;">
+                    <span class="auto">Auto</span>Dealer
+                </div>
+            </a>
+            <div class="contact-info">
+                <div class="contact-column">
+                    <a href="tel:+39 320 613 8044" class="phone">
+                        <i class="fas fa-phone"></i>
+                        +39 320 613 8044
+                    </a>
+                    <a href="mailto:yaraautoo@gmail.com" class="email">
+                        <i class="fas fa-envelope"></i>
+                        yaraautoo@gmail.com
+                    </a>
+                </div>
+                <div class="contact-column social-column">
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/yaraautoo" target="_blank" title="Facebook Marketplace">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/yaraauto_srl/" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://wa.me/393206138044" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- Home button section -->
+        <div class="home-button-section">
+            <a href="index.html" class="home-page-button" title="Torna alla homepage">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+        </div>
+
+        <!-- Brand navigation -->
+        <nav class="brands-nav">
+            <h2>Scegli la marca</h2>
+            <div class="brands-scroll-container">
+                <div class="brands-scroll-track">
+                    <!-- Brands will be populated by JavaScript -->
+                </div>
+                <div class="scroll-progress-bar"></div>
+                <div class="scroll-fade-left"></div>
+                <div class="scroll-fade-right"></div>
+            </div>
+        </nav>
+
+        <!-- Filters Section -->
+        <section class="filters-section">
+            <h2>Filtra le auto</h2>
+            <form id="carFilters" class="filters-form">
+                <!-- Main filters row (always visible) -->
+                <div class="filters-row main-filters">
+                    <div class="filter-group">
+                        <label for="prezzoMax">Prezzo massimo (€)</label>
+                        <input type="number" id="prezzoMax" name="prezzoMax" min="0" step="1000" placeholder="Nessun limite">
+                    </div>
+                    <div class="filter-group">
+                        <label for="kmMax">Km massimi</label>
+                        <input type="number" id="kmMax" name="kmMax" min="0" step="1000" placeholder="Nessun limite">
+                    </div>
+                    <div class="filter-group">
+                        <label for="annoMin">Anno minimo</label>
+                        <input type="number" id="annoMin" name="annoMin" min="1990" max="2025" placeholder="Qualsiasi">
+                    </div>
+                    <div class="filter-group">
+                        <label for="neopatentati">Neopatentati</label>
+                        <select id="neopatentati" name="neopatentati">
+                            <option value="NO">NO</option>
+                            <option value="">Tutte le auto</option>
+                            <option value="SI">SI</option>
+                        </select>
+                    </div>
+                    <div class="filter-group expand-toggle">
+                        <button type="button" class="filter-btn expand-filters" id="expandFilters">
+                            <i class="fas fa-plus"></i>
+                            Altri filtri
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Advanced filters (hidden by default) -->
+                <div class="advanced-filters" id="advancedFilters">
+                    <div class="filters-row advanced-row">
+                        <div class="filter-group">
+                            <label for="prezzoMin">Prezzo minimo (€)</label>
+                            <input type="number" id="prezzoMin" name="prezzoMin" min="0" step="1000" placeholder="0">
+                        </div>
+                        <div class="filter-group">
+                            <label for="kmMin">Km minimi</label>
+                            <input type="number" id="kmMin" name="kmMin" min="0" step="1000" placeholder="0">
+                        </div>
+                        <div class="filter-group">
+                            <label for="annoMax">Anno massimo</label>
+                            <input type="number" id="annoMax" name="annoMax" min="1990" max="2025" placeholder="Qualsiasi">
+                        </div>
+                        <div class="filter-group">
+                            <label for="cambio">Cambio</label>
+                            <select id="cambio" name="cambio">
+                                <option value="">Tutti i cambi</option>
+                                <option value="Manuale">Manuale</option>
+                                <option value="Automatico">Automatico</option>
+                            </select>
+                        </div>
+                        <div class="filter-group empty-slot">
+                            <!-- Spazio vuoto per allineamento -->
+                        </div>
+                    </div>
+                    <div class="filters-row advanced-row">
+                        <div class="filter-group">
+                            <label for="cavalliMax">Potenza massima (CV)</label>
+                            <input type="number" id="cavalliMax" name="cavalliMax" min="0" step="10" placeholder="Nessun limite">
+                        </div>
+                        <div class="filter-group">
+                            <label for="cavalliMin">Potenza minima (CV)</label>
+                            <input type="number" id="cavalliMin" name="cavalliMin" min="0" step="10" placeholder="0">
+                        </div>
+                        <div class="filter-group">
+                            <label for="carburante">Carburante</label>
+                            <select id="carburante" name="carburante">
+                                <option value="">Tutti</option>
+                                <option value="Benzina">Benzina</option>
+                                <option value="Diesel">Diesel</option>
+                                <option value="Ibrida">Ibrida</option>
+                                <option value="Ibrida Plug-in">Ibrida Plug-in</option>
+                                <option value="Elettrica">Elettrica</option>
+                                <option value="GPL">GPL</option>
+                                <option value="Metano">Metano</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="euro">Categoria Euro</label>
+                            <select id="euro" name="euro">
+                                <option value="">Tutte le categorie</option>
+                                <option value="Euro 6">Euro 6</option>
+                                <option value="Euro 5">Euro 5</option>
+                                <option value="Euro 4">Euro 4</option>
+                                <option value="Euro 3">Euro 3</option>
+                            </select>
+                        </div>
+                        <div class="filter-group empty-slot">
+                            <!-- Spazio vuoto per allineamento -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filters-actions">
+                    <button type="submit" class="filter-btn apply-filters">
+                        <i class="fas fa-filter"></i>
+                        Applica filtri
+                    </button>
+                    <button type="button" class="filter-btn reset-filters" id="resetFilters">
+                        <i class="fas fa-times"></i>
+                        Rimuovi filtri
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Car sections will be generated dynamically by JavaScript -->
+    </main>
+
+    <!-- Back to top button -->
+    <a href="#top" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
