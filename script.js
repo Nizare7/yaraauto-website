@@ -9,6 +9,9 @@ class CarDealer {
         this.carDetailModal = null; // Reference to car detail modal
         this.currentCarDetailImages = []; // Current images in car detail modal
         this.currentCarDetailIndex = 0; // Current index in car detail carousel
+        this.mobileFullscreenOverlay = null; // Reference to mobile fullscreen overlay
+        this.currentFullscreenImages = []; // Current images in mobile fullscreen
+        this.currentFullscreenIndex = 0; // Current index in mobile fullscreen
         this.init();
     }
 
@@ -866,6 +869,23 @@ class CarDealer {
                     </div>
                 </div>
             </div>
+            <!-- Mobile fullscreen overlay for images -->
+            <div class="mobile-fullscreen-overlay">
+                <button class="mobile-fullscreen-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img class="mobile-fullscreen-image" src="" alt="">
+                <div class="mobile-fullscreen-controls">
+                    <button class="mobile-fullscreen-nav mobile-fullscreen-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="mobile-fullscreen-indicators"></div>
+                    <button class="mobile-fullscreen-nav mobile-fullscreen-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="mobile-fullscreen-info"></div>
+            </div>
         `;
 
         document.body.appendChild(modal);
@@ -894,9 +914,42 @@ class CarDealer {
         prevBtn.addEventListener('click', () => this.carDetailPrev());
         nextBtn.addEventListener('click', () => this.carDetailNext());
 
+        // Setup mobile fullscreen overlay
+        this.mobileFullscreenOverlay = modal.querySelector('.mobile-fullscreen-overlay');
+        const fullscreenCloseBtn = modal.querySelector('.mobile-fullscreen-close');
+        const fullscreenPrevBtn = modal.querySelector('.mobile-fullscreen-prev');
+        const fullscreenNextBtn = modal.querySelector('.mobile-fullscreen-next');
+        
+        fullscreenCloseBtn.addEventListener('click', () => this.closeMobileFullscreen());
+        fullscreenPrevBtn.addEventListener('click', () => this.fullscreenPrev());
+        fullscreenNextBtn.addEventListener('click', () => this.fullscreenNext());
+        
+        // Click on background to close fullscreen
+        this.mobileFullscreenOverlay.addEventListener('click', (e) => {
+            if (e.target === this.mobileFullscreenOverlay) {
+                this.closeMobileFullscreen();
+            }
+        });
+
         // Keyboard controls
         document.addEventListener('keydown', (e) => {
             if (!modal.classList.contains('active')) return;
+            
+            // If mobile fullscreen is active, handle escape and arrows
+            if (this.mobileFullscreenOverlay && this.mobileFullscreenOverlay.classList.contains('active')) {
+                switch(e.key) {
+                    case 'Escape':
+                        this.closeMobileFullscreen();
+                        break;
+                    case 'ArrowLeft':
+                        this.fullscreenPrev();
+                        break;
+                    case 'ArrowRight':
+                        this.fullscreenNext();
+                        break;
+                }
+                return;
+            }
             
             switch(e.key) {
                 case 'Escape':
@@ -921,7 +974,13 @@ class CarDealer {
 
     // Close car detail modal
     closeCarDetailModal() {
+        // Close fullscreen if it's active
+        if (this.mobileFullscreenOverlay && this.mobileFullscreenOverlay.classList.contains('active')) {
+            this.closeMobileFullscreen();
+        }
+        
         this.carDetailModal.classList.remove('active');
+        document.body.classList.remove('mobile-fullscreen-active');
         document.body.style.overflow = '';
     }
 
@@ -1023,6 +1082,15 @@ class CarDealer {
                     slide.style.justifyContent = 'center';
                     slide.style.color = '#666';
                 };
+                
+                // Add click listener for mobile fullscreen (only on mobile devices)
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (window.innerWidth <= 768) {
+                        this.openMobileFullscreen(car.title, index);
+                    }
+                });
+                
                 slide.appendChild(img);
             } else {
                 slide.innerHTML = this.getCarEmoji();
@@ -1250,6 +1318,97 @@ class CarDealer {
 
             return true;
         });
+    }
+
+    // Open mobile fullscreen for image
+    openMobileFullscreen(carTitle, startIndex) {
+        if (!this.mobileFullscreenOverlay) return;
+        
+        // Set current images and index
+        this.currentFullscreenImages = this.currentCarDetailImages;
+        this.currentFullscreenIndex = startIndex;
+        
+        // Setup fullscreen
+        this.updateMobileFullscreen(carTitle);
+        this.mobileFullscreenOverlay.classList.add('active');
+        
+        // Add class to body to hide car detail modal elements
+        document.body.classList.add('mobile-fullscreen-active');
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Update mobile fullscreen content
+    updateMobileFullscreen(carTitle) {
+        const fullscreenImg = this.mobileFullscreenOverlay.querySelector('.mobile-fullscreen-image');
+        const fullscreenInfo = this.mobileFullscreenOverlay.querySelector('.mobile-fullscreen-info');
+        const indicators = this.mobileFullscreenOverlay.querySelector('.mobile-fullscreen-indicators');
+        const prevBtn = this.mobileFullscreenOverlay.querySelector('.mobile-fullscreen-prev');
+        const nextBtn = this.mobileFullscreenOverlay.querySelector('.mobile-fullscreen-next');
+        
+        const currentImage = this.currentFullscreenImages[this.currentFullscreenIndex];
+        fullscreenImg.src = currentImage;
+        fullscreenImg.alt = `${carTitle} - Foto ${this.currentFullscreenIndex + 1}`;
+        fullscreenInfo.textContent = `${carTitle} - Foto ${this.currentFullscreenIndex + 1} di ${this.currentFullscreenImages.length}`;
+        
+        // Update indicators
+        indicators.innerHTML = '';
+        this.currentFullscreenImages.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'mobile-fullscreen-dot';
+            if (index === this.currentFullscreenIndex) dot.classList.add('active');
+            dot.addEventListener('click', () => this.goToFullscreenSlide(index, carTitle));
+            indicators.appendChild(dot);
+        });
+        
+        // Show/hide navigation
+        if (this.currentFullscreenImages.length <= 1) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            indicators.style.display = 'none';
+        } else {
+            prevBtn.style.display = 'flex';
+            nextBtn.style.display = 'flex';
+            indicators.style.display = 'flex';
+        }
+    }
+
+    // Go to specific fullscreen slide
+    goToFullscreenSlide(index, carTitle) {
+        this.currentFullscreenIndex = index;
+        this.updateMobileFullscreen(carTitle);
+    }
+
+    // Previous image in fullscreen
+    fullscreenPrev() {
+        if (this.currentFullscreenImages.length <= 1) return;
+        this.currentFullscreenIndex = (this.currentFullscreenIndex - 1 + this.currentFullscreenImages.length) % this.currentFullscreenImages.length;
+        // Get car title from modal
+        const carTitle = this.carDetailModal.querySelector('.car-detail-title').textContent;
+        this.updateMobileFullscreen(carTitle);
+    }
+
+    // Next image in fullscreen
+    fullscreenNext() {
+        if (this.currentFullscreenImages.length <= 1) return;
+        this.currentFullscreenIndex = (this.currentFullscreenIndex + 1) % this.currentFullscreenImages.length;
+        // Get car title from modal
+        const carTitle = this.carDetailModal.querySelector('.car-detail-title').textContent;
+        this.updateMobileFullscreen(carTitle);
+    }
+
+    // Close mobile fullscreen
+    closeMobileFullscreen() {
+        if (!this.mobileFullscreenOverlay) return;
+        
+        this.mobileFullscreenOverlay.classList.remove('active');
+        
+        // Remove class from body to restore car detail modal elements
+        document.body.classList.remove('mobile-fullscreen-active');
+        
+        // Restore body scroll (but keep modal scroll disabled)
+        // The car detail modal will handle its own scroll state
     }
 }
 
