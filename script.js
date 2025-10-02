@@ -1247,26 +1247,8 @@ class CarDealer {
             });
         }
 
-        // Handle mobile filters toggle
-        const mobileToggle = document.getElementById('mobileFiltersToggle');
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => {
-                const filtersForm = document.getElementById('carFilters');
-                const isExpanded = filtersForm.classList.contains('mobile-expanded');
-                
-                if (isExpanded) {
-                    // Hide filters
-                    filtersForm.classList.remove('mobile-expanded');
-                    mobileToggle.classList.remove('expanded');
-                    mobileToggle.innerHTML = '<i class="fas fa-filter"></i><span>Mostra filtri</span><i class="fas fa-chevron-down"></i>';
-                } else {
-                    // Show filters
-                    filtersForm.classList.add('mobile-expanded');
-                    mobileToggle.classList.add('expanded');
-                    mobileToggle.innerHTML = '<i class="fas fa-filter"></i><span>Nascondi filtri</span><i class="fas fa-chevron-up"></i>';
-                }
-            });
-        }
+        // Setup mobile filter system
+        this.setupMobileFilters();
     }
 
     // Apply filters to car array
@@ -1410,6 +1392,222 @@ class CarDealer {
         // Restore body scroll (but keep modal scroll disabled)
         // The car detail modal will handle its own scroll state
     }
+
+    // Create mobile filter system
+    createMobileFilterSystem() {
+        // Create mobile filter button
+        const filterButton = document.createElement('button');
+        filterButton.className = 'mobile-filter-button';
+        filterButton.innerHTML = '<i class="fas fa-filter"></i>';
+        filterButton.id = 'mobileFilterButton';
+        
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'mobile-filter-overlay';
+        overlay.id = 'mobileFilterOverlay';
+        
+        // Create popup
+        const popup = document.createElement('div');
+        popup.className = 'mobile-filter-popup';
+        popup.id = 'mobileFilterPopup';
+        
+        // Create header with close button and actions
+        const header = document.createElement('div');
+        header.className = 'mobile-filter-header';
+        
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'mobile-filter-close';
+        closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+        
+        const actions = document.createElement('div');
+        actions.className = 'mobile-filter-actions';
+        
+        const applyBtn = document.createElement('button');
+        applyBtn.className = 'mobile-filter-apply';
+        applyBtn.textContent = 'Applica';
+        
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'mobile-filter-remove';
+        removeBtn.textContent = 'Rimuovi';
+        
+        actions.appendChild(applyBtn);
+        actions.appendChild(removeBtn);
+        header.appendChild(closeBtn);
+        header.appendChild(actions);
+        
+        // Create content container
+        const content = document.createElement('div');
+        content.className = 'mobile-filter-content';
+        
+        // Clone the desktop filters form
+        const desktopForm = document.getElementById('carFilters');
+        if (desktopForm) {
+            content.innerHTML = desktopForm.outerHTML;
+            // Update the cloned form ID to avoid conflicts
+            const clonedForm = content.querySelector('#carFilters');
+            if (clonedForm) {
+                clonedForm.id = 'mobileCarFilters';
+            }
+        }
+        
+        // Assemble popup - content first, then header at bottom
+        popup.appendChild(content);
+        popup.appendChild(header);
+        
+        // Add to DOM
+        document.body.appendChild(filterButton);
+        document.body.appendChild(overlay);
+        document.body.appendChild(popup);
+        
+        // Setup event listeners
+        this.setupMobileFilterEvents();
+    }
+
+    // Setup mobile filter events
+    setupMobileFilterEvents() {
+        const filterButton = document.getElementById('mobileFilterButton');
+        const overlay = document.getElementById('mobileFilterOverlay');
+        const popup = document.getElementById('mobileFilterPopup');
+        const closeBtn = popup.querySelector('.mobile-filter-close');
+        const applyBtn = popup.querySelector('.mobile-filter-apply');
+        const removeBtn = popup.querySelector('.mobile-filter-remove');
+        const mobileForm = document.getElementById('mobileCarFilters');
+        
+        // Store current scroll position
+        let currentScrollPosition = 0;
+        
+        // Open popup
+        const openPopup = () => {
+            currentScrollPosition = window.pageYOffset;
+            filterButton.classList.add('active');
+            filterButton.innerHTML = '<i class="fas fa-times"></i>';
+            overlay.classList.add('active');
+            popup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+        
+        // Close popup
+        const closePopup = () => {
+            filterButton.classList.remove('active');
+            filterButton.innerHTML = '<i class="fas fa-filter"></i>';
+            overlay.classList.remove('active');
+            popup.classList.remove('active');
+            document.body.style.overflow = '';
+            // Restore scroll position
+            window.scrollTo(0, currentScrollPosition);
+        };
+        
+        // Event listeners
+        filterButton.addEventListener('click', openPopup);
+        overlay.addEventListener('click', closePopup);
+        closeBtn.addEventListener('click', closePopup);
+        
+        // Apply filters
+        applyBtn.addEventListener('click', () => {
+            this.applyMobileFilters();
+            closePopup();
+        });
+        
+        // Remove filters
+        removeBtn.addEventListener('click', () => {
+            if (mobileForm) {
+                mobileForm.reset();
+            }
+            this.applyMobileFilters();
+            closePopup();
+        });
+    }
+
+    // Apply mobile filters and maintain scroll position
+    applyMobileFilters() {
+        const mobileForm = document.getElementById('mobileCarFilters');
+        if (!mobileForm) return;
+        
+        // Get current brand in view before filtering
+        const currentBrand = this.getCurrentBrandInView();
+        
+        const formData = new FormData(mobileForm);
+        const filters = {
+            prezzoMin: parseInt(formData.get('prezzoMin')) || 0,
+            prezzoMax: parseInt(formData.get('prezzoMax')) || Infinity,
+            annoMin: parseInt(formData.get('annoMin')) || 0,
+            annoMax: parseInt(formData.get('annoMax')) || Infinity,
+            kmMin: parseInt(formData.get('kmMin')) || 0,
+            kmMax: parseInt(formData.get('kmMax')) || Infinity,
+            cavalliMin: parseInt(formData.get('cavalliMin')) || 0,
+            cavalliMax: parseInt(formData.get('cavalliMax')) || Infinity,
+            carburante: formData.get('carburante') || '',
+            cambio: formData.get('cambio') || '',
+            neopatentati: formData.get('neopatentati') || '',
+            euro: formData.get('euro') || ''
+        };
+
+        // Apply filters
+        this.generateCarSections(filters);
+        
+        // Restore position after filtering
+        setTimeout(() => {
+            this.restoreScrollPosition(currentBrand);
+        }, 100);
+    }
+
+    // Get current brand section in view
+    getCurrentBrandInView() {
+        const brandSections = document.querySelectorAll('.cars-section');
+        const scrollTop = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        const centerY = scrollTop + windowHeight / 2;
+        
+        for (let section of brandSections) {
+            const rect = section.getBoundingClientRect();
+            const sectionTop = rect.top + scrollTop;
+            const sectionBottom = sectionTop + rect.height;
+            
+            if (centerY >= sectionTop && centerY <= sectionBottom) {
+                const brandName = section.querySelector('h2')?.textContent.toLowerCase().replace(/\s+/g, '-');
+                return brandName;
+            }
+        }
+        
+        return null;
+    }
+
+    // Restore scroll position to specific brand or first available
+    restoreScrollPosition(targetBrand) {
+        if (!targetBrand) {
+            // If no target brand, scroll to first car section
+            const firstCarSection = document.querySelector('.cars-section');
+            if (firstCarSection) {
+                firstCarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            return;
+        }
+        
+        // Try to find the target brand section
+        const brandSections = document.querySelectorAll('.cars-section');
+        let targetSection = null;
+        let fallbackSection = null;
+        
+        for (let section of brandSections) {
+            const brandName = section.querySelector('h2')?.textContent.toLowerCase().replace(/\s+/g, '-');
+            
+            if (brandName === targetBrand) {
+                targetSection = section;
+                break;
+            }
+            
+            // Store first section as fallback
+            if (!fallbackSection) {
+                fallbackSection = section;
+            }
+        }
+        
+        // Scroll to target or fallback
+        const sectionToScrollTo = targetSection || fallbackSection;
+        if (sectionToScrollTo) {
+            sectionToScrollTo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
 }
 
 // Start the application when DOM is loaded
@@ -1420,4 +1618,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         carDealer.setupBrandsScrollbar();
     }, 100);
+    
+    // Create mobile filter system
+    carDealer.createMobileFilterSystem();
 });
