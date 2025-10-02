@@ -1178,6 +1178,27 @@ class CarDealer {
                 console.log('Filtri rimossi');
             });
         }
+
+        // Handle mobile filters toggle
+        const mobileToggle = document.getElementById('mobileFiltersToggle');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                const filtersForm = document.getElementById('carFilters');
+                const isExpanded = filtersForm.classList.contains('mobile-expanded');
+                
+                if (isExpanded) {
+                    // Hide filters
+                    filtersForm.classList.remove('mobile-expanded');
+                    mobileToggle.classList.remove('expanded');
+                    mobileToggle.innerHTML = '<i class="fas fa-filter"></i><span>Mostra filtri</span><i class="fas fa-chevron-down"></i>';
+                } else {
+                    // Show filters
+                    filtersForm.classList.add('mobile-expanded');
+                    mobileToggle.classList.add('expanded');
+                    mobileToggle.innerHTML = '<i class="fas fa-filter"></i><span>Nascondi filtri</span><i class="fas fa-chevron-up"></i>';
+                }
+            });
+        }
     }
 
     // Apply filters to car array
