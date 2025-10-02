@@ -485,6 +485,9 @@ class CarDealer {
             dot.addEventListener('click', () => goToSlide(index));
         });
 
+        // Swipe rimosso dalle card normali - disponibile solo nei modal
+        // Gli utenti possono usare i pulsanti freccia o i dot per navigare
+
         // Auto-play opzionale (commentato per ora)
         /*
         let autoPlayInterval = setInterval(nextSlide, 5000);
@@ -1068,6 +1071,122 @@ class CarDealer {
                     break;
             }
         });
+
+        // Add swipe support for car detail modal
+        this.setupSwipeForCarDetail(modal);
+        
+        // Add swipe support for mobile fullscreen
+        this.setupSwipeForMobileFullscreen();
+    }
+
+    // Setup swipe support for car detail modal
+    setupSwipeForCarDetail(modal) {
+        const carDetailImages = modal.querySelector('.car-detail-images');
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+
+        carDetailImages.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isDragging = true;
+        }, { passive: true });
+
+        carDetailImages.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            const deltaX = startX - currentX;
+            const deltaY = startY - currentY;
+            
+            // If vertical swipe is more significant, don't interfere
+            if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                isDragging = false;
+                return;
+            }
+            
+            // Prevent default for horizontal swipes
+            if (Math.abs(deltaX) > 10) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        carDetailImages.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            
+            const endX = e.changedTouches[0].clientX;
+            const deltaX = startX - endX;
+            const threshold = 50;
+            
+            if (Math.abs(deltaX) > threshold) {
+                if (deltaX > 0) {
+                    // Swiped left - next image
+                    this.carDetailNext();
+                } else {
+                    // Swiped right - previous image
+                    this.carDetailPrev();
+                }
+            }
+            
+            isDragging = false;
+        }, { passive: true });
+    }
+
+    // Setup swipe support for mobile fullscreen
+    setupSwipeForMobileFullscreen() {
+        if (!this.mobileFullscreenOverlay) return;
+        
+        const fullscreenImg = this.mobileFullscreenOverlay.querySelector('.mobile-fullscreen-image');
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+
+        fullscreenImg.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isDragging = true;
+        }, { passive: true });
+
+        fullscreenImg.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            const deltaX = startX - currentX;
+            const deltaY = startY - currentY;
+            
+            // If vertical swipe is more significant, don't interfere
+            if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                isDragging = false;
+                return;
+            }
+            
+            // Prevent default for horizontal swipes
+            if (Math.abs(deltaX) > 10) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        fullscreenImg.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            
+            const endX = e.changedTouches[0].clientX;
+            const deltaX = startX - endX;
+            const threshold = 50;
+            
+            if (Math.abs(deltaX) > threshold) {
+                if (deltaX > 0) {
+                    // Swiped left - next image
+                    this.fullscreenNext();
+                } else {
+                    // Swiped right - previous image
+                    this.fullscreenPrev();
+                }
+            }
+            
+            isDragging = false;
+        }, { passive: true });
     }
 
     // Open car detail modal

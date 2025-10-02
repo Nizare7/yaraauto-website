@@ -10,6 +10,16 @@ body {
     color: #0D0D0D;
     background: linear-gradient(0deg, #CCCCCC 0%, #C0C0C0C0 100%);
     min-height: 100vh;
+    /* Remove sticky hover/active states on all touch devices */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Global fix for touch devices - remove hover states */
+@media (hover: none) {
+    * {
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+    }
 }
 
 /* Fixed header */
@@ -182,11 +192,27 @@ body {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    /* Remove sticky hover/active states on mobile */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-.home-page-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+/* Touch feedback for home button */
+.home-page-button:active {
+    transform: translateY(0px) scale(0.95);
+    transition: all 0.1s ease;
+}
+
+@media (hover: hover) {
+    .home-page-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    }
 }
 
 .home-page-button:active {
@@ -526,6 +552,14 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
+    /* Remove sticky hover/active states on mobile */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .apply-filters {
@@ -534,20 +568,29 @@ body {
     box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
 }
 
-.apply-filters:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
-}
-
 .reset-filters {
     background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
     color: white;
     box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
 }
 
-.reset-filters:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(107, 114, 128, 0.4);
+/* Touch feedback for filter buttons */
+.filter-btn:active {
+    transform: translateY(0px) scale(0.95);
+    transition: all 0.1s ease;
+}
+
+/* Filter button hover effects only for hover-capable devices */
+@media (hover: hover) {
+    .apply-filters:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    }
+
+    .reset-filters:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(107, 114, 128, 0.4);
+    }
 }
 
 /* Mobile filters - new floating circular button system */
@@ -1005,6 +1048,14 @@ body {
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     position: relative;
     overflow: hidden;
+    /* Remove sticky hover/active states on mobile */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .brand-item::before {
@@ -1021,19 +1072,32 @@ body {
     pointer-events: none;
 }
 
-.brand-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(217, 56, 41, 0.3);
-    border-color: rgba(217, 56, 41, 0.2);
-    color: #0D0D0D;
-    text-decoration: none;
+/* Touch feedback with automatic reset */
+.brand-item:active {
+    transform: translateY(-4px) scale(0.98);
+    box-shadow: 0 6px 15px rgba(217, 56, 41, 0.2);
+    border-color: rgba(217, 56, 41, 0.1);
+    transition: all 0.1s ease;
 }
 
-.brand-item:hover::before {
-    opacity: 1;
+/* Only apply hover effects on devices that support hover */
+@media (hover: hover) {
+    .brand-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(217, 56, 41, 0.3);
+        border-color: rgba(217, 56, 41, 0.2);
+        color: #0D0D0D;
+        text-decoration: none;
+    }
+
+    .brand-item:hover::before {
+        opacity: 1;
+    }
+
+    .brand-item:hover img {
+        transform: scale(1.15);
+    }
 }
-
-
 
 .brand-item img {
     width: 45px;
@@ -1043,10 +1107,6 @@ body {
     transition: all 0.3s ease;
     position: relative;
     z-index: 2;
-}
-
-.brand-item:hover img {
-    transform: scale(1.15);
 }
 
 .brand-item span {
@@ -1161,6 +1221,14 @@ body {
     border: 1px solid #e0e0e0;
     cursor: pointer;
     position: relative;
+    /* Remove sticky hover/active states on mobile */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .car-card::before {
@@ -1177,10 +1245,20 @@ body {
     pointer-events: none;
 }
 
-.car-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 15px 35px rgba(217, 56, 41, 0.5);
-    cursor: pointer;
+/* Touch feedback with automatic reset */
+.car-card:active {
+    transform: translateY(-8px) scale(0.98);
+    box-shadow: 0 8px 20px rgba(217, 56, 41, 0.3);
+    transition: all 0.1s ease;
+}
+
+/* Only apply hover effects on devices that support hover */
+@media (hover: hover) {
+    .car-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 15px 35px rgba(217, 56, 41, 0.5);
+        cursor: pointer;
+    }
 }
 
 .car-image {
@@ -1265,13 +1343,22 @@ body {
     opacity: 0;
 }
 
-.car-card:hover .carousel-nav {
-    opacity: 1;
+.carousel-nav:active {
+    transform: translateY(-50%) scale(0.95);
+    background: rgba(217, 56, 41, 0.6);
+    transition: all 0.1s ease;
 }
 
-.carousel-nav:hover {
-    background: rgba(217, 56, 41, 0.8);
-    transform: translateY(-50%) scale(1.1);
+/* Carousel hover effects only for hover-capable devices */
+@media (hover: hover) {
+    .car-card:hover .carousel-nav {
+        opacity: 1;
+    }
+
+    .carousel-nav:hover {
+        background: rgba(217, 56, 41, 0.8);
+        transform: translateY(-50%) scale(1.1);
+    }
 }
 
 .carousel-prev {
@@ -1294,8 +1381,10 @@ body {
     transition: opacity 0.3s ease;
 }
 
-.car-card:hover .carousel-indicators {
-    opacity: 1;
+@media (hover: hover) {
+    .car-card:hover .carousel-indicators {
+        opacity: 1;
+    }
 }
 
 .carousel-dot {
@@ -1312,8 +1401,16 @@ body {
     transform: scale(1.2);
 }
 
-.carousel-dot:hover {
-    background: rgba(217, 56, 41, 0.8);
+.carousel-dot:active {
+    transform: scale(0.9);
+    background: rgba(217, 56, 41, 0.6);
+    transition: all 0.1s ease;
+}
+
+@media (hover: hover) {
+    .carousel-dot:hover {
+        background: rgba(217, 56, 41, 0.8);
+    }
 }
 
 /* Lightbox Modal */
@@ -1445,10 +1542,12 @@ body {
     transition: transform 0.6s ease;
 }
 
-.car-card:hover .carousel-slide img,
-.car-card:hover .car-image img {
-    transform: scale(1.05);
-    transition-delay: 0.1s;
+@media (hover: hover) {
+    .car-card:hover .carousel-slide img,
+    .car-card:hover .car-image img {
+        transform: scale(1.05);
+        transition-delay: 0.1s;
+    }
 }
 
 .car-image {
@@ -2042,9 +2141,16 @@ html {
     visibility: visible;
 }
 
-.back-to-top:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(217, 56, 41, 0.4);
+.back-to-top:active {
+    transform: translateY(0px) scale(0.95);
+    transition: all 0.1s ease;
+}
+
+@media (hover: hover) {
+    .back-to-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(217, 56, 41, 0.4);
+    }
 }
 
 /* Car Detail Modal Styles */
