@@ -17,32 +17,137 @@ class CarDealer {
 
     // Initialize the application
     async init() {
+        console.log('🚀 Inizializzazione CarDealer...');
+        
         try {
+            console.log('📂 Caricamento dati...');
             await this.loadData();
+            console.log('✅ Dati caricati con successo');
+            
+            console.log('🏷️ Generazione brands...');
             this.generateBrands();
+            console.log('✅ Brands generati');
+            
+            console.log('🚗 Generazione sezioni auto...');
             this.generateCarSections();
+            console.log('✅ Sezioni auto generate');
+            
+            console.log('📜 Setup scroll behavior...');
             this.setupScrollBehavior();
+            console.log('✅ Scroll behavior configurato');
+            
+            console.log('🖼️ Creazione lightbox...');
             this.createLightbox();
+            console.log('✅ Lightbox creato');
+            
+            console.log('📱 Creazione modal dettagli auto...');
             this.createCarDetailModal();
-            this.setupFilters(); // Add filter functionality
+            console.log('✅ Modal dettagli creato');
+            
+            console.log('🔍 Setup filtri...');
+            this.setupFilters();
+            console.log('✅ Filtri configurati');
+            
+            console.log('🎉 Inizializzazione completata con successo!');
+            
         } catch (error) {
-            console.error('Errore durante l\'inizializzazione:', error);
-            this.showError('Errore nel caricamento dei dati');
+            console.error('❌ ERRORE durante l\'inizializzazione:', error);
+            console.error('📍 Stack trace:', error.stack);
+            console.error('📄 Messaggio:', error.message);
+            console.error('🔍 Nome errore:', error.name);
+            
+            // Verifica se è un errore di rete o file
+            if (error.message.includes('cars-data.json non trovato')) {
+                this.showError('File dati non trovato: assicurati che cars-data.json sia nella directory principale');
+            } else if (error.message.includes('JSON malformato')) {
+                this.showError('Errore nel formato dei dati: controlla la sintassi del file JSON');
+            } else if (error.message.includes('server')) {
+                this.showError('Errore di connessione: impossibile caricare i dati delle auto');
+            } else {
+                this.showError(`Errore nell'inizializzazione: ${error.message}`);
+            }
         }
     }
 
     // Load JSON data
     async loadData() {
+        console.log('📡 Tentativo di caricamento da: cars-data.json');
+        
         try {
-            const response = await fetch('cars-data2.json');
+            const response = await fetch('cars-data.json');
+            console.log('📊 Response status:', response.status);
+            console.log('📊 Response ok:', response.ok);
+            console.log('📊 Response headers:', Object.fromEntries(response.headers.entries()));
+            
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
             }
-            this.data = await response.json();
+            
+            const text = await response.text();
+            console.log('📄 Raw response length:', text.length);
+            console.log('📄 First 200 chars:', text.substring(0, 200));
+            
+            this.data = JSON.parse(text);
+            console.log('✅ JSON parsato con successo');
+            console.log('📊 Struttura dati:', {
+                brands: this.data?.brands?.length || 0,
+                firstBrand: this.data?.brands?.[0]?.name || 'N/A',
+                totalCars: this.data?.brands?.reduce((sum, brand) => sum + (brand.cars?.length || 0), 0) || 0
+            });
+            
+            // Verifica struttura dati
+            this.verifyDataStructure();
+            
         } catch (error) {
-            console.error('Errore nel caricamento del JSON:', error);
+            console.error('❌ ERRORE in loadData:', error);
+            
+            // Diagnostica specifica per diversi tipi di errore
+            if (error.name === 'SyntaxError') {
+                console.error('🔍 Errore di sintassi JSON:', error.message);
+                throw new Error('File JSON malformato: controlla la sintassi del file cars-data.json');
+            } else if (error.message.includes('404')) {
+                console.error('📁 File cars-data.json non trovato');
+                throw new Error('File cars-data.json non trovato nella directory principale');
+            } else if (error.message.includes('Failed to fetch')) {
+                console.error('🌐 Impossibile connettersi al server');
+                throw new Error('Impossibile caricare il file: controlla che il server sia attivo');
+            }
+            
             throw error;
         }
+    }
+
+    // Verifica struttura dati
+    verifyDataStructure() {
+        console.log('🔍 Verifica struttura dati...');
+        
+        if (!this.data) {
+            throw new Error('Dati non caricati');
+        }
+        
+        if (!this.data.brands || !Array.isArray(this.data.brands)) {
+            throw new Error('Struttura dati non valida: manca array brands');
+        }
+        
+        if (this.data.brands.length === 0) {
+            console.warn('⚠️ Nessun brand trovato nei dati');
+            return;
+        }
+        
+        // Verifica struttura di ogni brand
+        this.data.brands.forEach((brand, index) => {
+            if (!brand.name || !brand.id) {
+                throw new Error(`Brand ${index} manca di name o id`);
+            }
+            
+            if (brand.cars && !Array.isArray(brand.cars)) {
+                throw new Error(`Brand ${brand.name}: cars non è un array`);
+            }
+            
+            console.log(`✅ Brand ${brand.name}: ${brand.cars?.length || 0} auto`);
+        });
+        
+        console.log('✅ Struttura dati verificata');
     }
 
     // Generate brands horizontal scroll
@@ -1247,8 +1352,8 @@ class CarDealer {
             });
         }
 
-        // Setup mobile filter system
-        this.setupMobileFilters();
+        // Setup mobile filter system (chiamata solo se necessario)
+        // this.setupMobileFilters(); // Rimossa perché già gestita in createMobileFilterSystem
     }
 
     // Apply filters to car array
@@ -1395,6 +1500,11 @@ class CarDealer {
 
     // Create mobile filter system
     createMobileFilterSystem() {
+        // Only create mobile filter system on mobile devices
+        if (window.innerWidth > 768) {
+            return;
+        }
+        
         // Create mobile filter button
         const filterButton = document.createElement('button');
         filterButton.className = 'mobile-filter-button';
@@ -1619,6 +1729,23 @@ document.addEventListener('DOMContentLoaded', () => {
         carDealer.setupBrandsScrollbar();
     }, 100);
     
-    // Create mobile filter system
+    // Create mobile filter system only on mobile
     carDealer.createMobileFilterSystem();
+    
+    // Handle window resize to manage mobile filter system
+    window.addEventListener('resize', () => {
+        const mobileButton = document.getElementById('mobileFilterButton');
+        const mobileOverlay = document.getElementById('mobileFilterOverlay');
+        const mobilePopup = document.getElementById('mobileFilterPopup');
+        
+        if (window.innerWidth > 768) {
+            // Remove mobile elements on desktop
+            if (mobileButton) mobileButton.remove();
+            if (mobileOverlay) mobileOverlay.remove();
+            if (mobilePopup) mobilePopup.remove();
+        } else if (window.innerWidth <= 768 && !mobileButton) {
+            // Create mobile elements on mobile if they don't exist
+            carDealer.createMobileFilterSystem();
+        }
+    });
 });

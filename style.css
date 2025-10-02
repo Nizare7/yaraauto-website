@@ -14,7 +14,7 @@ body {
 
 /* Fixed header */
 .header {
-    position: fixeCC
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -159,7 +159,7 @@ body {
 /* Home button section */
 .home-button-section {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     margin-bottom: 30px;
     max-width: 1200px;
     margin-left: auto;
@@ -171,23 +171,22 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(45deg, #dc2626, #ef4444);
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
     color: white;
     text-decoration: none;
     padding: 12px 20px;
     border-radius: 50px;
     font-size: 1rem;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .home-page-button:hover {
-    background: inear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
 }
 
 .home-page-button:active {
@@ -772,10 +771,14 @@ body {
     }
 }
 
-/* Hide mobile toggle on desktop */
+/* Hide mobile toggle and mobile filter button on desktop */
 @media (min-width: 769px) {
     .mobile-filters-toggle {
         display: none;
+    }
+    
+    .mobile-filter-button {
+        display: none !important;
     }
 }
 
