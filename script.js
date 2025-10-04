@@ -210,9 +210,9 @@ class CarDealer {
         // Remove existing car sections
         document.querySelectorAll('.cars-section').forEach(section => section.remove());
 
-        // Find where to insert car sections (after filters section)
-        const filtersSection = document.querySelector('.filters-section');
-        const insertionPoint = filtersSection || document.querySelector('.brands-nav');
+        // Find where to insert car sections (after unified filters-and-brands section)
+        const unifiedSection = document.querySelector('.filters-and-brands-section');
+        const insertionPoint = unifiedSection || document.querySelector('.filters-section') || document.querySelector('.brands-nav');
         
         // Sort brands alphabetically
         const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
@@ -1453,13 +1453,18 @@ class CarDealer {
 
             this.generateCarSections(filters);
             
-            // Scroll to first car section after filtering
-            setTimeout(() => {
-                const firstCarSection = document.querySelector('.cars-section');
-                if (firstCarSection) {
-                    firstCarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 100);
+            // Show notification on desktop
+            this.showNotification('Filtri applicati', 'success');
+            
+            // Scroll to first car section after filtering only on mobile
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    const firstCarSection = document.querySelector('.cars-section');
+                    if (firstCarSection) {
+                        firstCarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 100);
+            }
         });
 
         // Handle reset button
@@ -1467,7 +1472,11 @@ class CarDealer {
             resetBtn.addEventListener('click', () => {
                 form.reset();
                 this.generateCarSections(); // Regenerate without filters
-                console.log('Filtri rimossi');
+                
+                // Show notification on desktop
+                this.showNotification('Filtri rimossi', 'info');
+                
+                console.log('Filtri rimossi - desktop');
             });
         }
 
@@ -1615,6 +1624,48 @@ class CarDealer {
         
         // Restore body scroll (but keep modal scroll disabled)
         // The car detail modal will handle its own scroll state
+    }
+
+    // Show notification message (desktop only)
+    showNotification(message, type = 'success') {
+        // Only show on desktop
+        if (window.innerWidth <= 768) return;
+        
+        // Remove existing notification if any
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        
+        // Add icon based on type
+        const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-info-circle';
+        
+        notification.innerHTML = `
+            <i class="${icon}"></i>
+            <span>${message}</span>
+        `;
+        
+        // Add to body
+        document.body.appendChild(notification);
+        
+        // Trigger animation
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 400);
+        }, 3000);
     }
 
     // Create mobile filter system
