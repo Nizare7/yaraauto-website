@@ -1626,10 +1626,8 @@ class CarDealer {
         // The car detail modal will handle its own scroll state
     }
 
-    // Show notification message (desktop only)
+    // Show notification message (desktop and mobile)
     showNotification(message, type = 'success') {
-        // Only show on desktop
-        if (window.innerWidth <= 768) return;
         
         // Remove existing notification if any
         const existingNotification = document.querySelector('.notification');
@@ -1657,7 +1655,8 @@ class CarDealer {
             notification.classList.add('show');
         }, 10);
         
-        // Auto remove after 3 seconds
+        // Auto remove after 3 seconds on mobile, 3 seconds on desktop
+        const duration = window.innerWidth <= 768 ? 3000 : 3000;
         setTimeout(() => {
             notification.classList.remove('show');
             setTimeout(() => {
@@ -1665,7 +1664,7 @@ class CarDealer {
                     notification.remove();
                 }
             }, 400);
-        }, 3000);
+        }, duration);
     }
 
     // Create mobile filter system
@@ -1746,6 +1745,7 @@ class CarDealer {
     // Setup mobile filter events
     setupMobileFilterEvents() {
         const filterButton = document.getElementById('mobileFilterButton');
+        const brandsFilterButton = document.getElementById('brandsFilterButton');
         const overlay = document.getElementById('mobileFilterOverlay');
         const popup = document.getElementById('mobileFilterPopup');
         const closeBtn = popup.querySelector('.mobile-filter-close');
@@ -1777,25 +1777,42 @@ class CarDealer {
             window.scrollTo(0, currentScrollPosition);
         };
         
-        // Event listeners
-        filterButton.addEventListener('click', openPopup);
+        // Event listeners for both filter buttons
+        if (filterButton) {
+            filterButton.addEventListener('click', openPopup);
+        }
+        if (brandsFilterButton) {
+            brandsFilterButton.addEventListener('click', openPopup);
+        }
+        
         overlay.addEventListener('click', closePopup);
         closeBtn.addEventListener('click', closePopup);
         
-        // Apply filters
+        // Apply filters - modified to scroll to brands section
         applyBtn.addEventListener('click', () => {
             this.applyMobileFilters();
             closePopup();
+            // Scroll to brands section after applying filters
+            setTimeout(() => {
+                this.scrollToBrandsSection();
+            }, 300);
         });
         
-        // Remove filters
+        // Remove filters - modified to scroll to brands section
         removeBtn.addEventListener('click', () => {
             if (mobileForm) {
                 mobileForm.reset();
             }
             this.applyMobileFilters();
             closePopup();
+            // Scroll to brands section after removing filters
+            setTimeout(() => {
+                this.scrollToBrandsSection();
+            }, 300);
         });
+        
+        // Setup scroll-based visibility management
+        this.setupFilterButtonsVisibility();
     }
 
     // Apply mobile filters and maintain scroll position
@@ -1824,6 +1841,21 @@ class CarDealer {
 
         // Apply filters
         this.generateCarSections(filters);
+        
+        // Check if any filters are applied (not default values)
+        const hasFilters = filters.prezzoMin > 0 || filters.prezzoMax < Infinity || 
+                          filters.annoMin > 0 || filters.annoMax < Infinity ||
+                          filters.kmMin > 0 || filters.kmMax < Infinity ||
+                          filters.cavalliMin > 0 || filters.cavalliMax < Infinity ||
+                          filters.carburante || filters.cambio || filters.euro ||
+                          (filters.neopatentati && filters.neopatentati !== '');
+        
+        // Show appropriate notification
+        if (hasFilters) {
+            this.showNotification('Filtri applicati', 'success');
+        } else {
+            this.showNotification('Filtri rimossi', 'info');
+        }
         
         // Restore position after filtering
         setTimeout(() => {
@@ -1886,6 +1918,53 @@ class CarDealer {
         const sectionToScrollTo = targetSection || fallbackSection;
         if (sectionToScrollTo) {
             sectionToScrollTo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    // Setup filter buttons visibility based on scroll position
+    setupFilterButtonsVisibility() {
+        const brandsFilterButton = document.getElementById('brandsFilterButton');
+        const mobileFilterButton = document.getElementById('mobileFilterButton');
+        const brandsSection = document.querySelector('.brands-nav');
+        
+        if (!brandsFilterButton || !mobileFilterButton || !brandsSection) {
+            return;
+        }
+        
+        const handleScroll = () => {
+            const brandsRect = brandsSection.getBoundingClientRect();
+            const isInView = brandsRect.bottom > 0 && brandsRect.top <= window.innerHeight;
+            
+            if (isInView) {
+                // Show brands filter button, hide mobile filter button
+                brandsFilterButton.classList.remove('hidden');
+                mobileFilterButton.classList.add('hidden');
+            } else {
+                // Hide brands filter button, show mobile filter button
+                brandsFilterButton.classList.add('hidden');
+                mobileFilterButton.classList.remove('hidden');
+            }
+        };
+        
+        // Initial check
+        handleScroll();
+        
+        // Add scroll listener with throttling
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(handleScroll, 10);
+        });
+    }
+
+    // Scroll to brands section
+    scrollToBrandsSection() {
+        const brandsSection = document.querySelector('.brands-nav');
+        if (brandsSection) {
+            brandsSection.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
         }
     }
 }
