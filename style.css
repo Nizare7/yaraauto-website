@@ -72,18 +72,26 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* Mobile logo - remove absolute positioning to fix scale movement */
+/* Mobile layout - logo centered on top, triangle social layout */
 @media (max-width: 768px) {
     .header-container {
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         position: relative;
+        padding: 15px;
+        gap: 15px;
     }
     
     .logo {
         position: relative;
         left: auto;
         transform: none;
-        margin: 0 auto;
+        margin: 0;
+        order: 1; /* Logo in alto per primo */
+        flex: 0 0 auto;
+        width: 140px;
+        height: 45px;
     }
     
     .logo:hover {
@@ -99,6 +107,74 @@ body {
         transition: all 0.1s ease;
     }
     
+    /* Contact info sotto il logo */
+    .contact-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 350px;
+        gap: 20px;
+        order: 2;
+    }
+    
+    /* Telefono e email a sinistra */
+    .contact-column:first-child {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+    }
+    
+    /* Social links a destra con layout triangolare iPhone */
+    .contact-column.social-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        flex: 1;
+        min-height: 60px;
+    }
+    
+    /* Layout triangolare come fotocamere iPhone */
+    .social-column .social-links:first-child {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 8px;
+    }
+    
+    .social-column .social-links:last-child {
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Stili per telefono e email mobile */
+    .phone, .email {
+        font-size: 0.9rem;
+        gap: 6px;
+    }
+    
+    .phone i, .email i {
+        font-size: 1rem;
+    }
+    
+    /* Social links con effetto iPhone */
+    .social-links a {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.2s ease;
+    }
+    
+    .social-links a:hover {
+        background: rgba(255,255,255,0.25);
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
     /* Disable hover on touch devices completely */
     @media (hover: none) {
         .logo:hover {
@@ -111,6 +187,11 @@ body {
             background: #f0f0f0;
             transform: scale(1.05);
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .social-links a:active {
+            background: rgba(255,255,255,0.3);
+            transform: scale(0.95);
         }
     }
 }
