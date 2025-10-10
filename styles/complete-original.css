@@ -213,6 +213,51 @@ body {
     color: #D93829;
 }
 
+/* Desktop layout - social media a destra del logo */
+@media (min-width: 769px) {
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+    
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    /* Contact info solo telefono e email a sinistra */
+    .contact-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .contact-column:first-child {
+        order: 1;
+        margin-right: auto;
+    }
+    
+    /* Social media a destra del logo */
+    .contact-column.social-column {
+        order: 3;
+        margin-left: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .social-column .social-links {
+        display: flex;
+        gap: 8px;
+    }
+}
+
 .contact-info {
     display: flex;
     align-items: center;
