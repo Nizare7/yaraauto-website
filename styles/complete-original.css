@@ -72,6 +72,49 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
+/* Mobile logo - remove absolute positioning to fix scale movement */
+@media (max-width: 768px) {
+    .header-container {
+        justify-content: center;
+        position: relative;
+    }
+    
+    .logo {
+        position: relative;
+        left: auto;
+        transform: none;
+        margin: 0 auto;
+    }
+    
+    .logo:hover {
+        background: #ffffff;
+        transform: none;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .logo:active {
+        background: #f0f0f0;
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: all 0.1s ease;
+    }
+    
+    /* Disable hover on touch devices completely */
+    @media (hover: none) {
+        .logo:hover {
+            background: #ffffff;
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .logo:active {
+            background: #f0f0f0;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+    }
+}
+
 .logo img {
     max-height: 180%;
     max-width: 180%;  
