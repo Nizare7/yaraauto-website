@@ -3241,3 +3241,150 @@ html {
         box-shadow: 0 12px 40px rgba(220, 38, 38, 0.4);
     }
 }
+
+/* Dealership Gallery Section - Desktop Only */
+@media (min-width: 769px) {
+    .dealership-gallery {
+        display: block !important;
+        width: 100%;
+        background: #0D0D0D; /* Same color as header */
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        height: 480px; /* Further increased height for better visibility */
+        margin-top: 100px; /* Space for fixed header */
+        z-index: 1; /* Below header but above other content */
+    }
+}
+
+.dealership-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.dealership-track {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    height: 100%;
+    transition: transform 0.5s ease;
+    padding: 40px 0;
+    position: relative;
+    left: 50%;
+}
+
+.dealership-slide {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+/* Standard slide size */
+.dealership-slide {
+    width: 420px;
+    height: 236px; /* 16:9 ratio for 420px width */
+}
+
+/* Center slide - larger */
+.dealership-slide.center {
+    width: 560px;
+    height: 315px; /* 16:9 ratio for 560px width */
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow: 0 12px 32px rgba(217, 56, 41, 0.3);
+}
+
+.dealership-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dealership-slide:hover img {
+    transform: scale(1.05);
+}
+
+/* Navigation arrows - reusing existing style */
+.dealership-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(217, 56, 41, 0.2);
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #D93829;
+    cursor: pointer;
+    z-index: 15;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dealership-arrow:hover {
+    background: rgba(217, 56, 41, 0.1);
+    border-color: rgba(217, 56, 41, 0.5);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(217, 56, 41, 0.3);
+}
+
+.dealership-arrow-left {
+    left: 20px;
+}
+
+.dealership-arrow-right {
+    right: 20px;
+}
+
+/* Indicators */
+.dealership-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dealership-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dealership-dot.active {
+    background: #D93829;
+    border-color: #D93829;
+    box-shadow: 0 0 10px rgba(217, 56, 41, 0.5);
+}
+
+.dealership-dot:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .dealership-gallery {
+        display: none !important;
+    }
+}
