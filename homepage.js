@@ -42,22 +42,47 @@ function initDealershipCarousel() {
     const dots = carousel.querySelectorAll('.dealership-dot');
     
     let currentIndex = 0;
-    let autoPlayInterval;
-    const autoPlayDelay = 6000; // 6 seconds - slower transition
+    let autoPlayInterval = null;
+    let isUserInteracting = false;
+    
+    // Consistent timing for all devices
+    const autoPlayDelay = 7000; // 7 seconds for all devices
     
     // Set initial center slide
     updateCarousel();
     
-    // Auto-play functionality
+    // Auto-play functionality - COMPLETELY REWRITTEN
     function startAutoPlay() {
-        autoPlayInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateCarousel();
-        }, autoPlayDelay);
+        // Always clear any existing interval first
+        stopAutoPlay();
+        
+        if (!isUserInteracting) {
+            autoPlayInterval = setInterval(() => {
+                if (!isUserInteracting) {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel();
+                }
+            }, autoPlayDelay);
+        }
     }
     
     function stopAutoPlay() {
-        clearInterval(autoPlayInterval);
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+        }
+    }
+    
+    // Universal function to handle any user interaction
+    function handleUserInteraction() {
+        isUserInteracting = true;
+        stopAutoPlay();
+        
+        // Restart after delay
+        setTimeout(() => {
+            isUserInteracting = false;
+            startAutoPlay();
+        }, 3000); // Fixed 3 second delay for all interactions
     }
     
     // Update carousel position and center slide
@@ -69,12 +94,15 @@ function initDealershipCarousel() {
         slides[currentIndex].classList.add('center');
         
         // CENTRATURA CORRETTA: L'immagine attiva deve essere AL CENTRO ASSOLUTO della pagina
-        const slideWidth = 420; // Updated to new slide width
-        const gap = 20;
+        // Responsive slide dimensions
+        const isMobile = window.innerWidth <= 768;
+        const slideWidth = isMobile ? 280 : 420;
+        const gap = isMobile ? 15 : 20;
         const slideWithGap = slideWidth + gap;
+        const leftOffset = isMobile ? -30 : -60; // Different offset for mobile
         
-        // Calcolo per centrare PERFETTAMENTE la slide attiva - spostato più a sinistra
-        const offsetToCenter = -(currentIndex * slideWithGap) - (slideWidth / 2) - 60;
+        // Calcolo per centrare PERFETTAMENTE la slide attiva
+        const offsetToCenter = -(currentIndex * slideWithGap) - (slideWidth / 2) + leftOffset;
         
         track.style.transform = `translateX(${offsetToCenter}px)`;
         
@@ -84,38 +112,80 @@ function initDealershipCarousel() {
         });
     }
     
-    // Arrow navigation
+    // Arrow navigation - SIMPLIFIED
     leftArrow.addEventListener('click', () => {
-        stopAutoPlay();
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
         updateCarousel();
-        setTimeout(startAutoPlay, 2000); // Restart auto-play after 2 seconds
+        handleUserInteraction();
     });
     
     rightArrow.addEventListener('click', () => {
-        stopAutoPlay();
         currentIndex = (currentIndex + 1) % slides.length;
         updateCarousel();
-        setTimeout(startAutoPlay, 2000); // Restart auto-play after 2 seconds
+        handleUserInteraction();
     });
     
-    // Dot navigation
+    // Dot navigation - SIMPLIFIED
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            stopAutoPlay();
             currentIndex = index;
             updateCarousel();
-            setTimeout(startAutoPlay, 2000); // Restart auto-play after 2 seconds
+            handleUserInteraction();
         });
     });
     
-    // Pause auto-play on hover
-    carousel.addEventListener('mouseenter', stopAutoPlay);
-    carousel.addEventListener('mouseleave', startAutoPlay);
+    // Pause auto-play on hover - SIMPLIFIED
+    carousel.addEventListener('mouseenter', () => {
+        isUserInteracting = true;
+        stopAutoPlay();
+    });
     
-    // Start auto-play
-    startAutoPlay();
+    carousel.addEventListener('mouseleave', () => {
+        isUserInteracting = false;
+        startAutoPlay();
+    });
     
     // Handle window resize
     window.addEventListener('resize', updateCarousel);
+    
+    // Touch/swipe support - COMPLETELY REWRITTEN
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        // Don't stop auto-play on touch start, only on actual swipe
+    });
+    
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const touchDiff = touchStartX - touchEndX;
+        const minSwipeDistance = 80; // Increased threshold to prevent accidental swipes
+        
+        if (Math.abs(touchDiff) > minSwipeDistance) {
+            if (touchDiff > 0) {
+                // Swipe left - next slide
+                currentIndex = (currentIndex + 1) % slides.length;
+            } else {
+                // Swipe right - previous slide
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            }
+            updateCarousel();
+            handleUserInteraction(); // Use unified handler
+        }
+    });
+    
+    // Prevent scrolling when swiping on carousel
+    carousel.addEventListener('touchmove', (e) => {
+        const touchCurrentX = e.changedTouches[0].screenX;
+        const touchDiff = Math.abs(touchStartX - touchCurrentX);
+        
+        // Only prevent default if it's a horizontal swipe
+        if (touchDiff > 10) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    // Start auto-play - AT THE END
+    startAutoPlay();
 }

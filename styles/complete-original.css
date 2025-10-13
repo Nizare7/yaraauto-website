@@ -3382,9 +3382,62 @@ html {
     transform: scale(1.2);
 }
 
-/* Hide on mobile */
+/* Mobile version */
 @media (max-width: 768px) {
     .dealership-gallery {
-        display: none !important;
+        display: block !important;
+        height: 280px; /* Smaller height for mobile */
+        margin-top: 180px; /* Further increased to avoid header overlap */
+        background: #0D0D0D; /* Ensure background is visible on mobile */
+    }
+
+    .dealership-track {
+        padding: 30px 0;
+        gap: 15px; /* Smaller gap on mobile */
+        transition: transform 0.8s ease; /* Slower transition on mobile */
+    }
+
+    /* Mobile slide sizes */
+    .dealership-slide {
+        width: 280px;
+        height: 157px; /* 16:9 ratio for 280px width */
+    }
+
+    .dealership-slide.center {
+        width: 320px;
+        height: 180px; /* 16:9 ratio for 320px width */
+        transform: scale(1.05); /* Less scaling on mobile */
+    }
+
+    /* Slower transitions for mobile slides */
+    .dealership-slide {
+        transition: all 0.6s ease; /* Slower transitions on mobile */
+    }
+
+    /* Mobile arrows - larger and more touch-friendly */
+    .dealership-arrow {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .dealership-arrow-left {
+        left: 10px;
+    }
+
+    .dealership-arrow-right {
+        right: 10px;
+    }
+
+    /* Mobile indicators - larger for touch */
+    .dealership-dot {
+        width: 16px;
+        height: 16px;
+        border-width: 3px;
+    }
+
+    .dealership-indicators {
+        bottom: 15px;
+        gap: 12px;
     }
 }
