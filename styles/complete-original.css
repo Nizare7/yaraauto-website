@@ -1051,6 +1051,13 @@ body {
         pointer-events: none;
     }
     
+    /* Show/hide back-to-top button with same animation as filter button */
+    .back-to-top.hidden {
+        opacity: 0;
+        transform: translateY(100px) scale(0.8);
+        pointer-events: none;
+    }
+    
     /* Make brands-nav relative to contain the absolute positioned button */
     .brands-nav {
         position: relative;
@@ -2289,7 +2296,7 @@ body {
     }
 
     .main-content {
-        margin-top: 140px;
+        margin-top: 200px;
     }
 
     .hero h1 {
@@ -2357,9 +2364,11 @@ body {
         width: 30px;
         height: 30px;
     }
+    
+
 
     .main-content {
-        margin-top: 120px;
+        margin-top: 180px;
     }
 
     .hero h1 {
@@ -2398,7 +2407,7 @@ html {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: linear-gradient(135deg, #D93829, #F25252);
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
     color: white;
     width: 50px;
     height: 50px;
@@ -2407,15 +2416,17 @@ html {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    box-shadow: 0 4px 15px rgba(217, 56, 41, 0.3);
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
     transition: all 0.3s ease;
     opacity: 0;
-    visibility: hidden;
+    transform: translateY(100px) scale(0.8);
+    pointer-events: none;
 }
 
 .back-to-top.visible {
     opacity: 1;
-    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
 }
 
 .back-to-top:active {
@@ -2425,8 +2436,8 @@ html {
 
 @media (hover: hover) {
     .back-to-top:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(217, 56, 41, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(220, 38, 38, 0.5);
     }
 }
 

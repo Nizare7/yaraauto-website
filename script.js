@@ -749,11 +749,14 @@ class CarDealer {
             
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
             
-            // Back to top button
-            if (scrollTop > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
+            // Back to top button - only for desktop, mobile is handled by setupFilterButtonsVisibility
+            const isMobile = window.innerWidth <= 768;
+            if (!isMobile) {
+                if (scrollTop > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
             }
         });
 
@@ -1925,6 +1928,7 @@ class CarDealer {
     setupFilterButtonsVisibility() {
         const brandsFilterButton = document.getElementById('brandsFilterButton');
         const mobileFilterButton = document.getElementById('mobileFilterButton');
+        const backToTopButton = document.getElementById('backToTop');
         const brandsSection = document.querySelector('.brands-nav');
         
         if (!brandsFilterButton || !mobileFilterButton || !brandsSection) {
@@ -1934,15 +1938,26 @@ class CarDealer {
         const handleScroll = () => {
             const brandsRect = brandsSection.getBoundingClientRect();
             const isInView = brandsRect.bottom > 0 && brandsRect.top <= window.innerHeight;
+            const isMobile = window.innerWidth <= 768;
             
             if (isInView) {
                 // Show brands filter button, hide mobile filter button
                 brandsFilterButton.classList.remove('hidden');
                 mobileFilterButton.classList.add('hidden');
+                
+                // On mobile, hide back-to-top when brands section is visible
+                if (isMobile && backToTopButton) {
+                    backToTopButton.classList.remove('visible');
+                }
             } else {
                 // Hide brands filter button, show mobile filter button
                 brandsFilterButton.classList.add('hidden');
                 mobileFilterButton.classList.remove('hidden');
+                
+                // On mobile, show back-to-top when mobile filter button is shown
+                if (isMobile && backToTopButton) {
+                    backToTopButton.classList.add('visible');
+                }
             }
         };
         
