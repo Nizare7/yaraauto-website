@@ -157,7 +157,7 @@ class CarDealer {
 
         brandsScrollTrack.innerHTML = '';
         
-        // Sort brands alphabetically
+        // Sort brands alphabetically (A to Z)
         const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
         
         sortedBrands.forEach(brand => {
@@ -218,8 +218,8 @@ class CarDealer {
         const recentlyAddedSection = this.createRecentlyAddedSection(filters);
         insertionPoint.insertAdjacentElement('afterend', recentlyAddedSection);
         
-        // Sort brands alphabetically
-        const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
+        // Sort brands alphabetically (A to Z)
+        const sortedBrands = [...this.data.brands].sort((a, b) => b.name.localeCompare(a.name));
         
         // Create all sections and insert them in correct order
         sortedBrands.forEach((brand, index) => {
