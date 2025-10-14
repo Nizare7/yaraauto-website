@@ -2309,9 +2309,15 @@ class CarDealer {
     scrollToBrandsSection() {
         const brandsSection = document.querySelector('.brands-nav');
         if (brandsSection) {
-            brandsSection.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
+            const header = document.querySelector('.header');
+            const headerHeight = header ? header.offsetHeight : 0;
+            const extraOffset = 20; // Margine aggiuntivo per sicurezza
+            
+            const targetPosition = brandsSection.offsetTop - headerHeight - extraOffset;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
         }
     }

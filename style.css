@@ -924,7 +924,7 @@ body {
         border-radius: 20px;  /* Lati molto arrotondati */
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;  /* Stessa transizione del back-to-top */
         font-size: 14px;
         min-width: 85px;
         display: flex;
@@ -934,15 +934,14 @@ body {
     }
     
     .mobile-filter-apply {
-        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);  /* Rosso come desktop */
+        background: linear-gradient(135deg, #D93829, #F25252);  /* Stesso gradiente del back-to-top */
         color: white;
-        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        box-shadow: 0 4px 15px rgba(217, 56, 41, 0.3);  /* Stesso box-shadow del back-to-top */
     }
     
-    .mobile-filter-apply:hover {
-        background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    .mobile-filter-apply:active {
+        transform: translateY(0px) scale(0.95);  /* Stesso comportamento del back-to-top */
+        transition: all 0.1s ease;
     }
     
     .mobile-filter-remove {
@@ -951,10 +950,22 @@ body {
         box-shadow: 0 4px 15px rgba(75, 85, 99, 0.3);
     }
     
-    .mobile-filter-remove:hover {
-        background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(75, 85, 99, 0.4);
+    .mobile-filter-remove:active {
+        transform: translateY(0px) scale(0.95);  /* Stesso comportamento del back-to-top */
+        transition: all 0.1s ease;
+    }
+    
+    /* Hover solo su dispositivi che supportano l'hover */
+    @media (hover: hover) {
+        .mobile-filter-apply:hover {
+            transform: translateY(-3px);  /* Stesso comportamento del back-to-top */
+            box-shadow: 0 6px 20px rgba(217, 56, 41, 0.4);  /* Stesso box-shadow del back-to-top */
+        }
+        
+        .mobile-filter-remove:hover {
+            transform: translateY(-3px);  /* Stesso comportamento del back-to-top */
+            box-shadow: 0 6px 20px rgba(75, 85, 99, 0.4);
+        }
     }
     
     /* Scrollable filters content */
