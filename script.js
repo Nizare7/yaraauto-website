@@ -89,7 +89,11 @@ class CarDealer {
             
             this.data = JSON.parse(text);
             console.log('✅ JSON parsato con successo');
-            console.log('📊 Struttura dati:', {
+            
+            // Filtra le auto vendute e i brand senza auto disponibili
+            this.filterSoldCarsAndEmptyBrands();
+            
+            console.log('📊 Struttura dati dopo filtro:', {
                 brands: this.data?.brands?.length || 0,
                 firstBrand: this.data?.brands?.[0]?.name || 'N/A',
                 totalCars: this.data?.brands?.reduce((sum, brand) => sum + (brand.cars?.length || 0), 0) || 0
@@ -115,6 +119,44 @@ class CarDealer {
             
             throw error;
         }
+    }
+
+    // Filtra auto vendute e brand senza auto disponibili
+    filterSoldCarsAndEmptyBrands() {
+        console.log('🔍 Filtraggio auto vendute...');
+        
+        if (!this.data || !this.data.brands) return;
+        
+        // Filtra le auto vendute per ogni brand
+        this.data.brands = this.data.brands.map(brand => {
+            if (!brand.cars || !Array.isArray(brand.cars)) {
+                return brand;
+            }
+            
+            // Filtra solo le auto NON vendute (venduto === false o undefined)
+            const availableCars = brand.cars.filter(car => car.venduto !== true);
+            
+            console.log(`🏷️ Brand ${brand.name}: ${brand.cars.length} auto totali, ${availableCars.length} disponibili`);
+            
+            return {
+                ...brand,
+                cars: availableCars
+            };
+        });
+        
+        // Rimuovi i brand che non hanno auto disponibili
+        const brandsWithCars = this.data.brands.filter(brand => 
+            brand.cars && brand.cars.length > 0
+        );
+        
+        const removedBrands = this.data.brands.length - brandsWithCars.length;
+        if (removedBrands > 0) {
+            console.log(`🚫 Rimossi ${removedBrands} brand senza auto disponibili`);
+        }
+        
+        this.data.brands = brandsWithCars;
+        
+        console.log('✅ Filtro auto vendute completato');
     }
 
     // Verifica struttura dati
@@ -144,7 +186,7 @@ class CarDealer {
                 throw new Error(`Brand ${brand.name}: cars non è un array`);
             }
             
-            console.log(`✅ Brand ${brand.name}: ${brand.cars?.length || 0} auto`);
+            console.log(`✅ Brand ${brand.name}: ${brand.cars?.length || 0} auto disponibili`);
         });
         
         console.log('✅ Struttura dati verificata');
@@ -227,7 +269,7 @@ class CarDealer {
         }
         
         // Sort brands alphabetically (A to Z)
-        const sortedBrands = [...this.data.brands].sort((a, b) => b.name.localeCompare(a.name));
+        const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
         
         // Create all sections and insert them in correct order
         sortedBrands.forEach((brand, index) => {

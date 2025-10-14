@@ -5,30 +5,7 @@
       "name": "Abarth",
       "logo": "images/abarth.png",
       "cars": [
-        {
-          "id": "abarth-595-1",
-          "title": "Abarth 595 Competizione",
-          "chilometraggio": 18000,
-          "condizioni": "Ottimo",
-          "anno": 2021,
-          "carburante": "Benzina",
-          "cilindrata": 1368,
-          "cavalli": 180,
-          "kw": 132,
-          "tipo_cambio": "Manuale",
-          "euro": "Euro 6",
-          "posti": 4,
-          "prezzo": 24500,
-          "neopatentati": "NO",
-          "venduto": false,
-          "aggiunto": true,
-          "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": [
-            "cars/place_holders/place_holder_1.jpg",
-            "cars/place_holders/place_holder_6.jpg",
-            "cars/place_holders/place_holder_3.jpg"
-          ]
-        }
+        
       ]
     },
     {
