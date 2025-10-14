@@ -20,8 +20,14 @@
           "posti": 4,
           "prezzo": 24500,
           "neopatentati": "NO",
+          "venduto": false,
+          "aggiunto": true,
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ]
         }
       ]
     },
@@ -46,7 +52,13 @@
           "prezzo": 32000,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -71,7 +83,13 @@
           "prezzo": 28500,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         },
         {
           "id": "audi-q3-1",
@@ -89,7 +107,13 @@
           "prezzo": 38900,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -114,7 +138,13 @@
           "prezzo": 26900,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         },
         {
           "id": "bmw-x1-1",
@@ -132,7 +162,13 @@
           "prezzo": 35500,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -157,7 +193,13 @@
           "prezzo": 15500,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -182,7 +224,13 @@
           "prezzo": 13500,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -207,7 +255,13 @@
           "prezzo": 245000,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": true
         }
       ]
     },
@@ -232,7 +286,14 @@
           "prezzo": 12500,
           "neopatentati": "SI",
           "image": "cars/fiat/panda-test/main.jpg",
-          "gallery": ["cars/fiat/panda-test/main.jpg", "cars/fiat/panda-test/main1.jpg", "cars/fiat/panda-test/main2.jpg", "cars/fiat/panda-test/main3.jpg"]
+          "gallery": [
+            "cars/fiat/panda-test/main.jpg",
+            "cars/fiat/panda-test/main1.jpg",
+            "cars/fiat/panda-test/main2.jpg",
+            "cars/fiat/panda-test/main3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         },
         {
           "id": "grandepunto-226000",
@@ -247,7 +308,21 @@
           "prezzo": 18900,
           "neopatentati": "NO",
           "image": "cars/fiat/grandepunto-226000/main1_resized.jpeg",
-          "gallery": ["cars/fiat/grandepunto-226000/main1_resized.jpeg", "cars/fiat/grandepunto-226000/main2_resized.jpeg", "cars/fiat/grandepunto-226000/main3_resized.jpeg", "cars/fiat/grandepunto-226000/main4_resized.jpeg", "cars/fiat/grandepunto-226000/main5_resized.jpeg", "cars/fiat/grandepunto-226000/main6_resized.jpeg", "cars/fiat/grandepunto-226000/main7_resized.jpeg", "cars/fiat/grandepunto-226000/main8_resized.jpeg", "cars/fiat/grandepunto-226000/main9_resized.jpeg", "cars/fiat/grandepunto-226000/main10_resized.jpeg", "cars/fiat/grandepunto-226000/main11_resized.jpeg"]
+          "gallery": [
+            "cars/fiat/grandepunto-226000/main1_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main2_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main3_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main4_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main5_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main6_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main7_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main8_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main9_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main10_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main11_resized.jpeg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -272,7 +347,13 @@
           "prezzo": 16800,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         },
         {
           "id": "ford-kuga-1",
@@ -290,7 +371,13 @@
           "prezzo": 28500,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -315,7 +402,22 @@
           "prezzo": 7999,
           "neopatentati": "NO",
           "image": "cars/mercedes/classec220-164000/main1_resized.jpeg",
-          "gallery": ["cars/mercedes/classec220-164000/main1_resized.jpeg", "cars/mercedes/classec220-164000/main2_resized.jpeg", "cars/mercedes/classec220-164000/main3_resized.jpeg", "cars/mercedes/classec220-164000/main4_resized.jpeg", "cars/mercedes/classec220-164000/main5_resized.jpeg", "cars/mercedes/classec220-164000/main6_resized.jpeg", "cars/mercedes/classec220-164000/main7_resized.jpeg", "cars/mercedes/classec220-164000/main8_resized.jpeg", "cars/mercedes/classec220-164000/main9_resized.jpeg", "cars/mercedes/classec220-164000/main10_resized.jpeg", "cars/mercedes/classec220-164000/main11_resized.jpeg", "cars/mercedes/classec220-164000/main12_resized.jpeg"]
+          "gallery": [
+            "cars/mercedes/classec220-164000/main1_resized.jpeg",
+            "cars/mercedes/classec220-164000/main2_resized.jpeg",
+            "cars/mercedes/classec220-164000/main3_resized.jpeg",
+            "cars/mercedes/classec220-164000/main4_resized.jpeg",
+            "cars/mercedes/classec220-164000/main5_resized.jpeg",
+            "cars/mercedes/classec220-164000/main6_resized.jpeg",
+            "cars/mercedes/classec220-164000/main7_resized.jpeg",
+            "cars/mercedes/classec220-164000/main8_resized.jpeg",
+            "cars/mercedes/classec220-164000/main9_resized.jpeg",
+            "cars/mercedes/classec220-164000/main10_resized.jpeg",
+            "cars/mercedes/classec220-164000/main11_resized.jpeg",
+            "cars/mercedes/classec220-164000/main12_resized.jpeg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         },
         {
           "id": "mercedes-gla-1",
@@ -333,7 +435,13 @@
           "prezzo": 42000,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -358,7 +466,13 @@
           "prezzo": 27500,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -383,7 +497,13 @@
           "prezzo": 16800,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -408,7 +528,13 @@
           "prezzo": 24500,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -433,7 +559,13 @@
           "prezzo": 15900,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -458,7 +590,13 @@
           "prezzo": 38500,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -483,7 +621,13 @@
           "prezzo": 65000,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -508,7 +652,13 @@
           "prezzo": 32500,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -533,7 +683,24 @@
           "prezzo": 3900,
           "neopatentati": "SI",
           "image": "cars/mini/one-239000/main1_resized.jpeg",
-          "gallery": ["cars/mini/one-239000/main1_resized.jpeg", "cars/mini/one-239000/main2_resized.jpeg", "cars/mini/one-239000/main3_resized.jpeg", "cars/mini/one-239000/main4_resized.jpeg", "cars/mini/one-239000/main5_resized.jpeg", "cars/mini/one-239000/main6_resized.jpeg", "cars/mini/one-239000/main7_resized.jpeg", "cars/mini/one-239000/main8_resized.jpeg", "cars/mini/one-239000/main9_resized.jpeg", "cars/mini/one-239000/main10_resized.jpeg", "cars/mini/one-239000/main11_resized.jpeg", "cars/mini/one-239000/main12_resized.jpeg", "cars/mini/one-239000/main13_resized.jpeg", "cars/mini/one-239000/main14_resized.jpeg"]
+          "gallery": [
+            "cars/mini/one-239000/main1_resized.jpeg",
+            "cars/mini/one-239000/main2_resized.jpeg",
+            "cars/mini/one-239000/main3_resized.jpeg",
+            "cars/mini/one-239000/main4_resized.jpeg",
+            "cars/mini/one-239000/main5_resized.jpeg",
+            "cars/mini/one-239000/main6_resized.jpeg",
+            "cars/mini/one-239000/main7_resized.jpeg",
+            "cars/mini/one-239000/main8_resized.jpeg",
+            "cars/mini/one-239000/main9_resized.jpeg",
+            "cars/mini/one-239000/main10_resized.jpeg",
+            "cars/mini/one-239000/main11_resized.jpeg",
+            "cars/mini/one-239000/main12_resized.jpeg",
+            "cars/mini/one-239000/main13_resized.jpeg",
+            "cars/mini/one-239000/main14_resized.jpeg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -558,7 +725,13 @@
           "prezzo": 34500,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -583,7 +756,13 @@
           "prezzo": 14800,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -608,7 +787,13 @@
           "prezzo": 18500,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -633,7 +818,13 @@
           "prezzo": 17500,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -658,7 +849,13 @@
           "prezzo": 125000,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": true
         }
       ]
     },
@@ -683,7 +880,13 @@
           "prezzo": 16800,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -708,7 +911,13 @@
           "prezzo": 15200,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -733,7 +942,13 @@
           "prezzo": 14900,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -758,7 +973,13 @@
           "prezzo": 18500,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -783,7 +1004,13 @@
           "prezzo": 45000,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": true
         }
       ]
     },
@@ -808,7 +1035,13 @@
           "prezzo": 22500,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": true
         },
         {
           "id": "toyota-corolla-1",
@@ -826,7 +1059,13 @@
           "prezzo": 26500,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         },
         {
           "id": "toyota-rav4-1",
@@ -844,7 +1083,13 @@
           "prezzo": 38900,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         },
         {
           "id": "toyota-camry-1",
@@ -862,7 +1107,13 @@
           "prezzo": 32500,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         },
         {
           "id": "toyota-highlander-1",
@@ -880,7 +1131,13 @@
           "prezzo": 45000,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -905,7 +1162,13 @@
           "prezzo": 34500,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -930,7 +1193,13 @@
           "prezzo": 36500,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -955,7 +1224,13 @@
           "prezzo": 11500,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_5.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     },
@@ -980,7 +1255,13 @@
           "prezzo": 24500,
           "neopatentati": "SI",
           "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": ["cars/place_holders/place_holder_2.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_3.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         },
         {
           "id": "vw-tiguan-1",
@@ -998,7 +1279,13 @@
           "prezzo": 32000,
           "neopatentati": "NO",
           "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": ["cars/place_holders/place_holder_1.jpg", "cars/place_holders/place_holder_6.jpg", "cars/place_holders/place_holder_4.jpg"]
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
         }
       ]
     }
