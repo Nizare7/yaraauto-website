@@ -307,10 +307,47 @@ class CarDealer {
 
         const title = document.createElement('h2');
         title.className = 'recently-added-title';
-        title.innerHTML = 'Auto <span class="highlight">Novità</span>';
+        title.innerHTML = 'AGGIUNTE DI RECENTE';
 
-        const carsGrid = document.createElement('div');
-        carsGrid.className = 'recently-added-grid';
+        // Check if mobile to create carousel or grid
+        const isMobile = window.innerWidth <= 768;
+        
+        let carsContainer;
+        if (isMobile) {
+            // Create carousel for mobile
+            carsContainer = document.createElement('div');
+            carsContainer.className = 'recently-added-carousel';
+            
+            const carouselTrack = document.createElement('div');
+            carouselTrack.className = 'recently-added-carousel-track';
+            carsContainer.appendChild(carouselTrack);
+            
+            // Add navigation container with arrows and indicators
+            const navigationContainer = document.createElement('div');
+            navigationContainer.className = 'recently-added-carousel-navigation';
+            
+            const prevArrow = document.createElement('button');
+            prevArrow.className = 'recently-added-carousel-arrow recently-added-carousel-prev';
+            prevArrow.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            prevArrow.setAttribute('aria-label', 'Precedente');
+            navigationContainer.appendChild(prevArrow);
+            
+            const indicators = document.createElement('div');
+            indicators.className = 'recently-added-carousel-indicators';
+            navigationContainer.appendChild(indicators);
+            
+            const nextArrow = document.createElement('button');
+            nextArrow.className = 'recently-added-carousel-arrow recently-added-carousel-next';
+            nextArrow.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            nextArrow.setAttribute('aria-label', 'Successivo');
+            navigationContainer.appendChild(nextArrow);
+            
+            carsContainer.appendChild(navigationContainer);
+        } else {
+            // Create grid for desktop
+            carsContainer = document.createElement('div');
+            carsContainer.className = 'recently-added-grid';
+        }
 
         // Get all recently added cars from all brands
         const recentlyAddedCars = [];
@@ -338,10 +375,36 @@ class CarDealer {
             // Sort by price (descending) to show more expensive cars first
             const sortedCars = [...filteredRecentCars].sort((a, b) => b.prezzo - a.prezzo);
 
-            sortedCars.forEach(car => {
-                const carElement = this.createCarCard(car, true); // true = recently added flag
-                carsGrid.appendChild(carElement);
-            });
+            if (isMobile) {
+                // Create carousel slides for mobile
+                const track = carsContainer.querySelector('.recently-added-carousel-track');
+                const indicators = carsContainer.querySelector('.recently-added-carousel-indicators');
+                
+                sortedCars.forEach((car, index) => {
+                    const slideElement = document.createElement('div');
+                    slideElement.className = 'recently-added-carousel-slide';
+                    
+                    const carElement = this.createCarCard(car, true);
+                    slideElement.appendChild(carElement);
+                    track.appendChild(slideElement);
+                    
+                    // Create indicator
+                    const indicator = document.createElement('button');
+                    indicator.className = 'recently-added-carousel-dot';
+                    if (index === 0) indicator.classList.add('active');
+                    indicator.setAttribute('data-slide', index);
+                    indicators.appendChild(indicator);
+                });
+                
+                // Initialize carousel functionality
+                this.initRecentlyAddedCarousel(carsContainer, sortedCars.length);
+            } else {
+                // Create grid for desktop
+                sortedCars.forEach(car => {
+                    const carElement = this.createCarCard(car, true);
+                    carsContainer.appendChild(carElement);
+                });
+            }
         } else {
             // Create "no recently added cars" message
             const noRecentMsgDiv = document.createElement('div');
@@ -352,13 +415,99 @@ class CarDealer {
                     ? 'Nessuna novità corrisponde ai filtri selezionati' 
                     : 'Nessuna novità al momento'}
             `;
-            carsGrid.appendChild(noRecentMsgDiv);
+            
+            if (isMobile) {
+                const track = carsContainer.querySelector('.recently-added-carousel-track');
+                track.appendChild(noRecentMsgDiv);
+            } else {
+                carsContainer.appendChild(noRecentMsgDiv);
+            }
         }
 
         section.appendChild(title);
-        section.appendChild(carsGrid);
+        section.appendChild(carsContainer);
 
         return section;
+    }
+
+    // Initialize recently added carousel for mobile
+    initRecentlyAddedCarousel(carousel, totalSlides) {
+        if (totalSlides <= 1) return; // No need for carousel with 1 or 0 slides
+        
+        const track = carousel.querySelector('.recently-added-carousel-track');
+        const slides = carousel.querySelectorAll('.recently-added-carousel-slide');
+        const prevBtn = carousel.querySelector('.recently-added-carousel-prev');
+        const nextBtn = carousel.querySelector('.recently-added-carousel-next');
+        const dots = carousel.querySelectorAll('.recently-added-carousel-dot');
+        
+        let currentIndex = 0;
+        
+        // Update carousel position and indicators
+        const updateCarousel = () => {
+            const offset = -currentIndex * 100;
+            track.style.transform = `translateX(${offset}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        };
+        
+        // Previous slide
+        const goToPrev = () => {
+            currentIndex = currentIndex > 0 ? currentIndex - 1 : totalSlides - 1;
+            updateCarousel();
+        };
+        
+        // Next slide
+        const goToNext = () => {
+            currentIndex = currentIndex < totalSlides - 1 ? currentIndex + 1 : 0;
+            updateCarousel();
+        };
+        
+        // Go to specific slide
+        const goToSlide = (index) => {
+            currentIndex = index;
+            updateCarousel();
+        };
+        
+        // Event listeners
+        prevBtn.addEventListener('click', goToPrev);
+        nextBtn.addEventListener('click', goToNext);
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+        
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const touchDiff = touchStartX - touchEndX;
+            const minSwipeDistance = 50;
+            
+            if (Math.abs(touchDiff) > minSwipeDistance) {
+                if (touchDiff > 0) {
+                    goToNext(); // Swipe left - next slide
+                } else {
+                    goToPrev(); // Swipe right - previous slide
+                }
+            }
+        });
+        
+        // Prevent scrolling when swiping on carousel
+        track.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+        
+        // Auto-play (optional - uncomment if desired)
+        // setInterval(goToNext, 5000);
     }
 
     // Create single car card
@@ -2075,20 +2224,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create mobile filter system only on mobile
     carDealer.createMobileFilterSystem();
     
-    // Handle window resize to manage mobile filter system
+    // Handle window resize to manage mobile filter system and carousel
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        const mobileButton = document.getElementById('mobileFilterButton');
-        const mobileOverlay = document.getElementById('mobileFilterOverlay');
-        const mobilePopup = document.getElementById('mobileFilterPopup');
-        
-        if (window.innerWidth > 768) {
-            // Remove mobile elements on desktop
-            if (mobileButton) mobileButton.remove();
-            if (mobileOverlay) mobileOverlay.remove();
-            if (mobilePopup) mobilePopup.remove();
-        } else if (window.innerWidth <= 768 && !mobileButton) {
-            // Create mobile elements on mobile if they don't exist
-            carDealer.createMobileFilterSystem();
-        }
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const mobileButton = document.getElementById('mobileFilterButton');
+            const mobileOverlay = document.getElementById('mobileFilterOverlay');
+            const mobilePopup = document.getElementById('mobileFilterPopup');
+            
+            if (window.innerWidth > 768) {
+                // Remove mobile elements on desktop
+                if (mobileButton) mobileButton.remove();
+                if (mobileOverlay) mobileOverlay.remove();
+                if (mobilePopup) mobilePopup.remove();
+            } else if (window.innerWidth <= 768 && !mobileButton) {
+                // Create mobile elements on mobile if they don't exist
+                carDealer.createMobileFilterSystem();
+            }
+            
+            // Regenerate recently added section to switch between grid and carousel
+            const recentlyAddedSection = document.querySelector('.recently-added-section');
+            if (recentlyAddedSection) {
+                carDealer.generateCarSections();
+            }
+        }, 250); // Debounce resize events
     });
 });

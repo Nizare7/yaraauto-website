@@ -3626,6 +3626,84 @@ html {
     .recently-added-section .car-card .car-price {
         font-size: 1.3rem;
     }
+
+    /* Carousel per mobile nella sezione novità */
+    .recently-added-carousel {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+    
+    .recently-added-carousel-track {
+        display: flex;
+        transition: transform 0.3s ease;
+        width: 100%;
+    }
+    
+    .recently-added-carousel-slide {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+    
+    .recently-added-carousel-slide .car-card {
+        margin: 0;
+        width: 100%;
+    }
+    
+    /* Navigation container with arrows and indicators */
+    .recently-added-carousel-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding: 0 10px;
+    }
+    
+    /* Navigation arrows */
+    .recently-added-carousel-arrow {
+        background: rgba(217, 56, 41, 0.9);
+        border: none;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(217, 56, 41, 0.3);
+        flex-shrink: 0;
+    }
+    
+    .recently-added-carousel-arrow:active {
+        transform: scale(0.9);
+        background: rgba(217, 56, 41, 1);
+    }
+    
+    /* Indicators container centered between arrows */
+    .recently-added-carousel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex: 1;
+        margin: 0 20px;
+    }
+    
+    .recently-added-carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .recently-added-carousel-dot.active {
+        background: #D93829;
+        border-color: #D93829;
+        box-shadow: 0 0 10px rgba(217, 56, 41, 0.5);
+    }
 }
 
 /* Tag "Novità" nel modal dei dettagli */
