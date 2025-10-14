@@ -1401,6 +1401,38 @@ body {
     z-index: 2;
 }
 
+/* Brand DISABILITATO - Stile elegante */
+.brand-item.disabled {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    filter: grayscale(80%) !important;
+}
+
+.brand-item.disabled img {
+    opacity: 0.5 !important;
+}
+
+.brand-item.disabled span {
+    color: #999 !important;
+}
+
+/* Rimuovi tutti gli effetti hover/active per disabled */
+.brand-item.disabled:hover,
+.brand-item.disabled:active {
+    transform: none !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+    border-color: #e0e0e0 !important;
+}
+
+.brand-item.disabled:hover::before {
+    opacity: 0 !important;
+}
+
+.brand-item.disabled:hover img {
+    transform: none !important;
+}
+
 .brand-link {
     display: flex;
     flex-direction: column;

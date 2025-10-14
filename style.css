@@ -1305,7 +1305,7 @@ body {
     }
 }
 
-/* Brand items */
+/* Brand items - STATO NORMALE (ATTIVO) */
 .brand-item {
     display: flex;
     flex-direction: column;
@@ -1315,8 +1315,8 @@ body {
     padding: 15px 10px;
     border-radius: 15px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background:  linear-gradient(150deg, #cccccc00 0%, #cccccccc 100%);
-    border: 1px solid #e0e0e0;
+    background: linear-gradient(150deg, #ffffff 0%, #f8f8f8 100%);
+    border: 2px solid #e0e0e0;
     min-width: 90px;
     white-space: nowrap;
     text-align: center;
@@ -1325,7 +1325,6 @@ body {
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     position: relative;
     overflow: hidden;
-    /* Remove sticky hover/active states on mobile */
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -1349,20 +1348,18 @@ body {
     pointer-events: none;
 }
 
-/* Touch feedback with automatic reset */
 .brand-item:active {
     transform: translateY(-4px) scale(0.98);
     box-shadow: 0 6px 15px rgba(217, 56, 41, 0.2);
-    border-color: rgba(217, 56, 41, 0.1);
+    border-color: rgba(217, 56, 41, 0.3);
     transition: all 0.1s ease;
 }
 
-/* Only apply hover effects on devices that support hover */
 @media (hover: hover) {
     .brand-item:hover {
         transform: translateY(-8px);
         box-shadow: 0 12px 25px rgba(217, 56, 41, 0.3);
-        border-color: rgba(217, 56, 41, 0.2);
+        border-color: rgba(217, 56, 41, 0.4);
         color: #0D0D0D;
         text-decoration: none;
     }
@@ -1392,6 +1389,52 @@ body {
     line-height: 1.2;
     position: relative;
     z-index: 2;
+    color: #333;
+}
+
+/* Brand items - STATO DISABILITATO */
+.brand-item.disabled {
+    background: #f0f0f0 !important;
+    border: 2px solid #ccc !important;
+    color: #999 !important;
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    filter: grayscale(80%) !important;
+}
+
+.brand-item.disabled img {
+    opacity: 0.4 !important;
+    filter: grayscale(100%) !important;
+    transform: none !important;
+}
+
+.brand-item.disabled span {
+    color: #aaa !important;
+    font-weight: 300 !important;
+}
+
+.brand-item.disabled::before {
+    display: none !important;
+}
+
+/* Assicurati che gli stati hover/active non funzionino per disabled */
+.brand-item.disabled:hover,
+.brand-item.disabled:active {
+    background: #f0f0f0 !important;
+    border: 2px solid #ccc !important;
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 0.5 !important;
+}
+
+.brand-item.disabled:hover img,
+.brand-item.disabled:active img {
+    transform: none !important;
+    filter: grayscale(100%) !important;
+    opacity: 0.4 !important;
 }
 
 .brand-link {

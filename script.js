@@ -196,7 +196,10 @@ class CarDealer {
 
         // Add click event to scroll to brand section
         brandItem.addEventListener('click', () => {
-            this.scrollToBrand(brand.id);
+            // Only scroll if not disabled
+            if (!brandItem.classList.contains('disabled')) {
+                this.scrollToBrand(brand.id);
+            }
         });
 
         return brandItem;
@@ -214,9 +217,14 @@ class CarDealer {
         const unifiedSection = document.querySelector('.filters-and-brands-section');
         const insertionPoint = unifiedSection || document.querySelector('.filters-section') || document.querySelector('.brands-nav');
         
-        // Create "Aggiunte di recente" section first
+        // Create "Aggiunte di recente" section first (only if it has content)
         const recentlyAddedSection = this.createRecentlyAddedSection(filters);
-        insertionPoint.insertAdjacentElement('afterend', recentlyAddedSection);
+        let lastInsertedElement = insertionPoint;
+        
+        if (recentlyAddedSection) {
+            insertionPoint.insertAdjacentElement('afterend', recentlyAddedSection);
+            lastInsertedElement = recentlyAddedSection;
+        }
         
         // Sort brands alphabetically (A to Z)
         const sortedBrands = [...this.data.brands].sort((a, b) => b.name.localeCompare(a.name));
@@ -234,13 +242,14 @@ class CarDealer {
             if (filteredCars.length > 0 || Object.keys(filters).length === 0) {
                 const sectionElement = this.createBrandSection({...brand, cars: filteredCars});
                 
-                // Find the last inserted section
-                const lastSection = document.querySelector('.cars-section:last-of-type, .recently-added-section');
-                if (lastSection) {
-                    lastSection.insertAdjacentElement('afterend', sectionElement);
-                }
+                // Insert after the last inserted element
+                lastInsertedElement.insertAdjacentElement('afterend', sectionElement);
+                lastInsertedElement = sectionElement;
             }
         });
+
+        // Update brands to reflect filter state AFTER car sections are generated
+        this.updateBrandsState(filters);
 
         // Trigger animations for all car cards after they are inserted
         setTimeout(() => {
@@ -406,14 +415,18 @@ class CarDealer {
                 });
             }
         } else {
-            // Create "no recently added cars" message
+            // Se ci sono filtri applicati e nessuna auto corrisponde, nascondi la sezione
+            const hasFilters = this.hasActiveFilters(filters);
+            if (hasFilters) {
+                return null; // Non creare la sezione
+            }
+            
+            // Se non ci sono filtri, mostra il messaggio "nessuna novità"
             const noRecentMsgDiv = document.createElement('div');
             noRecentMsgDiv.className = 'no-recently-added';
             noRecentMsgDiv.innerHTML = `
                 <i class="fas fa-plus-circle" style="font-size: 3rem; color: #D93829; margin-bottom: 1rem; display: block;"></i>
-                ${Object.keys(filters).length > 0 
-                    ? 'Nessuna novità corrisponde ai filtri selezionati' 
-                    : 'Nessuna novità al momento'}
+                Nessuna novità al momento
             `;
             
             if (isMobile) {
@@ -1763,6 +1776,56 @@ class CarDealer {
             }
 
             return true;
+        });
+    }
+
+    // Check if there are active filters applied
+    hasActiveFilters(filters) {
+        if (!filters || Object.keys(filters).length === 0) {
+            return false;
+        }
+
+        return (filters.prezzoMin && filters.prezzoMin > 0) ||
+               (filters.prezzoMax && filters.prezzoMax < Infinity) ||
+               (filters.annoMin && filters.annoMin > 0) ||
+               (filters.annoMax && filters.annoMax < Infinity) ||
+               (filters.kmMin && filters.kmMin > 0) ||
+               (filters.kmMax && filters.kmMax < Infinity) ||
+               (filters.cavalliMin && filters.cavalliMin > 0) ||
+               (filters.cavalliMax && filters.cavalliMax < Infinity) ||
+               (filters.carburante && filters.carburante !== '') ||
+               (filters.cambio && filters.cambio !== '') ||
+               (filters.euro && filters.euro !== '') ||
+               (filters.neopatentati && filters.neopatentati !== '');
+    }
+
+    // Check if a brand has cars matching the filters
+    brandHasMatchingCars(brand, filters) {
+        if (!brand.cars || brand.cars.length === 0) {
+            return false;
+        }
+        const filteredCars = this.applyFilters(brand.cars, filters);
+        return filteredCars.length > 0;
+    }
+
+    // Update existing brands state based on filters
+    updateBrandsState(filters = {}) {
+        const hasFilters = this.hasActiveFilters(filters);
+        const brandItems = document.querySelectorAll('.brand-item');
+        
+        brandItems.forEach(brandItem => {
+            const brandId = brandItem.getAttribute('data-brand');
+            const brand = this.data.brands.find(b => b.id === brandId);
+            
+            if (!brand) return;
+            
+            // Remove existing disabled class
+            brandItem.classList.remove('disabled');
+            
+            // Add disabled class if filters are applied and brand has no matching cars
+            if (hasFilters && !this.brandHasMatchingCars(brand, filters)) {
+                brandItem.classList.add('disabled');
+            }
         });
     }
 
