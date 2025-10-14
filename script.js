@@ -207,12 +207,16 @@ class CarDealer {
         const mainContent = document.querySelector('.main-content');
         if (!mainContent || !this.data) return;
 
-        // Remove existing car sections
-        document.querySelectorAll('.cars-section').forEach(section => section.remove());
+        // Remove existing car sections and recently added section
+        document.querySelectorAll('.cars-section, .recently-added-section').forEach(section => section.remove());
 
         // Find where to insert car sections (after unified filters-and-brands section)
         const unifiedSection = document.querySelector('.filters-and-brands-section');
         const insertionPoint = unifiedSection || document.querySelector('.filters-section') || document.querySelector('.brands-nav');
+        
+        // Create "Aggiunte di recente" section first
+        const recentlyAddedSection = this.createRecentlyAddedSection(filters);
+        insertionPoint.insertAdjacentElement('afterend', recentlyAddedSection);
         
         // Sort brands alphabetically
         const sortedBrands = [...this.data.brands].sort((a, b) => a.name.localeCompare(b.name));
@@ -230,17 +234,10 @@ class CarDealer {
             if (filteredCars.length > 0 || Object.keys(filters).length === 0) {
                 const sectionElement = this.createBrandSection({...brand, cars: filteredCars});
                 
-                if (index === 0) {
-                    // Insert first section after filters section
-                    insertionPoint.insertAdjacentElement('afterend', sectionElement);
-                } else {
-                    // Find the last inserted section
-                    const lastSection = document.querySelector('.cars-section:last-of-type');
-                    if (lastSection) {
-                        lastSection.insertAdjacentElement('afterend', sectionElement);
-                    } else {
-                        insertionPoint.insertAdjacentElement('afterend', sectionElement);
-                    }
+                // Find the last inserted section
+                const lastSection = document.querySelector('.cars-section:last-of-type, .recently-added-section');
+                if (lastSection) {
+                    lastSection.insertAdjacentElement('afterend', sectionElement);
                 }
             }
         });
@@ -303,8 +300,69 @@ class CarDealer {
         return section;
     }
 
+    // Create "Aggiunte di recente" section
+    createRecentlyAddedSection(filters = {}) {
+        const section = document.createElement('section');
+        section.className = 'recently-added-section';
+
+        const title = document.createElement('h2');
+        title.className = 'recently-added-title';
+        title.innerHTML = 'Auto <span class="highlight">Novità</span>';
+
+        const carsGrid = document.createElement('div');
+        carsGrid.className = 'recently-added-grid';
+
+        // Get all recently added cars from all brands
+        const recentlyAddedCars = [];
+        
+        this.data.brands.forEach(brand => {
+            if (brand.cars) {
+                brand.cars.forEach(car => {
+                    if (car.aggiunto === true) {
+                        // Add brand information to the car
+                        const carWithBrand = { ...car, brandName: brand.name, brandId: brand.id };
+                        recentlyAddedCars.push(carWithBrand);
+                    }
+                });
+            }
+        });
+
+        // Apply filters to recently added cars
+        let filteredRecentCars = recentlyAddedCars;
+        if (Object.keys(filters).length > 0) {
+            filteredRecentCars = this.applyFilters(recentlyAddedCars, filters);
+        }
+
+        // Check if there are recently added cars after filtering
+        if (filteredRecentCars.length > 0) {
+            // Sort by price (descending) to show more expensive cars first
+            const sortedCars = [...filteredRecentCars].sort((a, b) => b.prezzo - a.prezzo);
+
+            sortedCars.forEach(car => {
+                const carElement = this.createCarCard(car, true); // true = recently added flag
+                carsGrid.appendChild(carElement);
+            });
+        } else {
+            // Create "no recently added cars" message
+            const noRecentMsgDiv = document.createElement('div');
+            noRecentMsgDiv.className = 'no-recently-added';
+            noRecentMsgDiv.innerHTML = `
+                <i class="fas fa-plus-circle" style="font-size: 3rem; color: #D93829; margin-bottom: 1rem; display: block;"></i>
+                ${Object.keys(filters).length > 0 
+                    ? 'Nessuna novità corrisponde ai filtri selezionati' 
+                    : 'Nessuna novità al momento'}
+            `;
+            carsGrid.appendChild(noRecentMsgDiv);
+        }
+
+        section.appendChild(title);
+        section.appendChild(carsGrid);
+
+        return section;
+    }
+
     // Create single car card
-    createCarCard(car) {
+    createCarCard(car, isRecentlyAdded = false) {
         const carCard = document.createElement('div');
         carCard.className = 'car-card';
 
@@ -363,6 +421,14 @@ class CarDealer {
 
         carCard.appendChild(carImage);
         carCard.appendChild(carInfo);
+
+        // Add "Novità" tag if applicable
+        if (car.aggiunto === true) {
+            const recentlyAddedTag = document.createElement('div');
+            recentlyAddedTag.className = 'recently-added-tag';
+            recentlyAddedTag.textContent = 'Novità';
+            carCard.appendChild(recentlyAddedTag);
+        }
 
         // Add click listener to open car detail modal
         carCard.addEventListener('click', (e) => {
@@ -1239,6 +1305,19 @@ class CarDealer {
         // Update title and price
         title.textContent = car.title;
         price.textContent = `€ ${car.prezzo.toLocaleString('it-IT')}`;
+
+        // Add or remove "Recently Added" tag in the title area
+        let existingTag = modal.querySelector('.car-detail-recently-added-tag');
+        if (existingTag) {
+            existingTag.remove();
+        }
+
+        if (car.aggiunto === true) {
+            const recentlyAddedTag = document.createElement('div');
+            recentlyAddedTag.className = 'car-detail-recently-added-tag';
+            recentlyAddedTag.textContent = '★ Novità';
+            title.insertAdjacentElement('afterend', recentlyAddedTag);
+        }
 
         // Update specs with all new fields
         specsGrid.innerHTML = `
