@@ -3203,6 +3203,7 @@ html {
     .home-button-section {
         padding: 0 15px;
         margin-bottom: 20px;
+        margin-top: 140px; /* Maggiore spazio per l'header mobile */
     }
     
     .home-page-button {
