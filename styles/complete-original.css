@@ -90,21 +90,26 @@ body {
         margin: 0;
         order: 1; /* Logo in alto per primo */
         flex: 0 0 auto;
-        width: 140px;
-        height: 45px;
+        width: 60px;
+        height: 60px;
+        background: #0D0D0D;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .logo:hover {
-        background: #ffffff;
+        background: #0D0D0D;
         transform: none;
         box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     
     .logo:active {
-        background: #f0f0f0;
+        background: #0D0D0D;
         transform: scale(1.05);
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        transition: all 0.1s ease;
+        transition: all 0.3s ease;
     }
     
     /* Contact info sotto il logo */
@@ -178,15 +183,16 @@ body {
     /* Disable hover on touch devices completely */
     @media (hover: none) {
         .logo:hover {
-            background: #ffffff;
+            background: #0D0D0D;
             transform: none;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
         
         .logo:active {
-            background: #f0f0f0;
-            transform: scale(1.05);
+            background: #0D0D0D;
+            transform: scale(1.125);
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
         }
         
         .social-links a:active {
@@ -2329,7 +2335,7 @@ body {
     }
 
     .main-content {
-        margin-top: 200px;
+        margin-top: 0px;
     }
 
     .hero h1 {
@@ -2401,7 +2407,7 @@ body {
 
 
     .main-content {
-        margin-top: 180px;
+        margin-top: 0px;
     }
 
     .hero h1 {
@@ -3431,7 +3437,7 @@ html {
     .dealership-gallery {
         display: block !important;
         height: 280px; /* Smaller height for mobile */
-        margin-top: 180px; /* Further increased to avoid header overlap */
+        margin-top: 158px; /* Alzato leggermente */
         background: #0D0D0D; /* Ensure background is visible on mobile */
     }
 
@@ -3463,6 +3469,9 @@ html {
         width: 60px;
         height: 60px;
         font-size: 24px;
+        top: auto;
+        bottom: 15px; /* Stesso livello degli indicatori */
+        transform: none;
     }
 
     .dealership-arrow-left {
