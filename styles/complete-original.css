@@ -53,9 +53,9 @@ body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    height: 100%; 
-    width: 200px;
-    background: #ffffff;
+    height: 55px; 
+    width: 55px;
+    background: #0D0D0D;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -67,7 +67,7 @@ body {
 }
 
 .logo:hover {
-    background: #f0f0f0;
+    background: #0D0D0D;
     transform: translateX(-50%) scale(1.05);
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
@@ -340,6 +340,7 @@ body {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 30px;
+    margin-top: 100px; /* Spazio per l'header fisso */
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -395,7 +396,7 @@ body {
 
 /* Main content */
 .main-content {
-    margin-top: 85px;
+    margin-top: 20px;
     padding: 40px 20px;
 }
 
