@@ -1,0 +1,507 @@
+{
+  "brands": [
+    {
+      "id": "abarth",
+      "name": "Abarth",
+      "logo": "images/abarth.png",
+      "cars": [
+
+      ]
+    },
+    {
+      "id": "alfa-romeo",
+      "name": "Alfa Romeo",
+      "logo": "images/alfa-romeo.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "audi",
+      "name": "Audi",
+      "logo": "images/audi.png",
+      "cars": [
+       
+      ]
+    },
+    {
+      "id": "bmw",
+      "name": "BMW",
+      "logo": "images/bmw.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "citroen",
+      "name": "Citroën",
+      "logo": "images/citroen.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "dacia",
+      "name": "Dacia",
+      "logo": "images/dacia.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "fiat",
+      "name": "Fiat",
+      "logo": "images/fiat.png",
+      "cars": [
+        {
+          "id": "fiat-pnd203501025",
+          "brand": "Fiat",
+          "name": "Panda",
+          "chilometraggio": 35000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Benzina",
+          "cilindrata": 1242,
+          "cavalli": 69,
+          "kw": 51,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 12500,
+          "neopatentati": "SI",
+          "image": "cars/fiat/panda-test/main.jpg",
+          "gallery": [
+            "cars/fiat/panda-test/main.jpg",
+            "cars/fiat/panda-test/main1.jpg",
+            "cars/fiat/panda-test/main2.jpg",
+            "cars/fiat/panda-test/main3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
+        },
+        {
+          "id": "fiat-grp2262261025",
+          "brand": "Fiat",
+          "name": "Grande Punto",
+          "chilometraggio": 226000,
+          "cilindrata": 1368,
+          "cavalli": 140,
+          "kw": 103,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 18900,
+          "neopatentati": "NO",
+          "image": "cars/fiat/grandepunto-226000/main1_resized.jpeg",
+          "gallery": [
+            "cars/fiat/grandepunto-226000/main1_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main2_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main3_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main4_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main5_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main6_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main7_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main8_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main9_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main10_resized.jpeg",
+            "cars/fiat/grandepunto-226000/main11_resized.jpeg"
+          ],
+          "venduto": false,
+          "aggiunto": false
+        }
+      ]
+    },
+    {
+      "id": "ford",
+      "name": "Ford",
+      "logo": "images/ford.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "mercedes",
+      "name": "Mercedes",
+      "logo": "images/mercedes.png",
+      "cars": [
+        {
+          "id": "mercedes-cls101641025",
+          "brand": "Mercedes",
+          "name": "Classe C 220",
+          "chilometraggio": 164000,
+          "condizioni": "Usato Nuovo",
+          "anno": 2010,
+          "carburante": "Diesel",
+          "cilindrata": 2100,
+          "cavalli": 170,
+          "kw": 125,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5",
+          "posti": 5,
+          "prezzo": 7999,
+          "neopatentati": "NO",
+          "image": "cars/mercedes/classec220-164000/main1_resized.jpeg",
+          "gallery": [
+            "cars/mercedes/classec220-164000/main1_resized.jpeg",
+            "cars/mercedes/classec220-164000/main2_resized.jpeg",
+            "cars/mercedes/classec220-164000/main3_resized.jpeg",
+            "cars/mercedes/classec220-164000/main4_resized.jpeg",
+            "cars/mercedes/classec220-164000/main5_resized.jpeg",
+            "cars/mercedes/classec220-164000/main6_resized.jpeg",
+            "cars/mercedes/classec220-164000/main7_resized.jpeg",
+            "cars/mercedes/classec220-164000/main8_resized.jpeg",
+            "cars/mercedes/classec220-164000/main9_resized.jpeg",
+            "cars/mercedes/classec220-164000/main10_resized.jpeg",
+            "cars/mercedes/classec220-164000/main11_resized.jpeg",
+            "cars/mercedes/classec220-164000/main12_resized.jpeg"
+          ],
+          "venduto": false,
+          "aggiunto": false
+        }
+      ]
+    },
+    {
+      "id": "honda",
+      "name": "Honda",
+      "logo": "images/honda.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "hyundai",
+      "name": "Hyundai",
+      "logo": "images/hyundai.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "jeep",
+      "name": "Jeep",
+      "logo": "images/jeep.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "kia",
+      "name": "Kia",
+      "logo": "images/kia.png",
+      "cars": [
+       
+      ]
+    },
+    {
+      "id": "land-rover",
+      "name": "Land Rover",
+      "logo": "images/land-rover.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "maserati",
+      "name": "Maserati",
+      "logo": "images/maserati.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "mazda",
+      "name": "Mazda",
+      "logo": "images/mazda.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "mini",
+      "name": "Mini",
+      "logo": "images/mini.png",
+      "cars": [
+        {
+          "id": "mini-one112391025",
+          "brand": "Mini",
+          "name": "One",
+          "chilometraggio": 239000,
+          "condizioni": "Usato Nuovo",
+          "anno": 2011,
+          "carburante": "Benzina",
+          "cilindrata": 1600,
+          "cavalli": 75,
+          "kw": 55,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5",
+          "posti": 4,
+          "prezzo": 3900,
+          "neopatentati": "SI",
+          "image": "cars/mini/one-239000/main1_resized.jpeg",
+          "gallery": [
+            "cars/mini/one-239000/main1_resized.jpeg",
+            "cars/mini/one-239000/main2_resized.jpeg",
+            "cars/mini/one-239000/main3_resized.jpeg",
+            "cars/mini/one-239000/main4_resized.jpeg",
+            "cars/mini/one-239000/main5_resized.jpeg",
+            "cars/mini/one-239000/main6_resized.jpeg",
+            "cars/mini/one-239000/main7_resized.jpeg",
+            "cars/mini/one-239000/main8_resized.jpeg",
+            "cars/mini/one-239000/main9_resized.jpeg",
+            "cars/mini/one-239000/main10_resized.jpeg",
+            "cars/mini/one-239000/main11_resized.jpeg",
+            "cars/mini/one-239000/main12_resized.jpeg",
+            "cars/mini/one-239000/main13_resized.jpeg",
+            "cars/mini/one-239000/main14_resized.jpeg"
+          ],
+          "venduto": false,
+          "aggiunto": false
+        }
+      ]
+    },
+    {
+      "id": "mitsubishi",
+      "name": "Mitsubishi",
+      "logo": "images/mitsubishi.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "nissan",
+      "name": "Nissan",
+      "logo": "images/nissan.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "opel",
+      "name": "Opel",
+      "logo": "images/opel.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "peugeot",
+      "name": "Peugeot",
+      "logo": "images/peugeot.png",
+      "cars": [
+       
+      ]
+    },
+    {
+      "id": "porsche",
+      "name": "Porsche",
+      "logo": "images/porsche.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "renault",
+      "name": "Renault",
+      "logo": "images/renault.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "seat",
+      "name": "Seat",
+      "logo": "images/seat.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "skoda",
+      "name": "Škoda",
+      "logo": "images/skoda.png",
+      "cars": [
+
+      ]
+    },
+    {
+      "id": "smart",
+      "name": "Smart",
+      "logo": "images/smart.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "tesla",
+      "name": "Tesla",
+      "logo": "images/tesla.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "toyota",
+      "name": "Toyota",
+      "logo": "images/toyota.png",
+      "cars": [
+        {
+          "id": "toyota-yrs221501025",
+          "brand": "Toyota",
+          "name": "Yaris",
+          "chilometraggio": 15000,
+          "condizioni": "Eccellente",
+          "anno": 2022,
+          "carburante": "Ibrida",
+          "cilindrata": 1490,
+          "cavalli": 116,
+          "kw": 85,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 22500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": true
+        },
+        {
+          "id": "toyota-crl212801025",
+          "brand": "Toyota",
+          "name": "Corolla",
+          "chilometraggio": 28000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Ibrida",
+          "cilindrata": 1798,
+          "cavalli": 122,
+          "kw": 90,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 26500,
+          "neopatentati": "SI",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
+        },
+        {
+          "id": "toyota-rav221201025",
+          "brand": "Toyota",
+          "name": "RAV4",
+          "chilometraggio": 12000,
+          "condizioni": "Eccellente",
+          "anno": 2022,
+          "carburante": "Ibrida",
+          "cilindrata": 2487,
+          "cavalli": 218,
+          "kw": 160,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 38900,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_3.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
+        },
+        {
+          "id": "toyota-cmr212201025",
+          "brand": "Toyota",
+          "name": "Camry",
+          "chilometraggio": 22000,
+          "condizioni": "Ottimo",
+          "anno": 2021,
+          "carburante": "Ibrida",
+          "cilindrata": 2487,
+          "cavalli": 218,
+          "kw": 160,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 5,
+          "prezzo": 32500,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_1.jpg",
+          "gallery": [
+            "cars/place_holders/place_holder_1.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_4.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
+        },
+        {
+          "id": "toyota-hgl203501025",
+          "brand": "Toyota",
+          "name": "Highlander",
+          "chilometraggio": 35000,
+          "condizioni": "Buono",
+          "anno": 2020,
+          "carburante": "Benzina",
+          "cilindrata": 3456,
+          "cavalli": 295,
+          "kw": 217,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6",
+          "posti": 8,
+          "prezzo": 45000,
+          "neopatentati": "NO",
+          "image": "cars/place_holders/place_holder_2.jpg",
+          "gallery": [
+            "cars/place_holders/place_holder_2.jpg",
+            "cars/place_holders/place_holder_6.jpg",
+            "cars/place_holders/place_holder_5.jpg"
+          ],
+          "venduto": false,
+          "aggiunto": false
+        }
+      ]
+    },
+    {
+      "id": "volvo",
+      "name": "Volvo",
+      "logo": "images/volvo.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "jaguar",
+      "name": "Jaguar",
+      "logo": "images/jaguar.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "lancia",
+      "name": "Lancia",
+      "logo": "images/lancia.png",
+      "cars": [
+        
+      ]
+    },
+    {
+      "id": "volkswagen",
+      "name": "Volkswagen",
+      "logo": "images/volkswagen.png",
+      "cars": [
+        
+      ]
+    }
+  ]
+}
