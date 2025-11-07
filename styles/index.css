@@ -27,12 +27,31 @@ body, html {
 }
 
 /* Stile e animazione del LOGO */
-#logo-loader {
-    width: 600px; /* *** AGGIORNATO: Dimensione del logo aumentata *** */
+#logo-container {
+    position: relative;
+    width: 600px;
     height: auto;
-    margin-bottom: 30px; /* Spazio tra logo e spinner leggermente aumentato */
+    margin-bottom: 30px; /* Spazio tra logo e spinner */
+}
+
+#logo-p1 {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 1; /* Livello inferiore */
+}
+
+#logo-p2 {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Livello superiore */
     
-    /* Applica l'animazione 'pulse' */
+    /* Applica l'animazione 'pulse' solo a p2 */
     animation: pulse 2s infinite ease-in-out;
 }
 
@@ -81,7 +100,7 @@ body, html {
 
 /* Tablet e dispositivi di medie dimensioni */
 @media (max-width: 768px) {
-    #logo-loader {
+    #logo-container {
         width: 450px; /* Logo più piccolo su tablet */
         margin-bottom: 25px;
     }
@@ -94,7 +113,7 @@ body, html {
 
 /* Smartphone e dispositivi mobili */
 @media (max-width: 480px) {
-    #logo-loader {
+    #logo-container {
         width: 280px; /* Logo ancora più piccolo su mobile */
         margin-bottom: 20px;
     }
@@ -108,7 +127,7 @@ body, html {
 
 /* Dispositivi molto piccoli */
 @media (max-width: 360px) {
-    #logo-loader {
+    #logo-container {
         width: 220px; /* Logo ridotto per schermi molto piccoli */
         margin-bottom: 15px;
     }
