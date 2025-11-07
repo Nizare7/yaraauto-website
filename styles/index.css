@@ -1,0 +1,121 @@
+/* Impostazioni globali */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenitore principale del loader */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2c2c2c; /* Sfondo scuro (puoi cambiarlo) */
+    
+    /* Usa Flexbox per centrare tutto (verticalmente e orizzontalmente) */
+    display: flex;
+    flex-direction: column; /* Impila gli elementi verticalmente */
+    justify-content: center;
+    align-items: center;
+    
+    /* Nasconde lo sfarfallio se il reindirizzamento è veloce */
+    overflow: hidden;
+}
+
+/* Stile e animazione del LOGO */
+#logo-loader {
+    width: 600px; /* *** AGGIORNATO: Dimensione del logo aumentata *** */
+    height: auto;
+    margin-bottom: 30px; /* Spazio tra logo e spinner leggermente aumentato */
+    
+    /* Applica l'animazione 'pulse' */
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Stile e animazione dello SPINNER (caricamento) */
+.spinner {
+    width: 50px; /* Leggermente più grande per adattarsi al logo */
+    height: 50px; /* Leggermente più grande per adattarsi al logo */
+    border: 5px solid rgba(255, 255, 255, 0.3); /* Bordo grigio chiaro */
+    border-top-color: #dd4027; /* *** AGGIORNATO: Colore della barra di caricamento *** */
+    border-radius: 50%; /* Lo rende un cerchio */
+    
+    /* Applica l'animazione 'spin' */
+    animation: spin 1s linear infinite;
+}
+
+
+/* --- DEFINIZIONE DELLE ANIMAZIONI --- */
+
+/* 1. Animazione del LOGO (Pulse) */
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Scala normale */
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.08); /* Leggero ingrandimento, leggermente aumentato */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1); /* Ritorna alla scala normale */
+        opacity: 0.9;
+    }
+}
+
+/* 2. Animazione di CARICAMENTO (Spin) */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg); /* Inizio rotazione */
+    }
+    100% {
+        transform: rotate(360deg); /* Fine rotazione (un giro completo) */
+    }
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* Tablet e dispositivi di medie dimensioni */
+@media (max-width: 768px) {
+    #logo-loader {
+        width: 450px; /* Logo più piccolo su tablet */
+        margin-bottom: 25px;
+    }
+    
+    .spinner {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Smartphone e dispositivi mobili */
+@media (max-width: 480px) {
+    #logo-loader {
+        width: 280px; /* Logo ancora più piccolo su mobile */
+        margin-bottom: 20px;
+    }
+    
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border-width: 4px;
+    }
+}
+
+/* Dispositivi molto piccoli */
+@media (max-width: 360px) {
+    #logo-loader {
+        width: 220px; /* Logo ridotto per schermi molto piccoli */
+        margin-bottom: 15px;
+    }
+    
+    .spinner {
+        width: 35px;
+        height: 35px;
+        border-width: 3px;
+    }
+}

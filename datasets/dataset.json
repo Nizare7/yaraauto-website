@@ -3,7 +3,7 @@
     {
       "id": "abarth",
       "name": "Abarth",
-      "logo": "images/abarth.png",
+      "logo": "images/brand_logo/abarth.png",
       "cars": [
 
       ]
@@ -11,7 +11,7 @@
     {
       "id": "alfa-romeo",
       "name": "Alfa Romeo",
-      "logo": "images/alfa-romeo.png",
+      "logo": "images/brand_logo/alfa-romeo.png",
       "cars": [
         
       ]
@@ -19,7 +19,7 @@
     {
       "id": "audi",
       "name": "Audi",
-      "logo": "images/audi.png",
+      "logo": "images/brand_logo/audi.png",
       "cars": [
        
       ]
@@ -27,7 +27,7 @@
     {
       "id": "bmw",
       "name": "BMW",
-      "logo": "images/bmw.png",
+      "logo": "images/brand_logo/bmw.png",
       "cars": [
         
       ]
@@ -35,7 +35,7 @@
     {
       "id": "citroen",
       "name": "Citroën",
-      "logo": "images/citroen.png",
+      "logo": "images/brand_logo/citroen.png",
       "cars": [
         
       ]
@@ -43,7 +43,7 @@
     {
       "id": "dacia",
       "name": "Dacia",
-      "logo": "images/dacia.png",
+      "logo": "images/brand_logo/dacia.png",
       "cars": [
         
       ]
@@ -51,7 +51,7 @@
     {
       "id": "fiat",
       "name": "Fiat",
-      "logo": "images/fiat.png",
+      "logo": "images/brand_logo/fiat.png",
       "cars": [
         {
           "id": "fiat-pnd203501025",
@@ -114,7 +114,7 @@
     {
       "id": "ford",
       "name": "Ford",
-      "logo": "images/ford.png",
+      "logo": "images/brand_logo/ford.png",
       "cars": [
         
       ]
@@ -122,7 +122,7 @@
     {
       "id": "mercedes",
       "name": "Mercedes",
-      "logo": "images/mercedes.png",
+      "logo": "images/brand_logo/mercedes.png",
       "cars": [
         {
           "id": "mercedes-cls101641025",
@@ -163,7 +163,7 @@
     {
       "id": "honda",
       "name": "Honda",
-      "logo": "images/honda.png",
+      "logo": "images/brand_logo/honda.png",
       "cars": [
         
       ]
@@ -171,7 +171,7 @@
     {
       "id": "hyundai",
       "name": "Hyundai",
-      "logo": "images/hyundai.png",
+      "logo": "images/brand_logo/hyundai.png",
       "cars": [
         
       ]
@@ -179,7 +179,7 @@
     {
       "id": "jeep",
       "name": "Jeep",
-      "logo": "images/jeep.png",
+      "logo": "images/brand_logo/jeep.png",
       "cars": [
         
       ]
@@ -187,7 +187,7 @@
     {
       "id": "kia",
       "name": "Kia",
-      "logo": "images/kia.png",
+      "logo": "images/brand_logo/kia.png",
       "cars": [
        
       ]
@@ -195,7 +195,7 @@
     {
       "id": "land-rover",
       "name": "Land Rover",
-      "logo": "images/land-rover.png",
+      "logo": "images/brand_logo/land-rover.png",
       "cars": [
         
       ]
@@ -203,7 +203,7 @@
     {
       "id": "maserati",
       "name": "Maserati",
-      "logo": "images/maserati.png",
+      "logo": "images/brand_logo/maserati.png",
       "cars": [
         
       ]
@@ -211,7 +211,7 @@
     {
       "id": "mazda",
       "name": "Mazda",
-      "logo": "images/mazda.png",
+      "logo": "images/brand_logo/mazda.png",
       "cars": [
         
       ]
@@ -219,7 +219,7 @@
     {
       "id": "mini",
       "name": "Mini",
-      "logo": "images/mini.png",
+      "logo": "images/brand_logo/mini.png",
       "cars": [
         {
           "id": "mini-one112391025",
@@ -262,7 +262,7 @@
     {
       "id": "mitsubishi",
       "name": "Mitsubishi",
-      "logo": "images/mitsubishi.png",
+      "logo": "images/brand_logo/mitsubishi.png",
       "cars": [
         
       ]
@@ -270,7 +270,7 @@
     {
       "id": "nissan",
       "name": "Nissan",
-      "logo": "images/nissan.png",
+      "logo": "images/brand_logo/nissan.png",
       "cars": [
         
       ]
@@ -278,7 +278,7 @@
     {
       "id": "opel",
       "name": "Opel",
-      "logo": "images/opel.png",
+      "logo": "images/brand_logo/opel.png",
       "cars": [
         
       ]
@@ -286,7 +286,7 @@
     {
       "id": "peugeot",
       "name": "Peugeot",
-      "logo": "images/peugeot.png",
+      "logo": "images/brand_logo/peugeot.png",
       "cars": [
        
       ]
@@ -294,7 +294,7 @@
     {
       "id": "porsche",
       "name": "Porsche",
-      "logo": "images/porsche.png",
+      "logo": "images/brand_logo/porsche.png",
       "cars": [
         
       ]
@@ -302,7 +302,7 @@
     {
       "id": "renault",
       "name": "Renault",
-      "logo": "images/renault.png",
+      "logo": "images/brand_logo/renault.png",
       "cars": [
         
       ]
@@ -310,7 +310,7 @@
     {
       "id": "seat",
       "name": "Seat",
-      "logo": "images/seat.png",
+      "logo": "images/brand_logo/seat.png",
       "cars": [
         
       ]
@@ -318,7 +318,7 @@
     {
       "id": "skoda",
       "name": "Škoda",
-      "logo": "images/skoda.png",
+      "logo": "images/brand_logo/skoda.png",
       "cars": [
 
       ]
@@ -326,7 +326,7 @@
     {
       "id": "smart",
       "name": "Smart",
-      "logo": "images/smart.png",
+      "logo": "images/brand_logo/smart.png",
       "cars": [
         
       ]
@@ -334,7 +334,7 @@
     {
       "id": "tesla",
       "name": "Tesla",
-      "logo": "images/tesla.png",
+      "logo": "images/brand_logo/tesla.png",
       "cars": [
         
       ]
@@ -342,7 +342,7 @@
     {
       "id": "toyota",
       "name": "Toyota",
-      "logo": "images/toyota.png",
+      "logo": "images/brand_logo/toyota.png",
       "cars": [
         {
           "id": "toyota-yrs221501025",
@@ -474,7 +474,7 @@
     {
       "id": "volvo",
       "name": "Volvo",
-      "logo": "images/volvo.png",
+      "logo": "images/brand_logo/volvo.png",
       "cars": [
         
       ]
@@ -482,7 +482,7 @@
     {
       "id": "jaguar",
       "name": "Jaguar",
-      "logo": "images/jaguar.png",
+      "logo": "images/brand_logo/jaguar.png",
       "cars": [
         
       ]
@@ -490,7 +490,7 @@
     {
       "id": "lancia",
       "name": "Lancia",
-      "logo": "images/lancia.png",
+      "logo": "images/brand_logo/lancia.png",
       "cars": [
         
       ]
@@ -498,7 +498,7 @@
     {
       "id": "volkswagen",
       "name": "Volkswagen",
-      "logo": "images/volkswagen.png",
+      "logo": "images/brand_logo/volkswagen.png",
       "cars": [
         
       ]

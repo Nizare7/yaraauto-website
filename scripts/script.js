@@ -74,7 +74,7 @@ class CarDealer {
         console.log('📡 Tentativo di caricamento da: cars-data.json');
         
         try {
-            const response = await fetch('cars-data.json');
+            const response = await fetch('../datasets/cars-data.json');
             console.log('📊 Response status:', response.status);
             console.log('📊 Response ok:', response.ok);
             console.log('📊 Response headers:', Object.fromEntries(response.headers.entries()));
