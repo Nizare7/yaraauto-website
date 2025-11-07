@@ -922,6 +922,9 @@
     .recently-added-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        max-width: 350px;
+        margin: 0 auto;
+        justify-content: center;
     }
     
     .recently-added-tag {
@@ -1061,6 +1064,9 @@
 
     .cars-grid {
         grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: 0 auto;
+        justify-content: center;
     }
 }
 
@@ -1075,6 +1081,17 @@
     }
     
     .brands-filter-button {
+        display: none !important;
+    }
+    
+    /* Hide mobile fullscreen overlay and its controls on desktop */
+    .mobile-fullscreen-overlay {
+        display: none !important;
+    }
+    
+    .mobile-fullscreen-close,
+    .mobile-fullscreen-nav,
+    .mobile-fullscreen-controls {
         display: none !important;
     }
 }
