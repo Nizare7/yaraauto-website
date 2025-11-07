@@ -536,30 +536,53 @@ class CarDealer {
         
         // Touch/swipe support
         let touchStartX = 0;
+        let touchStartY = 0;
         let touchEndX = 0;
+        let touchEndY = 0;
+        let isSwiping = false;
         
         track.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
-        });
+            touchStartY = e.changedTouches[0].screenY;
+            isSwiping = false;
+        }, { passive: true });
+        
+        track.addEventListener('touchmove', (e) => {
+            if (!isSwiping) {
+                const touchCurrentX = e.changedTouches[0].screenX;
+                const touchCurrentY = e.changedTouches[0].screenY;
+                const deltaX = Math.abs(touchCurrentX - touchStartX);
+                const deltaY = Math.abs(touchCurrentY - touchStartY);
+                
+                // Se lo swipe è prevalentemente orizzontale, blocca lo scroll verticale
+                if (deltaX > deltaY && deltaX > 10) {
+                    isSwiping = true;
+                    e.preventDefault();
+                }
+            } else {
+                // Se abbiamo già determinato che è uno swipe orizzontale, continua a bloccare
+                e.preventDefault();
+            }
+        }, { passive: false });
         
         track.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
-            const touchDiff = touchStartX - touchEndX;
+            touchEndY = e.changedTouches[0].screenY;
+            const touchDiffX = touchStartX - touchEndX;
+            const touchDiffY = touchStartY - touchEndY;
             const minSwipeDistance = 50;
             
-            if (Math.abs(touchDiff) > minSwipeDistance) {
-                if (touchDiff > 0) {
+            // Processa lo swipe solo se è prevalentemente orizzontale
+            if (Math.abs(touchDiffX) > minSwipeDistance && Math.abs(touchDiffX) > Math.abs(touchDiffY)) {
+                if (touchDiffX > 0) {
                     goToNext(); // Swipe left - next slide
                 } else {
                     goToPrev(); // Swipe right - previous slide
                 }
             }
-        });
-        
-        // Prevent scrolling when swiping on carousel
-        track.addEventListener('touchmove', (e) => {
-            e.preventDefault();
-        }, { passive: false });
+            
+            isSwiping = false;
+        }, { passive: true });
         
         // Auto-play (optional - uncomment if desired)
         // setInterval(goToNext, 5000);
