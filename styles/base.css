@@ -1,0 +1,113 @@
+/* ========================================== */
+/* BASE STYLES - Reset, Variables, Globals */
+/* ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #0D0D0D;
+    background: linear-gradient(0deg, #CCCCCC 0%, #C0C0C0C0 100%);
+    min-height: 100vh;
+    /* Remove sticky hover/active states on all touch devices */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Global fix for touch devices - remove hover states */
+@media (hover: none) {
+    * {
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+    }
+}
+
+/* Smooth scroll animations */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Main content */
+.main-content {
+    margin-top: 20px;
+    padding: 40px 20px;
+}
+
+/* Hero section */
+.hero {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: #0D0D0D;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: black;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.hero p .highlight {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* Homepage specific styles */
+.homepage-hero {
+    background: #ffffff;
+    color: #000000;
+    padding: 80px 20px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    border: 2px solid #e0e0e0;
+}
+
+.homepage-hero h1 {
+    color: #000000;
+    font-size: 3.5rem;
+    text-shadow: none;
+    position: relative;
+    z-index: 1;
+}
+
+.homepage-hero .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.homepage-hero p {
+    color: #000000;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.homepage-hero .highlight {
+    color: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    font-weight: 600;
+}

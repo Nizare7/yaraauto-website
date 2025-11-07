@@ -1,0 +1,1232 @@
+/* ========================================== */
+/* MOBILE & RESPONSIVE STYLES */
+/* ========================================== */
+
+/* Mobile layout - logo centered on top, triangle social layout */
+@media (max-width: 768px) {
+    .header-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .logo {
+        position: relative;
+        left: auto;
+        transform: none;
+        margin: 0;
+        order: 1; /* Logo in alto per primo */
+        flex: 0 0 auto;
+        width: 60px;
+        height: 60px;
+        background: #0D0D0D;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .logo:hover {
+        background: #0D0D0D;
+        transform: none;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .logo:active {
+        background: #0D0D0D;
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+    }
+    
+    /* Contact info sotto il logo */
+    .contact-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 350px;
+        gap: 20px;
+        order: 2;
+    }
+    
+    /* Telefono e email a sinistra */
+    .contact-column:first-child {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+    }
+    
+    /* Social links a destra con layout triangolare iPhone */
+    .contact-column.social-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        flex: 1;
+        min-height: 60px;
+    }
+    
+    /* Layout triangolare come fotocamere iPhone */
+    .social-column .social-links:first-child {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 8px;
+    }
+    
+    .social-column .social-links:last-child {
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Stili per telefono e email mobile */
+    .phone, .email {
+        font-size: 0.9rem;
+        gap: 6px;
+    }
+    
+    .phone i, .email i {
+        font-size: 1rem;
+    }
+    
+    /* Social links con effetto iPhone */
+    .social-links a {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.2s ease;
+    }
+    
+    .social-links a:hover {
+        background: rgba(255,255,255,0.25);
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Disable hover on touch devices completely */
+    @media (hover: none) {
+        .logo:hover {
+            background: #0D0D0D;
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .logo:active {
+            background: #0D0D0D;
+            transform: scale(1.125);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+        }
+        
+        .social-links a:active {
+            background: rgba(255,255,255,0.3);
+            transform: scale(0.95);
+        }
+    }
+
+    /* Responsive adjustments for mobile brands */
+    .filters-and-brands-section {
+        margin: 1rem;
+        border-radius: 15px;
+    }
+    
+    .brands-nav {
+        padding: 20px 20px 15px 20px;
+        position: relative;
+    }
+    
+    .filters-section {
+        padding: 15px 20px 25px 20px;
+    }
+    
+    .brands-nav h2 {
+        font-size: 1.5rem;
+        padding: 0;
+    }
+    
+    .brands-scroll-track {
+        padding: 15px 20px;
+        gap: 15px;
+    }
+    
+    .scroll-fade-left,
+    .scroll-fade-right {
+        width: 20px;
+    }
+    
+    .scroll-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    
+    .scroll-arrow-left {
+        left: 5px;
+    }
+    
+    .scroll-arrow-right {
+        right: 5px;
+    }
+    
+    .brand-item {
+        min-width: 75px;
+        padding: 12px 8px;
+    }
+    
+    .brand-item img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .brand-item span {
+        font-size: 0.8rem;
+    }
+
+    /* Mobile filters - new floating circular button system */
+    /* Hide desktop filters section completely on mobile */
+    .filters-section {
+        display: none;
+    }
+    
+    /* Mobile floating filter button - red circle in bottom left (same size as back-to-top) */
+    .mobile-filter-button {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .mobile-filter-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(220, 38, 38, 0.5);
+    }
+    
+    /* Square style when popup is open */
+    .mobile-filter-button.active {
+        border-radius: 15px;
+        background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+        box-shadow: 0 4px 20px rgba(107, 114, 128, 0.4);
+    }
+    
+    .mobile-filter-button.active:hover {
+        box-shadow: 0 6px 25px rgba(107, 114, 128, 0.5);
+    }
+    
+    /* Filter popup overlay */
+    .mobile-filter-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1001;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-filter-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Filter popup container */
+    .mobile-filter-popup {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        border-radius: 20px 20px 0 0;
+        z-index: 1001;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        max-height: calc(80vh - 125px); /* Account for button row space with separator */
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 125px; /* Space for button row with separator */
+    }
+    
+    .mobile-filter-popup.active {
+        transform: translateY(0);
+    }
+    
+    /* Popup footer with action buttons aligned with X button - FIXED AT BOTTOM */
+    .mobile-filter-header {
+        position: fixed;
+        bottom: 30px; /* Same as X button */
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 30px 0; /* Top padding for separator line */
+        background: white;
+        border-top: 2px solid #e5e7eb; /* Separator line */
+        z-index: 1002;
+        height: 65px; /* Increased height to accommodate separator */
+    }
+    
+    .mobile-filter-close {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 50px;
+        height: 50px;
+        border: none;
+        background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);  /* Grigio scuro come richiesto */
+        color: white;
+        border-radius: 15px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
+        z-index: 1003;
+    }
+    
+    .mobile-filter-close:hover {
+        background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(107, 114, 128, 0.4);
+    }
+    
+    .mobile-filter-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        height: 50px; /* Same height as X button for perfect alignment */
+    }
+    
+    /* Spacer to push actions to the right while keeping X button in place */
+    .mobile-filter-header::before {
+        content: '';
+        width: 50px; /* Same width as X button to maintain space */
+    }
+    
+    .mobile-filter-apply,
+    .mobile-filter-remove {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 20px;  /* Lati molto arrotondati */
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 14px;
+        min-width: 85px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    .mobile-filter-apply {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);  /* Rosso come desktop */
+        color: white;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    }
+    
+    .mobile-filter-apply:hover {
+        background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    }
+    
+    .mobile-filter-remove {
+        background: linear-gradient(135deg, #4b5563 0%, #374151 100%);  /* Grigio scuro come desktop */
+        color: white;
+        box-shadow: 0 4px 15px rgba(75, 85, 99, 0.3);
+    }
+    
+    .mobile-filter-remove:hover {
+        background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(75, 85, 99, 0.4);
+    }
+    
+    /* Scrollable filters content */
+    .mobile-filter-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+    }
+    
+    /* Style filters inside popup */
+    .mobile-filter-content .filters-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .mobile-filter-content .main-filters,
+    .mobile-filter-content .advanced-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* Show all advanced filters in mobile popup */
+    .mobile-filter-content .advanced-filters {
+        display: block;
+        opacity: 1;
+        max-height: none;
+    }
+    
+    .mobile-filter-content .expand-toggle {
+        display: none;
+    }
+    
+    /* Hide the duplicate action buttons from desktop filters */
+    .mobile-filter-content .filters-actions {
+        display: none !important;
+    }
+    
+    .mobile-filter-content .filter-group {
+        margin-bottom: 0;
+    }
+    
+    .mobile-filter-content .filter-group label {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    .mobile-filter-content select,
+    .mobile-filter-content input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    /* Brands filter button - positioned in brands box (mobile only) */
+    .brands-filter-button {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 100;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 15px rgba(220, 38, 38, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .brands-filter-button:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 5px 20px rgba(220, 38, 38, 0.5);
+    }
+    
+    /* Hide brands filter button when scrolled */
+    .brands-filter-button.hidden {
+        opacity: 0;
+        transform: scale(0.8);
+        pointer-events: none;
+    }
+    
+    /* Show/hide main mobile filter button based on scroll */
+    .mobile-filter-button.hidden {
+        opacity: 0;
+        transform: translateY(100px) scale(0.8);
+        pointer-events: none;
+    }
+    
+    /* Show/hide back-to-top button with same animation as filter button */
+    .back-to-top.hidden {
+        opacity: 0;
+        transform: translateY(100px) scale(0.8);
+        pointer-events: none;
+    }
+
+    /* Responsive lightbox */
+    .lightbox-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .lightbox-prev {
+        left: 10px;
+    }
+    
+    .lightbox-next {
+        right: 10px;
+    }
+    
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 85%;
+    }
+    
+    .lightbox-title {
+        font-size: 1rem;
+        max-width: 300px;
+    }
+
+    /* Responsive for car detail modal */
+    .car-detail-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: 55vh 1fr;
+        width: 98vw;
+        height: 95vh;
+        padding: 0;
+        gap: 15px;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    .car-detail-images {
+        padding: 20px;
+        height: 55vh;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .car-detail-carousel {
+        max-height: 450px;
+        max-width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        background: transparent;
+    }
+    
+    .car-detail-slide {
+        border-radius: 15px;
+        background: transparent;
+    }
+    
+    .car-detail-slide img {
+        border-radius: 15px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+    
+    .car-detail-slide img:active {
+        transform: scale(0.98);
+    }
+    
+    .car-detail-info {
+        padding: 20px;
+        height: auto;
+        max-height: 40vh;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
+        background: white;
+        margin: 0 10px;
+    }
+    
+    .car-detail-nav {
+        background: rgba(0, 0, 0, 0.8);
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(8px);
+    }
+    
+    .car-detail-nav:hover {
+        background: rgba(217, 56, 41, 0.9);
+        border-color: rgba(217, 56, 41, 0.8);
+    }
+    
+    .car-detail-indicators {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px 15px;
+        border-radius: 20px;
+        backdrop-filter: blur(8px);
+    }
+    
+    .car-detail-close {
+        background: rgba(0, 0, 0, 0.8);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        width: 45px;
+        height: 45px;
+        top: 20px;
+        right: 20px;
+    }
+    
+    .car-detail-close:hover {
+        background: rgba(217, 56, 41, 0.8);
+        border-color: rgba(217, 56, 41, 0.8);
+    }
+    
+    /* Fullscreen image overlay for mobile */
+    .mobile-fullscreen-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+    
+    .mobile-fullscreen-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Hide car detail modal elements when fullscreen is active */
+    .mobile-fullscreen-overlay.active ~ .car-detail-content .car-detail-close,
+    .mobile-fullscreen-overlay.active ~ .car-detail-content .car-detail-nav,
+    .mobile-fullscreen-overlay.active ~ .car-detail-content .car-detail-indicators {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+    }
+    
+    /* Alternative approach - hide elements when body has fullscreen class */
+    body.mobile-fullscreen-active .car-detail-close,
+    body.mobile-fullscreen-active .car-detail-nav,
+    body.mobile-fullscreen-active .car-detail-indicators {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+    }
+    
+    .mobile-fullscreen-image {
+        max-width: 95%;
+        max-height: 80%;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        flex: 1;
+        display: block;
+    }
+    
+    .mobile-fullscreen-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        z-index: 10001;
+    }
+    
+    .mobile-fullscreen-close:hover {
+        background: rgba(217, 56, 41, 0.9);
+        border-color: rgba(217, 56, 41, 0.8);
+        transform: scale(1.1);
+    }
+    
+    .mobile-fullscreen-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        width: 100%;
+        max-width: 400px;
+        z-index: 10001;
+        position: relative;
+    }
+    
+    .mobile-fullscreen-nav {
+        background: rgba(0, 0, 0, 0.5);
+        color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(8px);
+    }
+    
+    .mobile-fullscreen-nav:hover {
+        background: rgba(217, 56, 41, 0.6);
+        color: rgba(255, 255, 255, 0.9);
+        border-color: rgba(217, 56, 41, 0.5);
+    }
+    
+    .mobile-fullscreen-indicators {
+        display: flex;
+        gap: 8px;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 8px 15px;
+        border-radius: 20px;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    
+    .mobile-fullscreen-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .mobile-fullscreen-dot.active {
+        background: rgba(217, 56, 41, 0.8);
+        border-color: rgba(217, 56, 41, 0.6);
+        transform: scale(1.2);
+    }
+    
+    .mobile-fullscreen-dot:hover {
+        background: rgba(217, 56, 41, 0.6);
+        border-color: rgba(217, 56, 41, 0.4);
+    }
+    
+    .mobile-fullscreen-info {
+        margin-top: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        color: rgba(255, 255, 255, 0.8);
+        padding: 8px 15px;
+        border-radius: 15px;
+        font-size: 0.85rem;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        text-align: center;
+        z-index: 10001;
+        position: relative;
+    }
+    
+    .car-detail-title {
+        font-size: 1.4rem;
+    }
+    
+    .car-detail-price {
+        font-size: 1.2rem;
+    }
+    
+    .car-specs-grid {
+        gap: 6px;
+        font-size: 0.8rem;
+    }
+    
+    .car-spec-item {
+        padding: 6px 10px;
+    }
+    
+    .car-spec-label,
+    .car-spec-value {
+        font-size: 0.8rem;
+    }
+    
+    .contact-info-direct {
+        gap: 6px;
+    }
+    
+    .contact-item {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        margin-bottom: 4px;
+    }
+    
+    .social-contact-row {
+        gap: 10px;
+        padding: 8px 0;
+    }
+    
+    .social-contact-item {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    /* Mantieni scrollbar arrotondata anche su tablet */
+    .car-detail-info::-webkit-scrollbar {
+        width: 7px;
+    }
+    
+    .car-detail-info::-webkit-scrollbar-thumb {
+        background: rgba(217, 56, 41, 0.7);
+        border-radius: 10px;
+    }
+
+    /* Mobile notifications - optimized for touch devices */
+    .notification {
+        top: 90px;
+        left: 15px;
+        right: 15px;
+        transform: translateY(-120px);
+        font-size: 1rem;
+        padding: 18px 24px;
+        border-radius: 16px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(20px);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        text-align: center;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+    
+    .notification.show {
+        transform: translateY(0);
+    }
+    
+    .notification i {
+        font-size: 1.3rem;
+    }
+    
+    .notification.success {
+        background: linear-gradient(135deg, rgba(5, 150, 105, 0.95) 0%, rgba(4, 120, 87, 0.95) 100%);
+        box-shadow: 0 12px 40px rgba(5, 150, 105, 0.4);
+    }
+    
+    .notification.info {
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.95) 0%, rgba(185, 28, 28, 0.95) 100%);
+        box-shadow: 0 12px 40px rgba(220, 38, 38, 0.4);
+    }
+
+    /* Mobile version dealership gallery */
+    .dealership-gallery {
+        display: block !important;
+        height: 280px; /* Smaller height for mobile */
+        margin-top: 158px; /* Alzato leggermente */
+        background: #0D0D0D; /* Ensure background is visible on mobile */
+    }
+
+    .dealership-track {
+        padding: 30px 0;
+        gap: 15px; /* Smaller gap on mobile */
+        transition: transform 0.8s ease; /* Slower transition on mobile */
+    }
+
+    /* Mobile slide sizes */
+    .dealership-slide {
+        width: 280px;
+        height: 157px; /* 16:9 ratio for 280px width */
+    }
+
+    .dealership-slide.center {
+        width: 320px;
+        height: 180px; /* 16:9 ratio for 320px width */
+        transform: scale(1.05); /* Less scaling on mobile */
+    }
+
+    /* Slower transitions for mobile slides */
+    .dealership-slide {
+        transition: all 0.6s ease; /* Slower transitions on mobile */
+    }
+
+    /* Mobile arrows - larger and more touch-friendly */
+    .dealership-arrow {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        top: auto;
+        bottom: 15px; /* Stesso livello degli indicatori */
+        transform: none;
+    }
+
+    .dealership-arrow-left {
+        left: 10px;
+    }
+
+    .dealership-arrow-right {
+        right: 10px;
+    }
+
+    /* Mobile indicators - larger for touch */
+    .dealership-dot {
+        width: 16px;
+        height: 16px;
+        border-width: 3px;
+    }
+
+    .dealership-indicators {
+        bottom: 15px;
+        gap: 12px;
+    }
+
+    /* Responsive per mobile - recently added */
+    .recently-added-section {
+        margin: 40px 20px 60px 20px;
+        padding: 40px 20px;
+        border-radius: 15px;
+        background: linear-gradient(135deg, #2A2A2A, #1F1F1F);
+    }
+    
+    .recently-added-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .recently-added-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .recently-added-tag {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+    
+    .recently-added-section .car-card .car-info {
+        padding: 20px;
+    }
+    
+    .recently-added-section .car-card .car-title {
+        font-size: 1.2rem;
+    }
+    
+    .recently-added-section .car-card .car-price {
+        font-size: 1.3rem;
+    }
+
+    /* Carousel per mobile nella sezione novità */
+    .recently-added-carousel {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+    
+    .recently-added-carousel-track {
+        display: flex;
+        transition: transform 0.3s ease;
+        width: 100%;
+    }
+    
+    .recently-added-carousel-slide {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+    
+    .recently-added-carousel-slide .car-card {
+        margin: 0;
+        width: 100%;
+    }
+    
+    /* Navigation container with arrows and indicators */
+    .recently-added-carousel-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding: 0 10px;
+    }
+    
+    /* Navigation arrows */
+    .recently-added-carousel-arrow {
+        background: rgba(217, 56, 41, 0.9);
+        border: none;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(217, 56, 41, 0.3);
+        flex-shrink: 0;
+    }
+    
+    .recently-added-carousel-arrow:active {
+        transform: scale(0.9);
+        background: rgba(217, 56, 41, 1);
+    }
+    
+    /* Indicators container centered between arrows */
+    .recently-added-carousel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex: 1;
+        margin: 0 20px;
+    }
+    
+    .recently-added-carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .recently-added-carousel-dot.active {
+        background: #D93829;
+        border-color: #D93829;
+        box-shadow: 0 0 10px rgba(217, 56, 41, 0.5);
+    }
+
+    /* General responsive */
+    .header {
+        padding: 15px 0;
+    }
+
+    .main-content {
+        margin-top: 0px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .brands-grid {
+        gap: 12px;
+    }
+    
+    .brand-link {
+        width: 100px;
+        height: 120px;
+        padding: 12px 8px;
+    }
+    
+    .brand-logo {
+        width: 50px;
+        height: 50px;
+        padding: 6px;
+    }
+    
+    .brand-name {
+        font-size: 0.8rem;
+        max-width: 85px;
+    }
+
+    .cars-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Hide mobile toggle and mobile filter buttons on desktop */
+@media (min-width: 769px) {
+    .mobile-filters-toggle {
+        display: none;
+    }
+    
+    .mobile-filter-button {
+        display: none !important;
+    }
+    
+    .brands-filter-button {
+        display: none !important;
+    }
+}
+
+/* Extra small screens (smartphones) */
+@media (max-width: 480px) {
+    .header {
+        padding: 10px 0;
+    }
+
+    .header-container {
+        gap: 10px;
+        padding: 5px 15px;
+    }
+
+    .logo {
+        height: 45px;
+        width: 160px;
+        font-size: 1.3rem;
+    }
+
+    .logo img {
+        max-height: 150%;
+        max-width: 150%;
+    }
+
+    .phone {
+        font-size: 1rem;
+    }
+
+    .social-links a {
+        font-size: 1.1rem;
+        width: 30px;
+        height: 30px;
+    }
+
+    .main-content {
+        margin-top: 0px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .brands-grid {
+        gap: 10px;
+    }
+    
+    .brand-link {
+        width: 90px;
+        height: 110px;
+        padding: 10px 6px;
+    }
+    
+    .brand-logo {
+        width: 45px;
+        height: 45px;
+        padding: 5px;
+    }
+    
+    .brand-name {
+        font-size: 0.75rem;
+        max-width: 75px;
+    }
+
+    .car-detail-content {
+        width: 100vw;
+        height: 90vh;
+        border-radius: 0;
+        grid-template-rows: 50vh 1fr;
+        gap: 10px;
+        background: transparent;
+        box-shadow: none;
+    }
+    
+    .car-detail-images {
+        padding: 15px;
+        height: 50vh;
+        background: transparent;
+    }
+    
+    .car-detail-carousel {
+        max-height: 300px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+    
+    .car-detail-slide {
+        border-radius: 12px;
+    }
+    
+    .car-detail-slide img {
+        border-radius: 12px;
+    }
+    
+    .car-detail-info {
+        padding: 15px;
+        height: auto;
+        max-height: 40vh;
+        border-radius: 15px 15px 0 0;
+        margin: 0 5px;
+        box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Mantieni scrollbar arrotondata anche su mobile */
+    .car-detail-info::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .car-detail-info::-webkit-scrollbar-thumb {
+        background: rgba(217, 56, 41, 0.7);
+        border-radius: 10px;
+    }
+    
+    .car-detail-title {
+        font-size: 1.2rem;
+    }
+    
+    .car-detail-price {
+        font-size: 1.1rem;
+    }
+    
+    /* Homepage responsive styles */
+    .homepage-hero {
+        min-height: 60vh;
+        padding: 60px 15px;
+        margin: 10px;
+    }
+    
+    .homepage-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .homepage-hero p {
+        font-size: 1.2rem;
+    }
+    
+    .cta-button {
+        padding: 15px 25px;
+        font-size: 1.1rem;
+        gap: 10px;
+    }
+    
+    /* Home button responsive */
+    .home-button-section {
+        padding: 0 15px;
+        margin-bottom: 20px;
+        margin-top: 140px; /* Maggiore spazio per l'header mobile */
+    }
+    
+    .home-page-button {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}

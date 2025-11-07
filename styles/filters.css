@@ -1,0 +1,257 @@
+/* ========================================== */
+/* FILTERS STYLES */
+/* ========================================== */
+
+/* Unified Filters and Brands Section */
+.filters-and-brands-section {
+    background: white;
+    margin: 2rem auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.1);
+    max-width: 1200px;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+
+/* Filters Section inside unified container */
+.filters-section {
+    padding: 20px 30px 30px 30px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.filters-section h2 {
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.filters-form {
+    width: 100%;
+}
+
+.filters-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.main-filters {
+    grid-template-columns: repeat(4, 1fr) auto;
+    align-items: end;
+}
+
+@media (max-width: 1024px) {
+    .main-filters {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .expand-toggle {
+        grid-column: span 2;
+        justify-self: center;
+        margin-top: 1rem;
+    }
+}
+
+.expand-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90px; /* Stessa altezza degli altri filter-group */
+    align-items: center;
+    width: 100%; /* Larghezza fissa completa */
+}
+
+.invisible-label {
+    height: 22px; /* Stessa altezza dei label normali */
+    visibility: hidden;
+    flex-shrink: 0;
+}
+
+.expand-filters {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    white-space: nowrap;
+    width: 211.2px; /* Larghezza completa come gli input */
+    height: 52px; /* Stessa altezza degli input */
+}
+
+.expand-filters:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(75, 85, 99, 0.3);
+}
+
+.expand-filters.expanded {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    border-radius: 12px;
+}
+
+.expand-filters.expanded:hover {
+    box-shadow: 0 4px 15px rgba(75, 85, 99, 0.3);
+}
+
+.advanced-filters {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: -1.5rem;
+}
+
+.advanced-filters.show {
+    opacity: 1;
+    max-height: 500px;
+    margin-top: 0;
+}
+
+/* Fix spacing when filters are collapsed */
+.filters-form:not(.expanded) .filters-actions {
+    margin-top: 2rem;
+}
+
+/* Advanced filters rows with 5 columns for alignment */
+.advanced-row {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.empty-slot {
+    /* Empty space for grid alignment */
+    visibility: hidden;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 90px; /* Altezza fissa più grande */
+    justify-content: space-between;
+    width: 100%; /* Larghezza fissa completa */
+}
+
+.filter-group label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.9rem;
+    height: 22px; /* Altezza fissa per i label */
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap; /* Impedisce il wrap del testo */
+}
+
+.filter-group input,
+.filter-group select {
+    height: 52px; /* Altezza fissa più grande per tutti */
+    width: 100%; /* Larghezza fissa completa */
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: white;
+    box-sizing: border-box;
+    -webkit-appearance: none; /* Rimuove styling default del browser */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Aggiungi freccia personalizzata per i select */
+.filter-group select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px; /* Spazio per la freccia */
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.filters-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    /* Remove sticky hover/active states on mobile */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.apply-filters {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.reset-filters {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
+}
+
+/* Touch feedback for filter buttons */
+.filter-btn:active {
+    transform: translateY(0px) scale(0.95);
+    transition: all 0.1s ease;
+}
+
+/* Filter button hover effects only for hover-capable devices */
+@media (hover: hover) {
+    .apply-filters:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    }
+
+    .reset-filters:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(107, 114, 128, 0.4);
+    }
+}
+
+/* Mobile filters toggle button */
+.mobile-filters-toggle {
+    display: none;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -1,0 +1,37 @@
+/* ========================================== */
+/* YARAAUTO WEBSITE - MAIN CSS FILE */
+/* Imports all modular CSS files */
+/* ========================================== */
+
+/* 1. Base styles - Reset, variables, global styles */
+@import url('base.css');
+
+/* 2. Header and navigation */
+@import url('header.css');
+
+/* 3. Buttons and CTAs */
+@import url('buttons.css');
+
+/* 4. Filters system */
+@import url('filters.css');
+
+/* 5. Brands navigation */
+@import url('brands.css');
+
+/* 6. Car cards and sections */
+@import url('cars.css');
+
+/* 7. Carousels (image, dealership, recently added) */
+@import url('carousel.css');
+
+/* 8. Modals (lightbox, car detail) */
+@import url('modals.css');
+
+/* 9. Notifications system */
+@import url('notifications.css');
+
+/* 10. Recently added section */
+@import url('recently-added.css');
+
+/* 11. Mobile & responsive styles */
+@import url('mobile.css');

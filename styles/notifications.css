@@ -1,0 +1,43 @@
+/* ========================================== */
+/* NOTIFICATIONS SYSTEM */
+/* ========================================== */
+
+.notification {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    padding: 16px 24px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    box-shadow: 0 8px 32px rgba(5, 150, 105, 0.3);
+}
+
+.notification.info {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3);
+}
+
+.notification i {
+    font-size: 1.1rem;
+}

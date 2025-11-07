@@ -1,0 +1,165 @@
+/* ========================================== */
+/* CAR CARDS AND SECTIONS */
+/* ========================================== */
+
+/* Car sections */
+.cars-section {
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #0D0D0D;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #D93829, #F25252);
+    border-radius: 2px;
+}
+
+.cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.car-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    position: relative;
+    /* Remove sticky hover/active states on mobile */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.car-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(217, 56, 41, 0.05), rgba(242, 82, 82, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Touch feedback with automatic reset */
+.car-card:active {
+    transform: translateY(-8px) scale(0.98);
+    box-shadow: 0 8px 20px rgba(217, 56, 41, 0.3);
+    transition: all 0.1s ease;
+}
+
+/* Only apply hover effects on devices that support hover */
+@media (hover: hover) {
+    .car-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 15px 35px rgba(217, 56, 41, 0.5);
+        cursor: pointer;
+    }
+}
+
+.car-image {
+    height: 200px;
+    background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 4rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.car-info {
+    padding: 25px;
+}
+
+.car-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #0D0D0D;
+    margin-bottom: 10px;
+}
+
+.car-details {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.car-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #D93829;
+    text-align: right;
+}
+
+/* No cars available message */
+.no-cars-message {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    padding: 2rem;
+}
+
+.no-cars-content {
+    text-align: center;
+    color: #666;
+}
+
+.no-cars-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Pointer cursor for clickable images and zoom effects */
+.carousel-slide img, .car-image img {
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.6s ease;
+}
+
+@media (hover: hover) {
+    .car-card:hover .carousel-slide img,
+    .car-card:hover .car-image img {
+        transform: scale(1.05);
+        transition-delay: 0.1s;
+    }
+}
+
+/* Car card cursor */
+.car-card {
+    cursor: pointer;
+}

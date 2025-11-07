@@ -1,0 +1,490 @@
+/* ========================================== */
+/* MODALS STYLES (Lightbox, Car Detail) */
+/* ========================================== */
+
+/* Lightbox Modal */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+}
+
+.lightbox-nav:hover {
+    background: rgba(217, 56, 41, 0.8);
+    border-color: rgba(217, 56, 41, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+}
+
+.lightbox-close:hover {
+    background: rgba(217, 56, 41, 0.8);
+    border-color: rgba(217, 56, 41, 0.8);
+    transform: scale(1.1);
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-title {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    max-width: 400px;
+}
+
+/* Car Detail Modal */
+.car-detail-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.car-detail-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.car-detail-content {
+    background: transparent;
+    border-radius: 0;
+    max-width: 95vw;
+    width: 95vw;
+    max-height: 95vh;
+    height: 95vh;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 0;
+    box-shadow: none;
+}
+
+.car-detail-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 10001;
+    backdrop-filter: blur(10px);
+}
+
+.car-detail-close:hover {
+    background: rgba(217, 56, 41, 0.8);
+    border-color: rgba(217, 56, 41, 0.8);
+    transform: scale(1.1);
+}
+
+.car-detail-images {
+    position: relative;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 0;
+}
+
+.car-detail-carousel {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    max-height: 800px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.car-detail-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.car-detail-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.car-detail-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.car-detail-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 10001;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.car-detail-nav:hover {
+    background: rgba(217, 56, 41, 0.9);
+    border-color: rgba(217, 56, 41, 0.8);
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 6px 20px rgba(217, 56, 41, 0.4);
+}
+
+.car-detail-prev {
+    left: 15px;
+}
+
+.car-detail-next {
+    right: 15px;
+}
+
+.car-detail-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 12px 20px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 10001;
+}
+
+.car-detail-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.car-detail-dot.active {
+    background: #D93829;
+    border-color: #D93829;
+    transform: scale(1.3);
+    box-shadow: 0 2px 8px rgba(217, 56, 41, 0.4);
+}
+
+.car-detail-dot:hover {
+    background: rgba(217, 56, 41, 0.8);
+    border-color: rgba(217, 56, 41, 0.6);
+}
+
+.car-detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    overflow-y: auto;
+    height: 100%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(217, 56, 41, 0.7) transparent;
+}
+
+/* Personalizzazione scrollbar per Webkit (Chrome, Safari, Edge) */
+.car-detail-info::-webkit-scrollbar {
+    width: 8px;
+}
+
+.car-detail-info::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.car-detail-info::-webkit-scrollbar-thumb {
+    background: rgba(217, 56, 41, 0.7);
+    border-radius: 10px;
+    border: none;
+}
+
+.car-detail-info::-webkit-scrollbar-thumb:hover {
+    background: rgba(217, 56, 41, 0.9);
+}
+
+.car-detail-info::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.car-detail-header {
+    border-bottom: 2px solid #D93829;
+    padding-bottom: 15px;
+    flex-shrink: 0;
+}
+
+.car-detail-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #0D0D0D;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.car-detail-price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #D93829;
+}
+
+.car-detail-specs {
+    flex: 1;
+}
+
+.car-detail-specs h3 {
+    font-size: 1.1rem;
+    color: #0D0D0D;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.car-specs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.car-spec-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: linear-gradient(150deg, #cccccc00 0%, #cccccccc 100%);
+    border-radius: 6px;
+    border-left: 3px solid #D93829;
+}
+
+.car-spec-label {
+    font-weight: 600;
+    color: #0D0D0D;
+    font-size: 0.85rem;
+}
+
+.car-spec-value {
+    font-weight: 500;
+    color: #333;
+    font-size: 0.85rem;
+}
+
+.car-detail-contact {
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.car-detail-contact h3 {
+    font-size: 1.1rem;
+    color: #0D0D0D;
+    margin-bottom: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #D93829;
+    padding-bottom: 8px;
+    text-align: center;
+}
+
+.contact-info-direct {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    background: rgba(217, 56, 41, 0.05);
+    color: #0D0D0D;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(217, 56, 41, 0.1);
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.contact-item:hover {
+    background: rgba(217, 56, 41, 0.1);
+    color: #D93829;
+    transform: translateY(-2px);
+    border-color: rgba(217, 56, 41, 0.3);
+    box-shadow: 0 4px 12px rgba(217, 56, 41, 0.15);
+}
+
+.contact-item i {
+    font-size: 1rem;
+    color: #D93829;
+    width: 20px;
+    text-align: center;
+}
+
+/* Social contact row in car detail modal */
+.social-contact-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
+    margin-bottom: 8px;
+}
+
+.social-contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(217, 56, 41, 0.05);
+    color: #D93829;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(217, 56, 41, 0.1);
+}
+
+.social-contact-item:hover {
+    background: rgba(217, 56, 41, 0.1);
+    transform: translateY(-2px);
+    border-color: rgba(217, 56, 41, 0.3);
+    box-shadow: 0 4px 12px rgba(217, 56, 41, 0.15);
+}
