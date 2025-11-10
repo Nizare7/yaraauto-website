@@ -360,12 +360,12 @@ class CarDealer {
         title.className = 'recently-added-title';
         title.innerHTML = 'AGGIUNTE DI RECENTE';
 
-        // Check if mobile to create carousel or grid
-        const isMobile = window.innerWidth <= 768;
+        // Check if mobile/tablet to create carousel or grid
+        const isMobile = window.innerWidth <= 1400;
         
         let carsContainer;
         if (isMobile) {
-            // Create carousel for mobile
+            // Create carousel for mobile and tablet
             carsContainer = document.createElement('div');
             carsContainer.className = 'recently-added-carousel';
             
@@ -1042,8 +1042,8 @@ class CarDealer {
             
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
             
-            // Back to top button - only for desktop, mobile is handled by setupFilterButtonsVisibility
-            const isMobile = window.innerWidth <= 768;
+            // Back to top button - only for desktop, mobile/tablet is handled by setupFilterButtonsVisibility
+            const isMobile = window.innerWidth <= 1400;
             if (!isMobile) {
                 if (scrollTop > 300) {
                     backToTop.classList.add('visible');
@@ -1616,10 +1616,10 @@ class CarDealer {
                     slide.style.color = '#666';
                 };
                 
-                // Add click listener for mobile fullscreen (only on mobile devices)
+                // Add click listener for mobile fullscreen (only on mobile/tablet devices)
                 img.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    if (window.innerWidth <= 768) {
+                    if (window.innerWidth <= 1400) {
                         this.openMobileFullscreen(car.title, index);
                     }
                 });
@@ -1765,8 +1765,8 @@ class CarDealer {
             // Show notification on desktop
             this.showNotification('Filtri applicati', 'success');
             
-            // Scroll to first car section after filtering only on mobile
-            if (window.innerWidth <= 768) {
+            // Scroll to first car section after filtering only on mobile/tablet
+            if (window.innerWidth <= 1400) {
                 setTimeout(() => {
                     const firstCarSection = document.querySelector('.cars-section');
                     if (firstCarSection) {
@@ -2014,8 +2014,8 @@ class CarDealer {
             notification.classList.add('show');
         }, 10);
         
-        // Auto remove after 3 seconds on mobile, 3 seconds on desktop
-        const duration = window.innerWidth <= 768 ? 3000 : 3000;
+        // Auto remove after 3 seconds on mobile/tablet, 3 seconds on desktop
+        const duration = window.innerWidth <= 1400 ? 3000 : 3000;
         setTimeout(() => {
             notification.classList.remove('show');
             setTimeout(() => {
@@ -2028,8 +2028,8 @@ class CarDealer {
 
     // Create mobile filter system
     createMobileFilterSystem() {
-        // Only create mobile filter system on mobile devices
-        if (window.innerWidth > 768) {
+        // Only create mobile filter system on mobile and tablet devices (including landscape tablets)
+        if (window.innerWidth > 1400) {
             return;
         }
         
@@ -2294,7 +2294,7 @@ class CarDealer {
         const handleScroll = () => {
             const brandsRect = brandsSection.getBoundingClientRect();
             const isInView = brandsRect.bottom > 0 && brandsRect.top <= window.innerHeight;
-            const isMobile = window.innerWidth <= 768;
+            const isMobile = window.innerWidth <= 1400;
             
             if (isInView) {
                 // Show brands filter button, hide mobile filter button
@@ -2370,13 +2370,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const mobileOverlay = document.getElementById('mobileFilterOverlay');
             const mobilePopup = document.getElementById('mobileFilterPopup');
             
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 1400) {
                 // Remove mobile elements on desktop
                 if (mobileButton) mobileButton.remove();
                 if (mobileOverlay) mobileOverlay.remove();
                 if (mobilePopup) mobilePopup.remove();
-            } else if (window.innerWidth <= 768 && !mobileButton) {
-                // Create mobile elements on mobile if they don't exist
+            } else if (window.innerWidth <= 1400 && !mobileButton) {
+                // Create mobile elements on mobile and tablet (including landscape) if they don't exist
                 carDealer.createMobileFilterSystem();
             }
             

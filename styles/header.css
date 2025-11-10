@@ -148,7 +148,8 @@
 }
 
 /* Desktop layout - social media a destra del logo */
-@media (min-width: 769px) {
+/* Parte da 1401px per evitare conflitti con tutti i tablet */
+@media (min-width: 1401px) {
     .header-container {
         display: flex;
         justify-content: space-between;

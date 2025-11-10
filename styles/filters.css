@@ -255,3 +255,10 @@
     align-items: center;
     justify-content: space-between;
 }
+
+/* Hide desktop filters section on mobile and tablet (including all landscape tablets) */
+@media (max-width: 1400px) {
+    .filters-section {
+        display: none !important;
+    }
+}

@@ -2,18 +2,25 @@
 /* MOBILE & RESPONSIVE STYLES */
 /* ========================================== */
 
-/* Mobile layout - logo centered, contacts menu on right */
-@media (max-width: 768px) {
-    /* Aumenta l'altezza dell'header mobile */
+/* Mobile and Tablet layout - logo centered, contacts menu on right */
+/* Esteso fino a 1400px per includere tutti i tablet in orizzontale (incluso iPad Pro 12.9") */
+@media (max-width: 1400px) {
+    /* Prevent horizontal scroll and ensure centering */
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    /* Header mobile e tablet */
     .header {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         background: #0D0D0D;
-        padding: 20px 0;
+        padding: 0;
         z-index: 1000;
-        height: 72px;
+        height: 80px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         transition: transform 0.3s ease-in-out;
     }
@@ -24,8 +31,9 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        padding: 0px;
+        padding: 0;
         gap: 0;
+        height: 100%;
     }
     
     .logo {
@@ -34,14 +42,24 @@
         transform: none;
         margin: 0 auto;
         flex: 0 0 auto;
-        width: 72px;
-        height: 72px; 
+        width: 100%;
+        height: 100%;
+        max-width: 80px;
         background: #0D0D0D;
-        border-radius: 8px;
+        border-radius: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         box-shadow: none;
+        padding: 5px;
+    }
+    
+    .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
     }
     
     .logo:hover {
@@ -204,8 +222,9 @@
 
     /* Responsive adjustments for mobile brands */
     .filters-and-brands-section {
-        margin: 1rem;
+        margin: 1rem auto;
         border-radius: 15px;
+        max-width: 1200px;
     }
     
     .brands-nav {
@@ -261,9 +280,9 @@
     }
 
     /* Mobile filters - new floating circular button system */
-    /* Hide desktop filters section completely on mobile */
+    /* Hide desktop filters section completely on mobile and tablet */
     .filters-section {
-        display: none;
+        display: none !important;
     }
     
     /* Mobile floating filter button - red circle in bottom left (same size as back-to-top) */
@@ -980,10 +999,11 @@
 
     /* Responsive per mobile - recently added */
     .recently-added-section {
-        margin: 40px 20px 60px 20px;
+        margin: 40px auto 60px auto;
         padding: 40px 20px;
         border-radius: 15px;
         background: linear-gradient(135deg, #2A2A2A, #1F1F1F);
+        max-width: calc(100% - 40px);
     }
     
     .recently-added-title {
@@ -1103,6 +1123,10 @@
 
     .main-content {
         margin-top: 0px;
+        padding: 40px 20px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
     }
 
     .hero h1 {
@@ -1143,7 +1167,8 @@
 }
 
 /* Hide mobile toggle and mobile filter buttons on desktop */
-@media (min-width: 769px) {
+/* Cambiato a 1401px per includere tutti i tablet in orizzontale nella versione mobile */
+@media (min-width: 1401px) {
     .mobile-filters-toggle {
         display: none;
     }
