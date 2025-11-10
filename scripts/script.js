@@ -1911,6 +1911,73 @@ class CarDealer {
         
         // Prevent body scroll
         document.body.style.overflow = 'hidden';
+        
+        // Add click event to toggle controls visibility
+        const fullscreenImg = this.mobileFullscreenOverlay.querySelector('.mobile-fullscreen-image');
+        if (fullscreenImg) {
+            // Remove previous event listener to avoid duplicates
+            const newImg = fullscreenImg.cloneNode(true);
+            fullscreenImg.parentNode.replaceChild(newImg, fullscreenImg);
+            
+            // Add click event listener to toggle controls
+            newImg.addEventListener('click', () => {
+                this.mobileFullscreenOverlay.classList.toggle('hide-controls');
+            });
+            
+            // Add swipe down to close gesture
+            let touchStartY = 0;
+            let touchStartX = 0;
+            let currentTranslateY = 0;
+            let isDragging = false;
+            
+            newImg.addEventListener('touchstart', (e) => {
+                touchStartY = e.touches[0].clientY;
+                touchStartX = e.touches[0].clientX;
+                isDragging = true;
+                newImg.style.transition = 'none';
+            });
+            
+            newImg.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                
+                const touchY = e.touches[0].clientY;
+                const touchX = e.touches[0].clientX;
+                const deltaY = touchY - touchStartY;
+                const deltaX = Math.abs(touchX - touchStartX);
+                
+                // Solo se lo swipe è più verticale che orizzontale e verso il basso
+                if (deltaY > 0 && deltaY > deltaX) {
+                    currentTranslateY = deltaY;
+                    newImg.style.transform = `translate(-50%, calc(-50% + ${deltaY}px))`;
+                    // Riduci l'opacità dell'overlay mentre si trascina
+                    const opacity = Math.max(0.3, 1 - (deltaY / 300));
+                    this.mobileFullscreenOverlay.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+                }
+            });
+            
+            newImg.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                newImg.style.transition = 'transform 0.3s ease';
+                
+                // Se lo swipe è abbastanza lungo, chiudi l'immagine
+                if (currentTranslateY > 100) {
+                    newImg.style.transform = 'translate(-50%, 100vh)';
+                    setTimeout(() => {
+                        this.closeMobileFullscreen();
+                        newImg.style.transform = 'translate(-50%, -50%)';
+                        this.mobileFullscreenOverlay.style.backgroundColor = '';
+                    }, 300);
+                } else {
+                    // Altrimenti torna alla posizione originale
+                    newImg.style.transform = 'translate(-50%, -50%)';
+                    this.mobileFullscreenOverlay.style.backgroundColor = '';
+                }
+                
+                currentTranslateY = 0;
+            });
+        }
     }
 
     // Update mobile fullscreen content

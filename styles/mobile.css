@@ -698,7 +698,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 20px;
+        padding: 0;
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
@@ -730,13 +730,17 @@
     }
     
     .mobile-fullscreen-image {
-        max-width: 95%;
-        max-height: 80%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
         object-fit: contain;
-        border-radius: 8px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        flex: 1;
+        border-radius: 0;
         display: block;
+        cursor: pointer;
+        transition: none;
     }
     
     .mobile-fullscreen-close {
@@ -758,6 +762,7 @@
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         z-index: 10001;
+        opacity: 1;
     }
     
     .mobile-fullscreen-close:hover {
@@ -771,11 +776,22 @@
         align-items: center;
         justify-content: center;
         gap: 20px;
-        margin-top: 20px;
         width: 100%;
         max-width: 400px;
         z-index: 10001;
-        position: relative;
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Nasconde i controlli quando si clicca sull'immagine */
+    .mobile-fullscreen-overlay.hide-controls .mobile-fullscreen-controls,
+    .mobile-fullscreen-overlay.hide-controls .mobile-fullscreen-close {
+        opacity: 0;
+        pointer-events: none;
     }
     
     .mobile-fullscreen-nav {
@@ -832,17 +848,7 @@
     }
     
     .mobile-fullscreen-info {
-        margin-top: 10px;
-        background: rgba(0, 0, 0, 0.5);
-        color: rgba(255, 255, 255, 0.8);
-        padding: 8px 15px;
-        border-radius: 15px;
-        font-size: 0.85rem;
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        text-align: center;
-        z-index: 10001;
-        position: relative;
+        display: none !important;
     }
     
     .car-detail-title {
