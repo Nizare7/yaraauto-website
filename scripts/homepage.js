@@ -1,5 +1,8 @@
 // Simple script for homepage
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile contacts menu toggle
+    initMobileContactsMenu();
+    
     // Add any interactive effects or animations for the homepage
     
     // Smooth scroll effect for CTA button (if needed)
@@ -30,6 +33,48 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dealership Gallery Carousel
     initDealershipCarousel();
 });
+
+// Mobile contacts menu functionality
+function initMobileContactsMenu() {
+    const toggleBtn = document.getElementById('mobileContactsToggle');
+    const menu = document.getElementById('mobileContactsMenu');
+    
+    if (!toggleBtn || !menu) return;
+    
+    // Toggle menu on button click
+    toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isActive = menu.classList.contains('active');
+        
+        if (isActive) {
+            closeContactsMenu();
+        } else {
+            openContactsMenu();
+        }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!menu.contains(e.target) && e.target !== toggleBtn) {
+            closeContactsMenu();
+        }
+    });
+    
+    // Prevent menu clicks from closing the menu
+    menu.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    
+    function openContactsMenu() {
+        menu.classList.add('active');
+        toggleBtn.classList.add('active');
+    }
+    
+    function closeContactsMenu() {
+        menu.classList.remove('active');
+        toggleBtn.classList.remove('active');
+    }
+}
 
 function initDealershipCarousel() {
     const carousel = document.querySelector('.dealership-carousel');

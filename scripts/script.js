@@ -2350,6 +2350,9 @@ class CarDealer {
 document.addEventListener('DOMContentLoaded', () => {
     const carDealer = new CarDealer();
     
+    // Initialize mobile contacts menu
+    initMobileContactsMenu();
+    
     // Setup brands scrollbar after DOM is ready
     setTimeout(() => {
         carDealer.setupBrandsScrollbar();
@@ -2385,3 +2388,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 250); // Debounce resize events
     });
 });
+
+// Mobile contacts menu functionality
+function initMobileContactsMenu() {
+    const toggleBtn = document.getElementById('mobileContactsToggle');
+    const menu = document.getElementById('mobileContactsMenu');
+    
+    if (!toggleBtn || !menu) return;
+    
+    // Toggle menu on button click
+    toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isActive = menu.classList.contains('active');
+        
+        if (isActive) {
+            closeContactsMenu();
+        } else {
+            openContactsMenu();
+        }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!menu.contains(e.target) && e.target !== toggleBtn) {
+            closeContactsMenu();
+        }
+    });
+    
+    // Prevent menu clicks from closing the menu
+    menu.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    
+    function openContactsMenu() {
+        menu.classList.add('active');
+        toggleBtn.classList.add('active');
+    }
+    
+    function closeContactsMenu() {
+        menu.classList.remove('active');
+        toggleBtn.classList.remove('active');
+    }
+}

@@ -132,7 +132,7 @@
         margin: 0;
         padding: 0;
         height: 480px; /* Further increased height for better visibility */
-        margin-top: 100px; /* Space for fixed header */
+        margin-top: 100px; /* Exactly at the end of fixed header (header height + padding) */
         z-index: 1; /* Below header but above other content */
     }
 }

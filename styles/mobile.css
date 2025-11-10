@@ -2,112 +2,183 @@
 /* MOBILE & RESPONSIVE STYLES */
 /* ========================================== */
 
-/* Mobile layout - logo centered on top, triangle social layout */
+/* Mobile layout - logo centered, contacts menu on right */
 @media (max-width: 768px) {
+    /* Aumenta l'altezza dell'header mobile */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #0D0D0D;
+        padding: 20px 0;
+        z-index: 1000;
+        height: 72px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease-in-out;
+    }
+    
     .header-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        justify-content: center;
         position: relative;
-        padding: 15px;
-        gap: 15px;
+        padding: 0px;
+        gap: 0;
     }
     
     .logo {
         position: relative;
         left: auto;
         transform: none;
-        margin: 0;
-        order: 1; /* Logo in alto per primo */
+        margin: 0 auto;
         flex: 0 0 auto;
-        width: 60px;
-        height: 60px;
+        width: 72px;
+        height: 72px; 
         background: #0D0D0D;
         border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: none;
     }
     
     .logo:hover {
         background: #0D0D0D;
         transform: none;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        box-shadow: none;
     }
     
     .logo:active {
         background: #0D0D0D;
         transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        box-shadow: none;
         transition: all 0.3s ease;
     }
     
-    /* Contact info sotto il logo */
+    /* Nascondi i contatti desktop */
     .contact-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        max-width: 350px;
-        gap: 20px;
-        order: 2;
+        display: none;
     }
     
-    /* Telefono e email a sinistra */
-    .contact-column:first-child {
+    /* Bottone menu contatti mobile */
+    .mobile-contacts-toggle {
+        position: absolute;
+        right: 15px;
+        background: transparent;
+        border: none;
+        color: #F2F2E4;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
         display: flex;
-        flex-direction: column;
+        align-items: center;
         gap: 8px;
-        flex: 1;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
     }
     
-    /* Social links a destra con layout triangolare iPhone */
-    .contact-column.social-column {
+    .mobile-contacts-toggle:hover {
+        background: rgba(255,255,255,0.1);
+    }
+    
+    /* Colore rosso quando il menu è aperto */
+    .mobile-contacts-toggle.active {
+        color: #D93829;
+    }
+    
+    .mobile-contacts-toggle i {
+        font-size: 0.8rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .mobile-contacts-toggle.active i {
+        transform: rotate(180deg);
+    }
+    
+    /* Menu contatti a tendina */
+    .mobile-contacts-menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 15px;
+        background: #1F1F1F;
+        border-radius: 15px;
+        padding: 15px;
+        min-width: 250px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 1001;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .mobile-contacts-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .mobile-contacts-menu .phone,
+    .mobile-contacts-menu .email {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        position: relative;
-        flex: 1;
-        min-height: 60px;
-    }
-    
-    /* Layout triangolare come fotocamere iPhone */
-    .social-column .social-links:first-child {
-        display: flex;
-        gap: 15px;
+        gap: 10px;
+        color: #F2F2E4;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
         margin-bottom: 8px;
     }
     
-    .social-column .social-links:last-child {
+    .mobile-contacts-menu .phone:hover,
+    .mobile-contacts-menu .email:hover {
+        background: rgba(255,255,255,0.1);
+        color: #D93829;
+    }
+    
+    .mobile-contacts-menu .phone i,
+    .mobile-contacts-menu .email i {
+        font-size: 1rem;
+        width: 20px;
+        text-align: center;
+    }
+    
+    /* Social links nel menu */
+    .mobile-contacts-menu .social-links {
         display: flex;
         justify-content: center;
+        gap: 12px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255,255,255,0.1);
     }
     
-    /* Stili per telefono e email mobile */
-    .phone, .email {
-        font-size: 0.9rem;
-        gap: 6px;
-    }
-    
-    .phone i, .email i {
-        font-size: 1rem;
-    }
-    
-    /* Social links con effetto iPhone */
-    .social-links a {
-        width: 35px;
-        height: 35px;
-        font-size: 1.1rem;
-        background: rgba(255,255,255,0.15);
+    .mobile-contacts-menu .social-links a {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+        background: rgba(255,255,255,0.1);
         border: 1px solid rgba(255,255,255,0.2);
-        backdrop-filter: blur(10px);
-        transition: all 0.2s ease;
+        border-radius: 50%;
+        color: #F2F2E4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
     }
     
-    .social-links a:hover {
-        background: rgba(255,255,255,0.25);
+    .mobile-contacts-menu .social-links a:hover {
+        background: #D93829;
+        border-color: #D93829;
         transform: scale(1.1);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        color: white;
     }
     
     /* Disable hover on touch devices completely */
@@ -125,8 +196,8 @@
             transition: all 0.2s ease;
         }
         
-        .social-links a:active {
-            background: rgba(255,255,255,0.3);
+        .mobile-contacts-menu .social-links a:active {
+            background: #D93829;
             transform: scale(0.95);
         }
     }
@@ -849,7 +920,7 @@
     .dealership-gallery {
         display: block !important;
         height: 280px; /* Smaller height for mobile */
-        margin-top: 158px; /* Alzato leggermente */
+        margin-top: 70px; /* Esattamente alla fine dell'header mobile */
         background: #0D0D0D; /* Ensure background is visible on mobile */
     }
 
@@ -1084,6 +1155,15 @@
         display: none !important;
     }
     
+    /* Hide mobile contacts menu on desktop */
+    .mobile-contacts-toggle {
+        display: none !important;
+    }
+    
+    .mobile-contacts-menu {
+        display: none !important;
+    }
+    
     /* Hide mobile fullscreen overlay and its controls on desktop */
     .mobile-fullscreen-overlay {
         display: none !important;
@@ -1114,8 +1194,8 @@
     }
 
     .logo img {
-        max-height: 150%;
-        max-width: 150%;
+        max-height: 170%;
+        max-width: 170%;
     }
 
     .phone {
@@ -1239,7 +1319,7 @@
     .home-button-section {
         padding: 0 15px;
         margin-bottom: 20px;
-        margin-top: 140px; /* Maggiore spazio per l'header mobile */
+        margin-top: 55px; /* Esattamente alla fine dell'header mobile */
     }
     
     .home-page-button {
