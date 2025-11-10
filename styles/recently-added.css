@@ -80,69 +80,13 @@
     border: 2px dashed rgba(255,255,255,0.2);
 }
 
-/* Stili migliorati per le card nella sezione novità */
+/* Le card usano gli stili standard con dimensioni FISSE identiche */
 .recently-added-section .car-card {
-    background: linear-gradient(145deg, #FFFFFF, #F8F9FA);
-    border: none;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: translateY(0);
-}
-
-.recently-added-section .car-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(217, 56, 41, 0.4), 0 0 0 2px rgba(217, 56, 41, 0.3);
-}
-
-.recently-added-section .car-card .car-image {
-    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    height: 220px;
-}
-
-.recently-added-section .car-card .car-info {
-    padding: 25px;
-    background: linear-gradient(180deg, #FFFFFF, #F8F9FA);
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-}
-
-.recently-added-section .car-card .car-title {
-    color: #2C3E50;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    text-shadow: none;
-    min-height: 3.2em;
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.recently-added-section .car-card .car-details {
-    color: #5A6C7D;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    flex: 1;
-}
-
-.recently-added-section .car-card .car-price {
-    color: #D93829;
-    font-size: 1.4rem;
-    font-weight: 800;
-    text-shadow: 0 1px 2px rgba(217, 56, 41, 0.1);
-    margin-top: auto;
-}
-
-.recently-added-section .car-card .recently-added-tag {
-    background: linear-gradient(135deg, #FF6B6B, #EE5A52);
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-    font-weight: 700;
-    font-size: 0.85rem;
+    width: 100%;
+    max-width: 350px;
+    min-width: 280px;
+    border: none !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
 }
 
 /* Tag "Novità" nel modal dei dettagli */

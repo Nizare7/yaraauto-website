@@ -998,25 +998,37 @@
     }
 
     /* Responsive per mobile - recently added */
+    /* Container occupa tutta la larghezza orizzontale - ZERO spazi bianchi */
     .recently-added-section {
-        margin: 40px auto 60px auto;
-        padding: 40px 20px;
-        border-radius: 15px;
+        margin: 40px 0 60px 0;
+        padding: 40px 0;
+        border-radius: 0;
         background: linear-gradient(135deg, #2A2A2A, #1F1F1F);
-        max-width: calc(100% - 40px);
+        max-width: 100%;
+        width: 100%;
     }
     
     .recently-added-title {
         font-size: 2rem;
+        padding: 0 20px;
         margin-bottom: 30px;
     }
     
     .recently-added-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 350px;
         gap: 20px;
+        width: 100%;
         max-width: 350px;
         margin: 0 auto;
         justify-content: center;
+        padding: 0 20px;
+    }
+    
+    /* Card con dimensioni FISSE - identiche alle altre */
+    .recently-added-section .car-card {
+        width: 100% !important;
+        max-width: 350px !important;
+        min-width: 280px !important;
     }
     
     .recently-added-tag {
@@ -1026,24 +1038,15 @@
         font-size: 0.75rem;
     }
     
-    .recently-added-section .car-card .car-info {
-        padding: 20px;
-    }
-    
-    .recently-added-section .car-card .car-title {
-        font-size: 1.2rem;
-    }
-    
-    .recently-added-section .car-card .car-price {
-        font-size: 1.3rem;
-    }
+    /* Card usano stili standard - NESSUN override */
 
     /* Carousel per mobile nella sezione novità */
     .recently-added-carousel {
         position: relative;
         width: 100%;
         overflow: hidden;
-        border-radius: 15px;
+        border-radius: 0;
+        padding: 0;
     }
     
     .recently-added-carousel-track {
@@ -1055,11 +1058,18 @@
     .recently-added-carousel-slide {
         flex: 0 0 100%;
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
     }
     
+    /* Card con dimensioni FISSE nel carousel - 350px */
     .recently-added-carousel-slide .car-card {
-        margin: 0;
-        width: 100%;
+        margin: 0 auto;
+        width: 100% !important;
+        max-width: 350px !important;
+        min-width: 280px !important;
     }
     
     /* Navigation container with arrows and indicators */
@@ -1159,10 +1169,19 @@
     }
 
     .cars-grid {
-        grid-template-columns: 1fr;
-        max-width: 350px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
+        max-width: calc(350px * 3 + 60px);
         margin: 0 auto;
         justify-content: center;
+        gap: 30px;
+        padding: 0 20px;
+    }
+    
+    /* Card responsive - si adattano allo schermo */
+    .car-card {
+        width: 100%;
+        max-width: 350px;
+        min-width: 280px;
     }
 }
 
