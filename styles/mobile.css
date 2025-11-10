@@ -1183,6 +1183,38 @@
         max-width: 350px;
         min-width: 280px;
     }
+    
+    /* Layout desktop per modal su dispositivi piccoli in landscape */
+    /* Quando in orizzontale con poca altezza (es. iPhone landscape) */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .car-detail-content {
+            grid-template-columns: 1fr 1fr !important;
+            grid-template-rows: 1fr !important;
+            gap: 20px !important;
+            padding: 20px !important;
+            width: 95vw !important;
+            height: 95vh !important;
+        }
+        
+        .car-detail-images {
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+        
+        .car-detail-carousel {
+            height: 100% !important;
+            max-height: 100% !important;
+        }
+        
+        .car-detail-info {
+            padding: 20px !important;
+            height: 100% !important;
+            max-height: 100% !important;
+            border-radius: 15px !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+        }
+    }
 }
 
 /* Hide mobile toggle and mobile filter buttons on desktop */
