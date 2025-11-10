@@ -576,11 +576,11 @@
     /* Responsive for car detail modal */
     .car-detail-content {
         grid-template-columns: 1fr;
-        grid-template-rows: 55vh 1fr;
-        width: 98vw;
-        height: 95vh;
+        grid-template-rows: auto 1fr;
+        width: 100vw;
+        height: 100vh;
         padding: 0;
-        gap: 15px;
+        gap: 0;
         background: transparent;
         border-radius: 0;
         box-shadow: none;
@@ -588,7 +588,7 @@
     
     .car-detail-images {
         padding: 20px;
-        height: 55vh;
+        height: 45vh;
         background: transparent;
         display: flex;
         align-items: center;
@@ -620,12 +620,13 @@
     
     .car-detail-info {
         padding: 20px;
-        height: auto;
-        max-height: 40vh;
+        height: 55vh;
+        max-height: none;
         border-radius: 20px 20px 0 0;
         box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
         background: white;
-        margin: 0 10px;
+        margin: 0;
+        overflow-y: auto;
     }
     
     .car-detail-nav {
@@ -1239,17 +1240,17 @@
 
     .car-detail-content {
         width: 100vw;
-        height: 90vh;
+        height: 100vh;
         border-radius: 0;
-        grid-template-rows: 50vh 1fr;
-        gap: 10px;
+        grid-template-rows: auto 1fr;
+        gap: 0;
         background: transparent;
         box-shadow: none;
     }
     
     .car-detail-images {
         padding: 15px;
-        height: 50vh;
+        height: 40vh;
         background: transparent;
     }
     
@@ -1269,11 +1270,12 @@
     
     .car-detail-info {
         padding: 15px;
-        height: auto;
-        max-height: 40vh;
+        height: 60vh;
+        max-height: none;
         border-radius: 15px 15px 0 0;
-        margin: 0 5px;
+        margin: 0;
         box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.15);
+        overflow-y: auto;
     }
     
     /* Mantieni scrollbar arrotondata anche su mobile */
