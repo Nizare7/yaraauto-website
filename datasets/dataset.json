@@ -3,60 +3,84 @@
     {
       "id": "abarth",
       "name": "Abarth",
-      "logo": "images/brand_logo/abarth.png",
+      "logo": "../images/brand_logo/abarth.png",
       "cars": [
-
+        {
+          "brand": "Abarth",
+          "name": "qwe",
+          "chilometraggio": 7856,
+          "condizioni": "Usato",
+          "anno": 7685,
+          "carburante": "Benzina",
+          "cilindrata": 678,
+          "cavalli": 678,
+          "kw": 678,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 0",
+          "posti": 867,
+          "prezzo": 68776887.0,
+          "neopatentati": "SI",
+          "venduto": false,
+          "aggiunto": true,
+          "id": "abarth-qwe847061125",
+          "image": "../cars/abarth/qwe-847061125/main.jpg",
+          "gallery": [
+            "../cars/abarth/qwe-847061125/main.jpg",
+            "../cars/abarth/qwe-847061125/main1.jpg",
+            "../cars/abarth/qwe-847061125/main2.jpg",
+            "../cars/abarth/qwe-847061125/main3.jpg",
+            "../cars/abarth/qwe-847061125/main4.jpg"
+          ]
+        }
       ]
     },
     {
       "id": "alfa-romeo",
       "name": "Alfa Romeo",
-      "logo": "images/brand_logo/alfa-romeo.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/alfa-romeo.png",
+      "cars": []
     },
     {
       "id": "audi",
       "name": "Audi",
-      "logo": "images/brand_logo/audi.png",
-      "cars": [
-       
-      ]
+      "logo": "../images/brand_logo/audi.png",
+      "cars": []
     },
     {
       "id": "bmw",
       "name": "BMW",
-      "logo": "images/brand_logo/bmw.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/bmw.png",
+      "cars": []
     },
     {
       "id": "citroen",
       "name": "Citroën",
-      "logo": "images/brand_logo/citroen.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/citroen.png",
+      "cars": []
     },
     {
       "id": "dacia",
       "name": "Dacia",
-      "logo": "images/brand_logo/dacia.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/dacia.png",
+      "cars": []
+    },
+    {
+      "id": "ferrari",
+      "name": "Ferrari",
+      "logo": "../images/brand_logo/ferrari.png",
+      "cars": []
     },
     {
       "id": "fiat",
       "name": "Fiat",
-      "logo": "images/brand_logo/fiat.png",
+      "logo": "../images/brand_logo/fiat.png",
       "cars": [
         {
           "id": "fiat-pnd203501025",
           "brand": "Fiat",
           "name": "Panda",
+          "sub_name": "",
+          "details": "",
           "chilometraggio": 35000,
           "condizioni": "Buono",
           "anno": 2020,
@@ -69,20 +93,22 @@
           "posti": 5,
           "prezzo": 12500,
           "neopatentati": "SI",
-          "image": "cars/fiat/panda-test/main.jpg",
-          "gallery": [
-            "cars/fiat/panda-test/main.jpg",
-            "cars/fiat/panda-test/main1.jpg",
-            "cars/fiat/panda-test/main2.jpg",
-            "cars/fiat/panda-test/main3.jpg"
-          ],
           "venduto": false,
-          "aggiunto": false
+          "aggiunto": false,
+          "image": "../cars/fiat/panda-test/main.jpg",
+          "gallery": [
+            "../cars/fiat/panda-test/main.jpg",
+            "../cars/fiat/panda-test/main1.jpg",
+            "../cars/fiat/panda-test/main2.jpg",
+            "../cars/fiat/panda-test/main3.jpg"
+          ]
         },
         {
           "id": "fiat-grp2262261025",
           "brand": "Fiat",
           "name": "Grande Punto",
+          "sub_name": "",
+          "details": "",
           "chilometraggio": 226000,
           "cilindrata": 1368,
           "cavalli": 140,
@@ -92,42 +118,42 @@
           "posti": 5,
           "prezzo": 18900,
           "neopatentati": "NO",
-          "image": "cars/fiat/grandepunto-226000/main1_resized.jpeg",
-          "gallery": [
-            "cars/fiat/grandepunto-226000/main1_resized.jpeg",
-            "cars/fiat/grandepunto-226000/main2_resized.jpeg",
-            "cars/fiat/grandepunto-226000/main3_resized.jpeg",
-            "cars/fiat/grandepunto-226000/main4_resized.jpeg",
-            "cars/fiat/grandepunto-226000/main5_resized.jpeg",
-            "cars/fiat/grandepunto-226000/main6_resized.jpeg",
-            "cars/fiat/grandepunto-226000/main7_resized.jpeg",
-            "cars/fiat/grandepunto-226000/main8_resized.jpeg",
-            "cars/fiat/grandepunto-226000/main9_resized.jpeg",
-            "cars/fiat/grandepunto-226000/main10_resized.jpeg",
-            "cars/fiat/grandepunto-226000/main11_resized.jpeg"
-          ],
           "venduto": false,
-          "aggiunto": false
+          "aggiunto": false,
+          "image": "../cars/fiat/grandepunto-226000/main1_resized.jpeg",
+          "gallery": [
+            "../cars/fiat/grandepunto-226000/main1_resized.jpeg",
+            "../cars/fiat/grandepunto-226000/main2_resized.jpeg",
+            "../cars/fiat/grandepunto-226000/main3_resized.jpeg",
+            "../cars/fiat/grandepunto-226000/main4_resized.jpeg",
+            "../cars/fiat/grandepunto-226000/main5_resized.jpeg",
+            "../cars/fiat/grandepunto-226000/main6_resized.jpeg",
+            "../cars/fiat/grandepunto-226000/main7_resized.jpeg",
+            "../cars/fiat/grandepunto-226000/main8_resized.jpeg",
+            "../cars/fiat/grandepunto-226000/main9_resized.jpeg",
+            "../cars/fiat/grandepunto-226000/main10_resized.jpeg",
+            "../cars/fiat/grandepunto-226000/main11_resized.jpeg"
+          ]
         }
       ]
     },
     {
       "id": "ford",
       "name": "Ford",
-      "logo": "images/brand_logo/ford.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/ford.png",
+      "cars": []
     },
     {
       "id": "mercedes",
       "name": "Mercedes",
-      "logo": "images/brand_logo/mercedes.png",
+      "logo": "../images/brand_logo/mercedes.png",
       "cars": [
         {
           "id": "mercedes-cls101641025",
           "brand": "Mercedes",
           "name": "Classe C 220",
+          "sub_name": "",
+          "details": "",
           "chilometraggio": 164000,
           "condizioni": "Usato Nuovo",
           "anno": 2010,
@@ -140,91 +166,79 @@
           "posti": 5,
           "prezzo": 7999,
           "neopatentati": "NO",
-          "image": "cars/mercedes/classec220-164000/main1_resized.jpeg",
-          "gallery": [
-            "cars/mercedes/classec220-164000/main1_resized.jpeg",
-            "cars/mercedes/classec220-164000/main2_resized.jpeg",
-            "cars/mercedes/classec220-164000/main3_resized.jpeg",
-            "cars/mercedes/classec220-164000/main4_resized.jpeg",
-            "cars/mercedes/classec220-164000/main5_resized.jpeg",
-            "cars/mercedes/classec220-164000/main6_resized.jpeg",
-            "cars/mercedes/classec220-164000/main7_resized.jpeg",
-            "cars/mercedes/classec220-164000/main8_resized.jpeg",
-            "cars/mercedes/classec220-164000/main9_resized.jpeg",
-            "cars/mercedes/classec220-164000/main10_resized.jpeg",
-            "cars/mercedes/classec220-164000/main11_resized.jpeg",
-            "cars/mercedes/classec220-164000/main12_resized.jpeg"
-          ],
           "venduto": false,
-          "aggiunto": false
+          "aggiunto": false,
+          "image": "../cars/mercedes/classec220-164000/main1_resized.jpeg",
+          "gallery": [
+            "../cars/mercedes/classec220-164000/main1_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main2_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main3_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main4_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main5_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main6_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main7_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main8_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main9_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main10_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main11_resized.jpeg",
+            "../cars/mercedes/classec220-164000/main12_resized.jpeg"
+          ]
         }
       ]
     },
     {
       "id": "honda",
       "name": "Honda",
-      "logo": "images/brand_logo/honda.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/honda.png",
+      "cars": []
     },
     {
       "id": "hyundai",
       "name": "Hyundai",
-      "logo": "images/brand_logo/hyundai.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/hyundai.png",
+      "cars": []
     },
     {
       "id": "jeep",
       "name": "Jeep",
-      "logo": "images/brand_logo/jeep.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/jeep.png",
+      "cars": []
     },
     {
       "id": "kia",
       "name": "Kia",
-      "logo": "images/brand_logo/kia.png",
-      "cars": [
-       
-      ]
+      "logo": "../images/brand_logo/kia.png",
+      "cars": []
     },
     {
       "id": "land-rover",
       "name": "Land Rover",
-      "logo": "images/brand_logo/land-rover.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/land-rover.png",
+      "cars": []
     },
     {
       "id": "maserati",
       "name": "Maserati",
-      "logo": "images/brand_logo/maserati.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/maserati.png",
+      "cars": []
     },
     {
       "id": "mazda",
       "name": "Mazda",
-      "logo": "images/brand_logo/mazda.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/mazda.png",
+      "cars": []
     },
     {
       "id": "mini",
       "name": "Mini",
-      "logo": "images/brand_logo/mini.png",
+      "logo": "../images/brand_logo/mini.png",
       "cars": [
         {
           "id": "mini-one112391025",
           "brand": "Mini",
           "name": "One",
+          "sub_name": "",
+          "details": "",
           "chilometraggio": 239000,
           "condizioni": "Usato Nuovo",
           "anno": 2011,
@@ -237,117 +251,99 @@
           "posti": 4,
           "prezzo": 3900,
           "neopatentati": "SI",
-          "image": "cars/mini/one-239000/main1_resized.jpeg",
-          "gallery": [
-            "cars/mini/one-239000/main1_resized.jpeg",
-            "cars/mini/one-239000/main2_resized.jpeg",
-            "cars/mini/one-239000/main3_resized.jpeg",
-            "cars/mini/one-239000/main4_resized.jpeg",
-            "cars/mini/one-239000/main5_resized.jpeg",
-            "cars/mini/one-239000/main6_resized.jpeg",
-            "cars/mini/one-239000/main7_resized.jpeg",
-            "cars/mini/one-239000/main8_resized.jpeg",
-            "cars/mini/one-239000/main9_resized.jpeg",
-            "cars/mini/one-239000/main10_resized.jpeg",
-            "cars/mini/one-239000/main11_resized.jpeg",
-            "cars/mini/one-239000/main12_resized.jpeg",
-            "cars/mini/one-239000/main13_resized.jpeg",
-            "cars/mini/one-239000/main14_resized.jpeg"
-          ],
           "venduto": false,
-          "aggiunto": false
+          "aggiunto": false,
+          "image": "../cars/mini/one-239000/main1_resized.jpeg",
+          "gallery": [
+            "../cars/mini/one-239000/main1_resized.jpeg",
+            "../cars/mini/one-239000/main2_resized.jpeg",
+            "../cars/mini/one-239000/main3_resized.jpeg",
+            "../cars/mini/one-239000/main4_resized.jpeg",
+            "../cars/mini/one-239000/main5_resized.jpeg",
+            "../cars/mini/one-239000/main6_resized.jpeg",
+            "../cars/mini/one-239000/main7_resized.jpeg",
+            "../cars/mini/one-239000/main8_resized.jpeg",
+            "../cars/mini/one-239000/main9_resized.jpeg",
+            "../cars/mini/one-239000/main10_resized.jpeg",
+            "../cars/mini/one-239000/main11_resized.jpeg",
+            "../cars/mini/one-239000/main12_resized.jpeg",
+            "../cars/mini/one-239000/main13_resized.jpeg",
+            "../cars/mini/one-239000/main14_resized.jpeg"
+          ]
         }
       ]
     },
     {
       "id": "mitsubishi",
       "name": "Mitsubishi",
-      "logo": "images/brand_logo/mitsubishi.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/mitsubishi.png",
+      "cars": []
     },
     {
       "id": "nissan",
       "name": "Nissan",
-      "logo": "images/brand_logo/nissan.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/nissan.png",
+      "cars": []
     },
     {
       "id": "opel",
       "name": "Opel",
-      "logo": "images/brand_logo/opel.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/opel.png",
+      "cars": []
     },
     {
       "id": "peugeot",
       "name": "Peugeot",
-      "logo": "images/brand_logo/peugeot.png",
-      "cars": [
-       
-      ]
+      "logo": "../images/brand_logo/peugeot.png",
+      "cars": []
     },
     {
       "id": "porsche",
       "name": "Porsche",
-      "logo": "images/brand_logo/porsche.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/porsche.png",
+      "cars": []
     },
     {
       "id": "renault",
       "name": "Renault",
-      "logo": "images/brand_logo/renault.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/renault.png",
+      "cars": []
     },
     {
       "id": "seat",
       "name": "Seat",
-      "logo": "images/brand_logo/seat.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/seat.png",
+      "cars": []
     },
     {
       "id": "skoda",
       "name": "Škoda",
-      "logo": "images/brand_logo/skoda.png",
-      "cars": [
-
-      ]
+      "logo": "../images/brand_logo/skoda.png",
+      "cars": []
     },
     {
       "id": "smart",
       "name": "Smart",
-      "logo": "images/brand_logo/smart.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/smart.png",
+      "cars": []
     },
     {
       "id": "tesla",
       "name": "Tesla",
-      "logo": "images/brand_logo/tesla.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/tesla.png",
+      "cars": []
     },
     {
       "id": "toyota",
       "name": "Toyota",
-      "logo": "images/brand_logo/toyota.png",
+      "logo": "../images/brand_logo/toyota.png",
       "cars": [
         {
           "id": "toyota-yrs221501025",
           "brand": "Toyota",
           "name": "Yaris",
+          "sub_name": "",
+          "details": "",
           "chilometraggio": 15000,
           "condizioni": "Eccellente",
           "anno": 2022,
@@ -360,19 +356,21 @@
           "posti": 5,
           "prezzo": 22500,
           "neopatentati": "SI",
-          "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": [
-            "cars/place_holders/place_holder_2.jpg",
-            "cars/place_holders/place_holder_6.jpg",
-            "cars/place_holders/place_holder_4.jpg"
-          ],
           "venduto": false,
-          "aggiunto": true
+          "aggiunto": true,
+          "image": "../cars/place_holders/place_holder_2.jpg",
+          "gallery": [
+            "../cars/place_holders/place_holder_2.jpg",
+            "../cars/place_holders/place_holder_6.jpg",
+            "../cars/place_holders/place_holder_4.jpg"
+          ]
         },
         {
           "id": "toyota-crl212801025",
           "brand": "Toyota",
           "name": "Corolla",
+          "sub_name": "",
+          "details": "",
           "chilometraggio": 28000,
           "condizioni": "Ottimo",
           "anno": 2021,
@@ -385,19 +383,21 @@
           "posti": 5,
           "prezzo": 26500,
           "neopatentati": "SI",
-          "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": [
-            "cars/place_holders/place_holder_1.jpg",
-            "cars/place_holders/place_holder_6.jpg",
-            "cars/place_holders/place_holder_5.jpg"
-          ],
           "venduto": false,
-          "aggiunto": false
+          "aggiunto": true,
+          "image": "../cars/place_holders/place_holder_1.jpg",
+          "gallery": [
+            "../cars/place_holders/place_holder_1.jpg",
+            "../cars/place_holders/place_holder_6.jpg",
+            "../cars/place_holders/place_holder_5.jpg"
+          ]
         },
         {
           "id": "toyota-rav221201025",
           "brand": "Toyota",
           "name": "RAV4",
+          "sub_name": "",
+          "details": "",
           "chilometraggio": 12000,
           "condizioni": "Eccellente",
           "anno": 2022,
@@ -410,19 +410,21 @@
           "posti": 5,
           "prezzo": 38900,
           "neopatentati": "NO",
-          "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": [
-            "cars/place_holders/place_holder_2.jpg",
-            "cars/place_holders/place_holder_6.jpg",
-            "cars/place_holders/place_holder_3.jpg"
-          ],
           "venduto": false,
-          "aggiunto": false
+          "aggiunto": true,
+          "image": "../cars/place_holders/place_holder_2.jpg",
+          "gallery": [
+            "../cars/place_holders/place_holder_2.jpg",
+            "../cars/place_holders/place_holder_6.jpg",
+            "../cars/place_holders/place_holder_3.jpg"
+          ]
         },
         {
           "id": "toyota-cmr212201025",
           "brand": "Toyota",
           "name": "Camry",
+          "sub_name": "",
+          "details": "",
           "chilometraggio": 22000,
           "condizioni": "Ottimo",
           "anno": 2021,
@@ -435,19 +437,21 @@
           "posti": 5,
           "prezzo": 32500,
           "neopatentati": "NO",
-          "image": "cars/place_holders/place_holder_1.jpg",
-          "gallery": [
-            "cars/place_holders/place_holder_1.jpg",
-            "cars/place_holders/place_holder_6.jpg",
-            "cars/place_holders/place_holder_4.jpg"
-          ],
           "venduto": false,
-          "aggiunto": false
+          "aggiunto": true,
+          "image": "../cars/place_holders/place_holder_1.jpg",
+          "gallery": [
+            "../cars/place_holders/place_holder_1.jpg",
+            "../cars/place_holders/place_holder_6.jpg",
+            "../cars/place_holders/place_holder_4.jpg"
+          ]
         },
         {
           "id": "toyota-hgl203501025",
           "brand": "Toyota",
           "name": "Highlander",
+          "sub_name": "3.5 V6",
+          "details": "Assurda",
           "chilometraggio": 35000,
           "condizioni": "Buono",
           "anno": 2020,
@@ -460,48 +464,40 @@
           "posti": 8,
           "prezzo": 45000,
           "neopatentati": "NO",
-          "image": "cars/place_holders/place_holder_2.jpg",
-          "gallery": [
-            "cars/place_holders/place_holder_2.jpg",
-            "cars/place_holders/place_holder_6.jpg",
-            "cars/place_holders/place_holder_5.jpg"
-          ],
           "venduto": false,
-          "aggiunto": false
+          "aggiunto": true,
+          "image": "../cars/place_holders/place_holder_2.jpg",
+          "gallery": [
+            "../cars/place_holders/place_holder_2.jpg",
+            "../cars/place_holders/place_holder_6.jpg",
+            "../cars/place_holders/place_holder_5.jpg"
+          ]
         }
       ]
     },
     {
       "id": "volvo",
       "name": "Volvo",
-      "logo": "images/brand_logo/volvo.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/volvo.png",
+      "cars": []
     },
     {
       "id": "jaguar",
       "name": "Jaguar",
-      "logo": "images/brand_logo/jaguar.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/jaguar.png",
+      "cars": []
     },
     {
       "id": "lancia",
       "name": "Lancia",
-      "logo": "images/brand_logo/lancia.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/lancia.png",
+      "cars": []
     },
     {
       "id": "volkswagen",
       "name": "Volkswagen",
-      "logo": "images/brand_logo/volkswagen.png",
-      "cars": [
-        
-      ]
+      "logo": "../images/brand_logo/volkswagen.png",
+      "cars": []
     }
   ]
 }
