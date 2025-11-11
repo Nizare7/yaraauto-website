@@ -80,6 +80,8 @@ class CarManagerApp:
         # Campi input
         fields = [
             ("Nome Auto:", "name", "string"),
+            ("Sotto Nome:", "sub_name", "string"),
+            ("Dettagli:", "details", "string"),
             ("Chilometraggio:", "chilometraggio", "int"),
             ("Anno (YYYY):", "anno", "int"),
             ("Cilindrata:", "cilindrata", "int"),
@@ -289,6 +291,8 @@ class CarManagerApp:
             car_data = {
                 "brand": brand['name'],
                 "name": self.entries['name'].get(),
+                "sub_name": self.entries['sub_name'].get(),
+                "details": self.entries['details'].get(),
                 "chilometraggio": int(self.entries['chilometraggio'].get()),
                 "condizioni": self.condizioni_var.get(),
                 "anno": int(self.entries['anno'].get()),

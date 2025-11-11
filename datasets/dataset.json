@@ -7,29 +7,27 @@
       "cars": [
         {
           "brand": "Abarth",
-          "name": "qwe",
-          "chilometraggio": 7856,
+          "name": "crazy",
+          "sub_name": "v3 as",
+          "details": "asdsadf ",
+          "chilometraggio": 4858459646,
           "condizioni": "Usato",
-          "anno": 7685,
-          "carburante": "Benzina",
-          "cilindrata": 678,
-          "cavalli": 678,
-          "kw": 678,
-          "tipo_cambio": "Manuale",
-          "euro": "Euro 0",
-          "posti": 867,
-          "prezzo": 68776887.0,
+          "anno": 48648965,
+          "carburante": "Plug-in Hybrid (PHEV) Benzina+Elettrico con batteria grande",
+          "cilindrata": 456456,
+          "cavalli": 456456,
+          "kw": 45645,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 6B",
+          "posti": 64565,
+          "prezzo": 645645.0,
           "neopatentati": "SI",
           "venduto": false,
           "aggiunto": true,
-          "id": "abarth-qwe847061125",
-          "image": "../cars/abarth/qwe-847061125/main.jpg",
+          "id": "abarth-crz4864945151125",
+          "image": "../cars/abarth/crazy-4864945151125/main.jpg",
           "gallery": [
-            "../cars/abarth/qwe-847061125/main.jpg",
-            "../cars/abarth/qwe-847061125/main1.jpg",
-            "../cars/abarth/qwe-847061125/main2.jpg",
-            "../cars/abarth/qwe-847061125/main3.jpg",
-            "../cars/abarth/qwe-847061125/main4.jpg"
+            "../cars/abarth/crazy-4864945151125/main.jpg"
           ]
         }
       ]
