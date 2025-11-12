@@ -38,7 +38,7 @@
           "aggiunto": true,
           "id": "audi-a6231001125",
           "gallery": [],
-          "date": "12-11-2025 19:00:00"
+          "date_added": "12-11-2025 19:00:00"
         }
       ]
     },
@@ -128,7 +128,7 @@
           "aggiunto": true,
           "id": "mercedes-b18214401125",
           "gallery": [],
-          "date": "12-11-2025 18:30:00"
+          "date_added": "12-11-2025 18:30:00"
         },
         {
           "brand": "Mercedes",
@@ -151,7 +151,7 @@
           "aggiunto": true,
           "id": "mercedes-c22217001125",
           "gallery": [],
-          "date": "12-11-2025 18:00:00"
+          "date_added": "12-11-2025 18:00:00"
         }
       ]
     },
@@ -275,7 +275,7 @@
             "../cars/opel/astra-str220001125/main6.jpg",
             "../cars/opel/astra-str220001125/main7.jpg"
           ],
-          "date": "12-11-2025 16:00:00"
+          "date_added": "12-11-2025 16:00:00"
         },
         {
           "brand": "Opel",

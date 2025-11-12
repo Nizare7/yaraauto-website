@@ -214,20 +214,22 @@ class CarManagerApp:
         scrollbar.pack(side="right", fill="y")
     
     def create_remove_tab(self, parent):
-        # Frame per selezione brand
-        ttk.Label(parent, text="Seleziona Brand:", font=('Arial', 10, 'bold')).pack(padx=10, pady=5)
+        # Barra di ricerca
+        ttk.Label(parent, text="Cerca Auto:", font=('Arial', 10, 'bold')).pack(padx=10, pady=5)
         
-        self.remove_brand_var = tk.StringVar()
-        remove_brand_combo = ttk.Combobox(parent, textvariable=self.remove_brand_var, width=40)
-        remove_brand_combo['values'] = [b['name'] for b in self.data['brands']]
-        remove_brand_combo.pack(padx=10, pady=5)
-        remove_brand_combo.bind('<<ComboboxSelected>>', self.load_cars_for_removal)
+        self.remove_search_var = tk.StringVar()
+        self.remove_search_entry = ttk.Entry(parent, textvariable=self.remove_search_var, width=60)
+        self.remove_search_entry.pack(padx=10, pady=5)
+        self.remove_search_entry.bind('<KeyRelease>', self.filter_cars_for_removal)
         
         # Listbox per auto
         ttk.Label(parent, text="Auto disponibili:", font=('Arial', 10, 'bold')).pack(padx=10, pady=5)
         
         self.cars_listbox = tk.Listbox(parent, height=15, width=80)
         self.cars_listbox.pack(padx=10, pady=5, fill='both', expand=True)
+        
+        # Popola lista iniziale con tutte le auto
+        self.populate_cars_for_removal()
         
         # Bottone rimuovi
         ttk.Button(parent, text="Rimuovi Auto Selezionata", command=self.remove_car).pack(pady=10)
@@ -637,10 +639,10 @@ class CarManagerApp:
             return
         
         try:
-            # Aggiorna dati
-            self.current_edit_car['name'] = self.edit_entries['edit_name'].get()
-            self.current_edit_car['sub_name'] = self.edit_entries['edit_sub_name'].get()
-            self.current_edit_car['details'] = self.edit_entries['edit_details'].get()
+            # Aggiorna dati con formattazione
+            self.current_edit_car['name'] = self.edit_entries['edit_name'].get().title()  # Ogni parola con maiuscola
+            self.current_edit_car['sub_name'] = self.edit_entries['edit_sub_name'].get().capitalize()  # Prima lettera maiuscola
+            self.current_edit_car['details'] = self.edit_entries['edit_details'].get().capitalize()  # Prima lettera maiuscola
             self.current_edit_car['chilometraggio'] = int(self.edit_entries['edit_chilometraggio'].get())
             self.current_edit_car['anno'] = int(self.edit_entries['edit_anno'].get())
             self.current_edit_car['cilindrata'] = int(self.edit_entries['edit_cilindrata'].get())
@@ -867,12 +869,12 @@ class CarManagerApp:
             brand_name = self.brand_listbox.get(selection[0])
             brand = next((b for b in self.data['brands'] if b['name'] == brand_name), None)
             
-            # Raccogli dati
+            # Raccogli dati con formattazione
             car_data = {
                 "brand": brand['name'],
-                "name": self.entries['name'].get(),
-                "sub_name": self.entries['sub_name'].get(),
-                "details": self.entries['details'].get(),
+                "name": self.entries['name'].get().title(),  # Ogni parola con maiuscola
+                "sub_name": self.entries['sub_name'].get().capitalize(),  # Prima lettera maiuscola
+                "details": self.entries['details'].get().capitalize(),  # Prima lettera maiuscola
                 "chilometraggio": int(self.entries['chilometraggio'].get()),
                 "condizioni": self.condizioni_var.get(),
                 "anno": int(self.entries['anno'].get()),
@@ -993,15 +995,30 @@ class CarManagerApp:
         self.gallery_paths = []
         self.gallery_listbox.delete(0, tk.END)
     
-    def load_cars_for_removal(self, event):
+    def populate_cars_for_removal(self):
+        """Popola la lista con tutte le auto disponibili per la rimozione"""
         self.cars_listbox.delete(0, tk.END)
-        brand_name = self.remove_brand_var.get()
-        brand = next((b for b in self.data['brands'] if b['name'] == brand_name), None)
-        
-        if brand:
+        for brand in self.data['brands']:
             for car in brand['cars']:
-                display_text = f"{car['name']} - {car['anno']} - {car['chilometraggio']}km - €{car['prezzo']}"
+                display_text = f"{brand['name']} - {car['name']} ({car['anno']}) - {car['chilometraggio']}km - €{car['prezzo']}"
                 self.cars_listbox.insert(tk.END, display_text)
+    
+    def filter_cars_for_removal(self, event):
+        """Filtra le auto in base al testo di ricerca"""
+        search_term = self.remove_search_var.get().lower()
+        self.cars_listbox.delete(0, tk.END)
+        
+        for brand in self.data['brands']:
+            for car in brand['cars']:
+                # Cerca in brand, nome, sub_name, anno, prezzo
+                searchable_text = f"{brand['name']} {car['name']} {car.get('sub_name', '')} {car['anno']} {car['prezzo']}".lower()
+                if search_term in searchable_text:
+                    display_text = f"{brand['name']} - {car['name']} ({car['anno']}) - {car['chilometraggio']}km - €{car['prezzo']}"
+                    self.cars_listbox.insert(tk.END, display_text)
+    
+    def load_cars_for_removal(self, event):
+        """Funzione legacy - non più utilizzata con la ricerca"""
+        pass
     
     def remove_car(self):
         selection = self.cars_listbox.curselection()
@@ -1009,40 +1026,71 @@ class CarManagerApp:
             messagebox.showerror("Errore", "Seleziona un'auto da rimuovere!")
             return
         
-        brand_name = self.remove_brand_var.get()
-        brand = next((b for b in self.data['brands'] if b['name'] == brand_name), None)
+        # Trova l'auto selezionata nella lista filtrata
+        selected_index = 0
+        search_term = self.remove_search_var.get().lower()
         
-        if brand:
-            car_index = selection[0]
-            car = brand['cars'][car_index]
-            
-            # Conferma
-            if messagebox.askyesno("Conferma", f"Vuoi rimuovere {car['name']}?"):
-                # Rimuovi cartella immagini se il flag è attivo
-                if self.DELETE_IMAGE_FOLDERS and 'image' in car and car['image']:
-                    try:
-                        # Estrae il percorso della cartella dall'immagine
-                        # car['image'] è tipo: "../cars/fiat/fiatpanda-ftp201812/main.jpg"
-                        script_dir = Path(__file__).parent
-                        cars_base_path = script_dir.parent / "cars"
-                        
-                        # Estrae brand_id e folder_name dal percorso
-                        image_parts = car['image'].split('/')
-                        if len(image_parts) >= 4:  # ../cars/brand_id/folder_name/image
-                            brand_id = image_parts[2]
-                            folder_name = image_parts[3]
-                            folder_path = cars_base_path / brand_id / folder_name
-                            
-                            if folder_path.exists():
-                                shutil.rmtree(folder_path)
-                                print(f"Cartella eliminata: {folder_path}")
-                    except Exception as e:
-                        messagebox.showwarning("Avviso", f"Errore nell'eliminazione della cartella: {str(e)}")
+        target_brand = None
+        target_car = None
+        target_car_index = None
+        
+        for brand in self.data['brands']:
+            for car_idx, car in enumerate(brand['cars']):
+                # Se c'è un filtro attivo, salta le auto non corrispondenti
+                if search_term:
+                    searchable_text = f"{brand['name']} {car['name']} {car.get('sub_name', '')} {car['anno']} {car['prezzo']}".lower()
+                    if search_term not in searchable_text:
+                        continue
                 
-                brand['cars'].pop(car_index)
-                self.save_json()
-                self.load_cars_for_removal(None)
-                messagebox.showinfo("Successo", "Auto rimossa con successo!")
+                if selected_index == selection[0]:
+                    # Auto trovata!
+                    target_brand = brand
+                    target_car = car
+                    target_car_index = car_idx
+                    break
+                
+                selected_index += 1
+            
+            if target_car:
+                break
+        
+        if not target_car or not target_brand:
+            messagebox.showerror("Errore", "Auto non trovata!")
+            return
+        
+        # Conferma
+        if messagebox.askyesno("Conferma", f"Vuoi rimuovere {target_car['name']} ({target_car['anno']}) - {target_brand['name']}?"):
+            # Rimuovi cartella immagini se il flag è attivo
+            if self.DELETE_IMAGE_FOLDERS and 'image' in target_car and target_car['image']:
+                try:
+                    # Estrae il percorso della cartella dall'immagine
+                    # car['image'] è tipo: "../cars/fiat/fiatpanda-ftp201812/main.jpg"
+                    script_dir = Path(__file__).parent
+                    cars_base_path = script_dir.parent / "cars"
+                    
+                    # Estrae brand_id e folder_name dal percorso
+                    image_parts = target_car['image'].split('/')
+                    if len(image_parts) >= 4:  # ../cars/brand_id/folder_name/image
+                        brand_id = image_parts[2]
+                        folder_name = image_parts[3]
+                        folder_path = cars_base_path / brand_id / folder_name
+                        
+                        if folder_path.exists():
+                            shutil.rmtree(folder_path)
+                            print(f"Cartella eliminata: {folder_path}")
+                except Exception as e:
+                    messagebox.showwarning("Avviso", f"Errore nell'eliminazione della cartella: {str(e)}")
+            
+            target_brand['cars'].pop(target_car_index)
+            self.save_json()
+            
+            # Aggiorna la lista
+            if search_term:
+                self.filter_cars_for_removal(None)
+            else:
+                self.populate_cars_for_removal()
+            
+            messagebox.showinfo("Successo", "Auto rimossa con successo!")
 
 if __name__ == "__main__":
     root = tk.Tk()
