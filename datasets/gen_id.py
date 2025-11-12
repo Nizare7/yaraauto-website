@@ -214,13 +214,18 @@ class CarManagerApp:
         scrollbar.pack(side="right", fill="y")
     
     def create_remove_tab(self, parent):
-        # Barra di ricerca
-        ttk.Label(parent, text="Cerca Auto:", font=('Arial', 10, 'bold')).pack(padx=10, pady=5)
+        # Frame per barra di ricerca e bottone refresh
+        search_frame = ttk.Frame(parent)
+        search_frame.pack(padx=10, pady=5, fill='x')
+        
+        ttk.Label(search_frame, text="Cerca Auto:", font=('Arial', 10, 'bold')).pack(side='left', padx=(0, 5))
         
         self.remove_search_var = tk.StringVar()
-        self.remove_search_entry = ttk.Entry(parent, textvariable=self.remove_search_var, width=60)
-        self.remove_search_entry.pack(padx=10, pady=5)
+        self.remove_search_entry = ttk.Entry(search_frame, textvariable=self.remove_search_var, width=50)
+        self.remove_search_entry.pack(side='left', padx=5, fill='x', expand=True)
         self.remove_search_entry.bind('<KeyRelease>', self.filter_cars_for_removal)
+        
+        ttk.Button(search_frame, text="🔄 Aggiorna Lista", command=self.refresh_remove_list).pack(side='left', padx=5)
         
         # Listbox per auto
         ttk.Label(parent, text="Auto disponibili:", font=('Arial', 10, 'bold')).pack(padx=10, pady=5)
@@ -243,13 +248,21 @@ class CarManagerApp:
         left_frame = ttk.Frame(main_container)
         left_frame.pack(side='left', fill='both', expand=False, padx=(0, 10))
         
-        # Barra di ricerca
-        ttk.Label(left_frame, text="Cerca Auto:", font=('Arial', 10, 'bold')).pack(padx=5, pady=5)
+        # Frame per barra di ricerca e bottone refresh
+        search_frame = ttk.Frame(left_frame)
+        search_frame.pack(padx=5, pady=5, fill='x')
+        
+        ttk.Label(search_frame, text="Cerca Auto:", font=('Arial', 10, 'bold')).pack(anchor='w')
+        
+        search_input_frame = ttk.Frame(search_frame)
+        search_input_frame.pack(fill='x', pady=(5, 0))
         
         self.edit_search_var = tk.StringVar()
-        self.edit_search_entry = ttk.Entry(left_frame, textvariable=self.edit_search_var, width=40)
-        self.edit_search_entry.pack(padx=5, pady=5)
+        self.edit_search_entry = ttk.Entry(search_input_frame, textvariable=self.edit_search_var)
+        self.edit_search_entry.pack(side='left', fill='x', expand=True)
         self.edit_search_entry.bind('<KeyRelease>', self.filter_cars_for_edit)
+        
+        ttk.Button(search_input_frame, text="🔄", command=self.refresh_edit_list, width=3).pack(side='left', padx=(5, 0))
         
         # Listbox per auto
         ttk.Label(left_frame, text="Seleziona Auto:", font=('Arial', 10, 'bold')).pack(padx=5, pady=5)
@@ -443,6 +456,13 @@ class CarManagerApp:
             for car in brand['cars']:
                 display_text = f"{brand['name']} - {car['name']} ({car['anno']}) - {car['chilometraggio']}km - €{car['prezzo']}"
                 self.edit_cars_listbox.insert(tk.END, display_text)
+    
+    def refresh_edit_list(self):
+        """Ricarica i dati dal JSON e aggiorna la lista"""
+        self.data = self.load_json()
+        self.edit_search_var.set("")  # Reset ricerca
+        self.populate_cars_for_edit()
+        messagebox.showinfo("Aggiornato", "Lista aggiornata con successo!")
     
     def filter_cars_for_edit(self, event):
         """Filtra le auto in base al testo di ricerca"""
@@ -1002,6 +1022,13 @@ class CarManagerApp:
             for car in brand['cars']:
                 display_text = f"{brand['name']} - {car['name']} ({car['anno']}) - {car['chilometraggio']}km - €{car['prezzo']}"
                 self.cars_listbox.insert(tk.END, display_text)
+    
+    def refresh_remove_list(self):
+        """Ricarica i dati dal JSON e aggiorna la lista"""
+        self.data = self.load_json()
+        self.remove_search_var.set("")  # Reset ricerca
+        self.populate_cars_for_removal()
+        messagebox.showinfo("Aggiornato", "Lista aggiornata con successo!")
     
     def filter_cars_for_removal(self, event):
         """Filtra le auto in base al testo di ricerca"""
