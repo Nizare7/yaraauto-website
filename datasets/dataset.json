@@ -16,7 +16,31 @@
       "id": "audi",
       "name": "Audi",
       "logo": "../images/brand_logo/audi.png",
-      "cars": []
+      "cars": [
+        {
+          "brand": "Audi",
+          "name": "A6",
+          "sub_name": "",
+          "details": "",
+          "chilometraggio": 30000,
+          "condizioni": "Usato Nuovo",
+          "anno": 2010,
+          "carburante": "Diesel",
+          "cilindrata": 2700,
+          "cavalli": 190,
+          "kw": 140,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5",
+          "posti": 5,
+          "prezzo": 3500.0,
+          "neopatentati": "NO",
+          "venduto": false,
+          "aggiunto": true,
+          "id": "audi-a6231001125",
+          "gallery": [],
+          "date": "12-11-2025 19:00:00"
+        }
+      ]
     },
     {
       "id": "bmw",
@@ -46,7 +70,31 @@
       "id": "fiat",
       "name": "Fiat",
       "logo": "../images/brand_logo/fiat.png",
-      "cars": []
+      "cars": [
+        {
+          "brand": "Fiat",
+          "name": "Punto",
+          "sub_name": "",
+          "details": "",
+          "chilometraggio": 220000,
+          "condizioni": "Usato",
+          "anno": 2006,
+          "carburante": "Benzina",
+          "cilindrata": 1200,
+          "cavalli": 65,
+          "kw": 48,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 4",
+          "posti": 5,
+          "prezzo": 2500.0,
+          "neopatentati": "SI",
+          "venduto": false,
+          "aggiunto": false,
+          "id": "fiat-pnt222601125",
+          "date_added": "12-11-2025 19:49:54",
+          "gallery": []
+        }
+      ]
     },
     {
       "id": "ford",
@@ -58,7 +106,54 @@
       "id": "mercedes",
       "name": "Mercedes",
       "logo": "../images/brand_logo/mercedes.png",
-      "cars": []
+      "cars": [
+        {
+          "brand": "Mercedes",
+          "name": "C220",
+          "sub_name": "2.1",
+          "details": "",
+          "chilometraggio": 160000,
+          "condizioni": "Usato Nuovo",
+          "anno": 2010,
+          "carburante": "Diesel",
+          "cilindrata": 2100,
+          "cavalli": 170,
+          "kw": 125,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5",
+          "posti": 5,
+          "prezzo": 7999.0,
+          "neopatentati": "NO",
+          "venduto": false,
+          "aggiunto": true,
+          "id": "mercedes-c22217001125",
+          "gallery": [],
+          "date": "12-11-2025 18:00:00"
+        },
+        {
+          "brand": "Mercedes",
+          "name": "B18",
+          "sub_name": "2.0",
+          "details": "",
+          "chilometraggio": 135000,
+          "condizioni": "Usato Nuovo",
+          "anno": 2009,
+          "carburante": "Diesel",
+          "cilindrata": 100,
+          "cavalli": 109,
+          "kw": 80,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 7",
+          "posti": 5,
+          "prezzo": 4500.0,
+          "neopatentati": "SI",
+          "venduto": false,
+          "aggiunto": true,
+          "id": "mercedes-b18214401125",
+          "gallery": [],
+          "date": "12-11-2025 18:30:00"
+        }
+      ]
     },
     {
       "id": "honda",
@@ -106,7 +201,31 @@
       "id": "mini",
       "name": "Mini",
       "logo": "../images/brand_logo/mini.png",
-      "cars": []
+      "cars": [
+        {
+          "brand": "Mini",
+          "name": "Cooper",
+          "sub_name": "",
+          "details": "",
+          "chilometraggio": 220000,
+          "condizioni": "Usato",
+          "anno": 2011,
+          "carburante": "Benzina",
+          "cilindrata": 1600,
+          "cavalli": 75,
+          "kw": 55,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5",
+          "posti": 5,
+          "prezzo": 3900.0,
+          "neopatentati": "SI",
+          "venduto": false,
+          "aggiunto": true,
+          "id": "mini-cpr223101125",
+          "date_added": "12-11-2025 17:00:08",
+          "gallery": []
+        }
+      ]
     },
     {
       "id": "mitsubishi",
@@ -155,7 +274,31 @@
             "../cars/opel/astra-str220001125/main5.jpg",
             "../cars/opel/astra-str220001125/main6.jpg",
             "../cars/opel/astra-str220001125/main7.jpg"
-          ]
+          ],
+          "date": "12-11-2025 16:00:00"
+        },
+        {
+          "brand": "Opel",
+          "name": "Corsa",
+          "sub_name": "",
+          "details": "",
+          "chilometraggio": 150000,
+          "condizioni": "Usato",
+          "anno": 2011,
+          "carburante": "Benzina",
+          "cilindrata": 1200,
+          "cavalli": 86,
+          "kw": 63,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5",
+          "posti": 5,
+          "prezzo": 3500.0,
+          "neopatentati": "SI",
+          "venduto": false,
+          "aggiunto": false,
+          "id": "opel-crs216101125",
+          "date_added": "12-11-2025 19:54:46",
+          "gallery": []
         }
       ]
     },
@@ -163,7 +306,31 @@
       "id": "peugeot",
       "name": "Peugeot",
       "logo": "../images/brand_logo/peugeot.png",
-      "cars": []
+      "cars": [
+        {
+          "brand": "Peugeot",
+          "name": "3008",
+          "sub_name": "",
+          "details": "",
+          "chilometraggio": 220000,
+          "condizioni": "Usato",
+          "anno": 20099,
+          "carburante": "Diesel",
+          "cilindrata": 1600,
+          "cavalli": 209,
+          "kw": 80,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 4",
+          "posti": 7,
+          "prezzo": 3000.0,
+          "neopatentati": "SI",
+          "venduto": false,
+          "aggiunto": true,
+          "id": "peugeot-3002031901125",
+          "date_added": "12-11-2025 15:00:00",
+          "gallery": []
+        }
+      ]
     },
     {
       "id": "porsche",
@@ -205,7 +372,31 @@
       "id": "toyota",
       "name": "Toyota",
       "logo": "../images/brand_logo/toyota.png",
-      "cars": []
+      "cars": [
+        {
+          "brand": "Toyota",
+          "name": "Yaris",
+          "sub_name": "",
+          "details": "",
+          "chilometraggio": 200000,
+          "condizioni": "Usato Nuovo",
+          "anno": 2000,
+          "carburante": "Benzina",
+          "cilindrata": 1000,
+          "cavalli": 68,
+          "kw": 50,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 3",
+          "posti": 5,
+          "prezzo": 1200.0,
+          "neopatentati": "SI",
+          "venduto": false,
+          "aggiunto": false,
+          "id": "toyota-yrs220001125",
+          "date_added": "12-11-2025 19:48:40",
+          "gallery": []
+        }
+      ]
     },
     {
       "id": "volvo",

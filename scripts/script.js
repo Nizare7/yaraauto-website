@@ -1536,7 +1536,22 @@ class CarDealer {
         const nextBtn = modal.querySelector('.car-detail-next');
 
         // Update title and price
-        title.textContent = this.getCarTitle(car);
+        title.innerHTML = '';  // Pulisci il contenuto
+        
+        // Crea il titolo principale
+        const mainTitle = document.createElement('span');
+        mainTitle.className = 'car-detail-title-main';
+        mainTitle.textContent = this.getCarTitle(car);
+        title.appendChild(mainTitle);
+        
+        // Aggiungi sub_name se presente
+        if (car.sub_name && car.sub_name.trim() !== '') {
+            const subTitle = document.createElement('span');
+            subTitle.className = 'car-detail-title-sub';
+            subTitle.textContent = ` ${car.sub_name}`;
+            title.appendChild(subTitle);
+        }
+        
         price.textContent = `€ ${car.prezzo.toLocaleString('it-IT')}`;
 
         // Add or remove "Recently Added" tag in the title area

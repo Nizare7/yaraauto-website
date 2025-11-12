@@ -855,6 +855,10 @@
         font-size: 1.4rem;
     }
     
+    .car-detail-title-sub {
+        font-size: 0.85em;
+    }
+    
     .car-detail-price {
         font-size: 1.2rem;
     }
@@ -1372,6 +1376,12 @@
     
     .car-detail-title {
         font-size: 1.2rem;
+    }
+    
+    .car-detail-title-sub {
+        font-size: 0.85em;
+        display: block;
+        margin-top: 5px;
     }
     
     .car-detail-price {
