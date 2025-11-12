@@ -69,12 +69,18 @@ class CarDealer {
         }
     }
 
+    // Helper function to get car display title
+    getCarTitle(car) {
+        // Use brand + name, ignoring sub_name for now
+        return `${car.brand} ${car.name}`;
+    }
+
     // Load JSON data
     async loadData() {
-        console.log('📡 Tentativo di caricamento da: cars-data.json');
+        console.log('📡 Tentativo di caricamento da: dataset.json');
         
         try {
-            const response = await fetch('../datasets/cars-data.json');
+            const response = await fetch('../datasets/dataset.json');
             console.log('📊 Response status:', response.status);
             console.log('📊 Response ok:', response.ok);
             console.log('📊 Response headers:', Object.fromEntries(response.headers.entries()));
@@ -325,8 +331,8 @@ class CarDealer {
 
         // Check if brand has cars
         if (brand.cars && brand.cars.length > 0) {
-            // Sort cars alphabetically by title
-            const sortedCars = [...brand.cars].sort((a, b) => a.title.localeCompare(b.title));
+            // Sort cars alphabetically by name
+            const sortedCars = [...brand.cars].sort((a, b) => a.name.localeCompare(b.name));
 
             sortedCars.forEach(car => {
                 const carElement = this.createCarCard(car);
@@ -606,7 +612,7 @@ class CarDealer {
             if (car.image && car.image.trim() !== '') {
                 const img = document.createElement('img');
                 img.src = car.image;
-                img.alt = car.title;
+                img.alt = this.getCarTitle(car);
                 img.style.width = '100%';
                 img.style.height = '100%';
                 img.style.objectFit = 'cover';
@@ -627,7 +633,7 @@ class CarDealer {
 
         const carTitle = document.createElement('h3');
         carTitle.className = 'car-title';
-        carTitle.textContent = car.title;
+        carTitle.textContent = this.getCarTitle(car);
 
         const carDetails = document.createElement('p');
         carDetails.className = 'car-details';
@@ -689,7 +695,7 @@ class CarDealer {
 
             const img = document.createElement('img');
             img.src = imageSrc;
-            img.alt = `${car.title} - Foto ${index + 1}`;
+            img.alt = `${this.getCarTitle(car)} - Foto ${index + 1}`;
             img.onerror = () => {
                 slide.innerHTML = this.getCarEmoji();
                 slide.style.fontSize = '4rem';
@@ -1530,7 +1536,7 @@ class CarDealer {
         const nextBtn = modal.querySelector('.car-detail-next');
 
         // Update title and price
-        title.textContent = car.title;
+        title.textContent = this.getCarTitle(car);
         price.textContent = `€ ${car.prezzo.toLocaleString('it-IT')}`;
 
         // Add or remove "Recently Added" tag in the title area
@@ -1606,7 +1612,7 @@ class CarDealer {
             if (imageSrc && imageSrc.trim() !== '') {
                 const img = document.createElement('img');
                 img.src = imageSrc;
-                img.alt = `${car.title} - Foto ${index + 1}`;
+                img.alt = `${this.getCarTitle(car)} - Foto ${index + 1}`;
                 img.onerror = () => {
                     slide.innerHTML = this.getCarEmoji();
                     slide.style.fontSize = '4rem';
@@ -1620,7 +1626,7 @@ class CarDealer {
                 img.addEventListener('click', (e) => {
                     e.stopPropagation();
                     if (window.innerWidth <= 1400) {
-                        this.openMobileFullscreen(car.title, index);
+                        this.openMobileFullscreen(this.getCarTitle(car), index);
                     }
                 });
                 

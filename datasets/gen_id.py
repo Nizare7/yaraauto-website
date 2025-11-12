@@ -13,6 +13,10 @@ class CarManagerApp:
         self.root.title("Gestore Auto - JSON Editor")
         self.root.geometry("900x700")
         
+        # TODO SE VOGLIO TOGLIERE LE IMMAGINI DOPO LA RIMOZIONE DELLA MACCHINA
+        # FLAG: Impostare a True per eliminare le cartelle delle immagini, False per conservarle
+        self.DELETE_IMAGE_FOLDERS = True
+        
         # Usa il percorso assoluto basato sulla posizione dello script
         script_dir = Path(__file__).parent
         self.json_file = script_dir / "dataset.json"
@@ -319,10 +323,10 @@ class CarManagerApp:
             car_data['id'] = car_id
             
             # Crea cartella e copia immagini
-            id_numerico = car_id.split('-')[1][3:]  # Estrae parte numerica
+            id_completo = car_id.split('-')[1]  # Estrae XXXidNumerico (senza il brand_id)
             script_dir = Path(__file__).parent
             cars_base_path = script_dir.parent / "cars"  # g:\YaraAuto_website\yaraauto-website\cars
-            folder_name = f"{car_data['name'].lower().replace(' ', '')}-{id_numerico}"
+            folder_name = f"{car_data['name'].lower().replace(' ', '')}-{id_completo}"
             folder_path = cars_base_path / brand['id'] / folder_name
             folder_path.mkdir(parents=True, exist_ok=True)
             
@@ -400,10 +404,26 @@ class CarManagerApp:
             
             # Conferma
             if messagebox.askyesno("Conferma", f"Vuoi rimuovere {car['name']}?"):
-                # Rimuovi cartella immagini (opzionale)
-                # folder_path = os.path.dirname(car['image'])
-                # if os.path.exists(folder_path):
-                #     shutil.rmtree(folder_path)
+                # Rimuovi cartella immagini se il flag è attivo
+                if self.DELETE_IMAGE_FOLDERS and 'image' in car and car['image']:
+                    try:
+                        # Estrae il percorso della cartella dall'immagine
+                        # car['image'] è tipo: "../cars/fiat/fiatpanda-ftp201812/main.jpg"
+                        script_dir = Path(__file__).parent
+                        cars_base_path = script_dir.parent / "cars"
+                        
+                        # Estrae brand_id e folder_name dal percorso
+                        image_parts = car['image'].split('/')
+                        if len(image_parts) >= 4:  # ../cars/brand_id/folder_name/image
+                            brand_id = image_parts[2]
+                            folder_name = image_parts[3]
+                            folder_path = cars_base_path / brand_id / folder_name
+                            
+                            if folder_path.exists():
+                                shutil.rmtree(folder_path)
+                                print(f"Cartella eliminata: {folder_path}")
+                    except Exception as e:
+                        messagebox.showwarning("Avviso", f"Errore nell'eliminazione della cartella: {str(e)}")
                 
                 brand['cars'].pop(car_index)
                 self.save_json()
