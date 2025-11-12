@@ -95,21 +95,6 @@ class CarManagerApp:
         canvas.bind('<Enter>', _bind_mousewheel)
         canvas.bind('<Leave>', _unbind_mousewheel)
         
-        # Brand selection con filtro
-        ttk.Label(scrollable_frame, text="Brand:", font=('Arial', 10, 'bold')).grid(row=0, column=0, sticky='w', padx=5, pady=5)
-        
-        brand_frame = ttk.Frame(scrollable_frame)
-        brand_frame.grid(row=0, column=1, sticky='ew', padx=5, pady=5)
-        
-        self.brand_var = tk.StringVar()
-        self.brand_search = ttk.Entry(brand_frame, textvariable=self.brand_var)
-        self.brand_search.pack(fill='x')
-        self.brand_search.bind('<KeyRelease>', self.filter_brands)
-        
-        self.brand_listbox = tk.Listbox(brand_frame, height=5)
-        self.brand_listbox.pack(fill='both', expand=True)
-        self.populate_brands()
-        
         # Campi input
         fields = [
             ("Nome Auto:", "name", "string"),
@@ -187,6 +172,22 @@ class CarManagerApp:
         # Checkbox per aggiunto
         self.aggiunto_var = tk.BooleanVar()
         ttk.Checkbutton(scrollable_frame, text="Aggiunto", variable=self.aggiunto_var).grid(row=row, column=0, columnspan=2, sticky='w', padx=5, pady=5)
+        row += 1
+        
+        # Brand selection con filtro (spostato qui, prima del bottone)
+        ttk.Label(scrollable_frame, text="Brand:", font=('Arial', 10, 'bold')).grid(row=row, column=0, sticky='w', padx=5, pady=5)
+        
+        brand_frame = ttk.Frame(scrollable_frame)
+        brand_frame.grid(row=row, column=1, sticky='ew', padx=5, pady=5)
+        
+        self.brand_var = tk.StringVar()
+        self.brand_search = ttk.Entry(brand_frame, textvariable=self.brand_var)
+        self.brand_search.pack(fill='x')
+        self.brand_search.bind('<KeyRelease>', self.filter_brands)
+        
+        self.brand_listbox = tk.Listbox(brand_frame, height=5)
+        self.brand_listbox.pack(fill='both', expand=True)
+        self.populate_brands()
         row += 1
         
         # Immagine principale
@@ -887,6 +888,29 @@ class CarManagerApp:
                 "venduto": self.venduto_var.get(),
                 "aggiunto": self.aggiunto_var.get()
             }
+            
+            # Gestione limite 6 auto con aggiunto=true
+            if car_data['aggiunto']:
+                # Cerca tutte le auto con aggiunto=true in tutti i brand
+                added_cars = []
+                for b in self.data['brands']:
+                    for car in b['cars']:
+                        if car.get('aggiunto', False):
+                            added_cars.append({
+                                'car': car,
+                                'brand': b,
+                                'date_added': car.get('date_added', '01-01-1970 00:00:00')
+                            })
+                
+                # Se ci sono già 6 o più auto con aggiunto=true
+                if len(added_cars) >= 6:
+                    # Ordina per data (dal più recente al più vecchio)
+                    added_cars.sort(key=lambda x: datetime.strptime(x['date_added'], "%d-%m-%Y %H:%M:%S"), reverse=True)
+                    
+                    # Rimuovi aggiunto=true dalla più vecchia (ultima nella lista ordinata)
+                    oldest = added_cars[-1]
+                    oldest['car']['aggiunto'] = False
+                    messagebox.showinfo("Info", f"Rimosso flag 'aggiunto' dall'auto più vecchia: {oldest['car']['name']} ({oldest['car']['anno']}) - Aggiunta il: {oldest['date_added']}")
             
             # Genera ID
             car_id = self.generate_car_id(
