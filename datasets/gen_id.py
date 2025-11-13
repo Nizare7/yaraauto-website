@@ -33,9 +33,28 @@ class CarManagerApp:
             messagebox.showerror("Errore", f"File {self.json_file} non trovato!")
             return {"brands": []}
     
+    def update_last_update_file(self):
+        """Aggiorna il file last_update.txt con data e ora correnti"""
+        try:
+            script_dir = Path(__file__).parent
+            last_update_file = script_dir / "last_update.txt"
+            
+            now = datetime.now()
+            timestamp = now.strftime("%d-%m-%Y %H:%M:%S")
+            
+            with open(last_update_file, 'w', encoding='utf-8') as f:
+                f.write(timestamp)
+                
+        except Exception as e:
+            print(f"Errore nell'aggiornamento di last_update.txt: {str(e)}")
+    
     def save_json(self):
         with open(self.json_file, 'w', encoding='utf-8') as f:
             json.dump(self.data, f, ensure_ascii=False, indent=2)
+        
+        # Aggiorna il file last_update.txt
+        self.update_last_update_file()
+        
         messagebox.showinfo("Successo", "Dati salvati con successo!")
     
     def create_widgets(self):

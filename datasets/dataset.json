@@ -218,7 +218,7 @@
         {
           "brand": "Mercedes",
           "name": "B18",
-          "sub_name": "2.0",
+          "sub_name": " ",
           "details": "",
           "chilometraggio": 135000,
           "condizioni": "Usato Nuovo",
@@ -241,7 +241,7 @@
         {
           "brand": "Mercedes",
           "name": "C220",
-          "sub_name": "2.1",
+          "sub_name": "",
           "details": "",
           "chilometraggio": 160000,
           "condizioni": "Usato Nuovo",
@@ -277,7 +277,7 @@
         {
           "brand": "Opel",
           "name": "Astra",
-          "sub_name": "1.7",
+          "sub_name": "",
           "details": "",
           "chilometraggio": 190000,
           "condizioni": "Usato Nuovo",
