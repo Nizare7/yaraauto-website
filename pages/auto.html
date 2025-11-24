@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Auto page CSS - Complete -->
+    <link rel="stylesheet" href="../styles/loader.css">
     <link rel="stylesheet" href="../styles/base.css">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/buttons.css">
@@ -23,8 +24,19 @@
     <link rel="stylesheet" href="../styles/recently-added.css">
     <link rel="stylesheet" href="../styles/mobile.css">
 </head>
-<body>
+<body class="loading">
 <a id="top"></a>
+
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo-container">
+        <img src="../images/site_logo/logo5_p1.png" alt="Logo base" id="loader-logo-p1">
+        <img src="../images/site_logo/logo5_p2.png" alt="YARAAUTO" id="loader-logo-p2">
+    </div>
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Caricamento in corso...</p>
+</div>
+
 <!-- Fixed header -->
     <header class="header">
         <div class="header-container">

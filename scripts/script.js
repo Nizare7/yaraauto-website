@@ -50,6 +50,9 @@ class CarDealer {
             
             console.log('🎉 Inizializzazione completata con successo!');
             
+            // Hide page loader when data is ready
+            this.hidePageLoader();
+            
         } catch (error) {
             console.error('❌ ERRORE durante l\'inizializzazione:', error);
             console.error('📍 Stack trace:', error.stack);
@@ -2499,6 +2502,19 @@ class CarDealer {
                 top: targetPosition,
                 behavior: 'smooth'
             });
+        }
+    }
+
+    // Hide page loader
+    hidePageLoader() {
+        const loader = document.getElementById('pageLoader');
+        const body = document.body;
+        
+        if (loader && body) {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                body.classList.remove('loading');
+            }, 300); // Small delay for smooth transition
         }
     }
 }

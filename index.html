@@ -4,30 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YARAAUTO</title>
-    <link rel="stylesheet" href="styles/index.css">
+    <script>
+        // Redirect immediately to homepage
+        window.location.replace('pages/homepage.html');
+    </script>
 </head>
 <body>
-
-    <div id="loader-wrapper">
-        
-        <div id="logo-container">
-            <img src="images/site_logo/logo5_p2.png" alt="Logo parte superiore" id="logo-p2">
-            <img src="images/site_logo/logo5_p1.png" alt="Logo parte inferiore" id="logo-p1">
-        </div>
-        
-        <div class="spinner"></div>
-
-    </div>
-
-    <script>
-        // Imposta un timer
-        window.setTimeout(function() {
-            
-            // Reindirizza l'utente alla homepage dopo 3 secondi (3000ms)
-            window.location.href = 'pages/homepage.html';
-
-        }, 3000); // 3000 millisecondi = 3 secondi
-    </script>
-
+    <!-- Fallback for browsers with JavaScript disabled -->
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=pages/homepage.html">
+    </noscript>
+    <p style="text-align: center; margin-top: 50px;">
+        Reindirizzamento in corso... <a href="pages/homepage.html">Clicca qui</a> se non vieni reindirizzato automaticamente.
+    </p>
 </body>
 </html>
