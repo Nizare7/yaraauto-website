@@ -258,6 +258,16 @@ class CarDealer {
         const mainContent = document.querySelector('.main-content');
         if (!mainContent || !this.data) return;
 
+        // Cleanup existing carousels to free memory
+        if (this.carousels && this.carousels.size > 0) {
+            this.carousels.forEach(carousel => {
+                if (carousel.cleanup) {
+                    carousel.cleanup();
+                }
+            });
+            this.carousels.clear();
+        }
+
         // Remove existing car sections and recently added section
         document.querySelectorAll('.cars-section, .recently-added-section').forEach(section => section.remove());
 
@@ -688,14 +698,22 @@ class CarDealer {
         const track = document.createElement('div');
         track.className = 'carousel-track';
 
-        // Create slide for each image
+        // Create slide for each image with lazy loading
         car.gallery.forEach((imageSrc, index) => {
             const slide = document.createElement('div');
             slide.className = 'carousel-slide';
 
             const img = document.createElement('img');
-            img.src = imageSrc;
+            // Lazy load: only first image loads immediately, others use data-src
+            if (index === 0) {
+                img.src = imageSrc;
+            } else {
+                img.setAttribute('data-src', imageSrc);
+                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E'; // placeholder
+                img.classList.add('lazy-load');
+            }
             img.alt = `${this.getCarTitle(car)} - Foto ${index + 1}`;
+            img.loading = 'lazy'; // Browser native lazy loading
             img.onerror = () => {
                 slide.innerHTML = this.getCarEmoji();
                 slide.style.fontSize = '4rem';
@@ -759,6 +777,22 @@ class CarDealer {
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentIndex);
             });
+            
+            // Load adjacent images when needed (lazy loading)
+            const currentSlide = slides[currentIndex];
+            const prevSlide = slides[currentIndex - 1];
+            const nextSlide = slides[currentIndex + 1];
+            
+            [currentSlide, prevSlide, nextSlide].forEach(slide => {
+                if (slide) {
+                    const img = slide.querySelector('img.lazy-load');
+                    if (img && img.hasAttribute('data-src')) {
+                        img.src = img.getAttribute('data-src');
+                        img.removeAttribute('data-src');
+                        img.classList.remove('lazy-load');
+                    }
+                }
+            });
         };
 
         const nextSlide = () => {
@@ -800,6 +834,15 @@ class CarDealer {
         });
         */
 
+        // Cleanup function per rimuovere event listeners e liberare memoria
+        const cleanup = () => {
+            nextBtn.removeEventListener('click', nextSlide);
+            prevBtn.removeEventListener('click', prevSlide);
+            dots.forEach((dot, index) => {
+                dot.removeEventListener('click', () => goToSlide(index));
+            });
+        };
+        
         // Salva riferimento al carosello
         this.carousels.set(carId, {
             element: carouselElement,
@@ -807,7 +850,8 @@ class CarDealer {
             updateCarousel,
             nextSlide,
             prevSlide,
-            goToSlide
+            goToSlide,
+            cleanup
         });
     }
 
@@ -1619,14 +1663,22 @@ class CarDealer {
         track.innerHTML = '';
         indicators.innerHTML = '';
 
-        // Create slides
+        // Create slides with lazy loading
         this.currentCarDetailImages.forEach((imageSrc, index) => {
             const slide = document.createElement('div');
             slide.className = 'car-detail-slide';
 
             if (imageSrc && imageSrc.trim() !== '') {
                 const img = document.createElement('img');
-                img.src = imageSrc;
+                // Lazy load: only first 3 images load immediately
+                if (index < 3) {
+                    img.src = imageSrc;
+                } else {
+                    img.setAttribute('data-src', imageSrc);
+                    img.src = 'data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1 1\"%3E%3C/svg%3E';
+                    img.classList.add('lazy-load');
+                }
+                img.loading = 'lazy'; // Browser native lazy loading
                 img.alt = `${this.getCarTitle(car)} - Foto ${index + 1}`;
                 img.onerror = () => {
                     slide.innerHTML = this.getCarEmoji();
@@ -1691,6 +1743,7 @@ class CarDealer {
     updateCarDetailCarousel() {
         const track = this.carDetailModal.querySelector('.car-detail-track');
         const dots = this.carDetailModal.querySelectorAll('.car-detail-dot');
+        const slides = this.carDetailModal.querySelectorAll('.car-detail-slide');
 
         // Update carousel position
         const translateX = -this.currentCarDetailIndex * 100;
@@ -1699,6 +1752,22 @@ class CarDealer {
         // Update indicators
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === this.currentCarDetailIndex);
+        });
+        
+        // Load adjacent images when needed (lazy loading)
+        const currentSlide = slides[this.currentCarDetailIndex];
+        const prevSlide = slides[this.currentCarDetailIndex - 1];
+        const nextSlide = slides[this.currentCarDetailIndex + 1];
+        
+        [currentSlide, prevSlide, nextSlide].forEach(slide => {
+            if (slide) {
+                const img = slide.querySelector('img.lazy-load');
+                if (img && img.hasAttribute('data-src')) {
+                    img.src = img.getAttribute('data-src');
+                    img.removeAttribute('data-src');
+                    img.classList.remove('lazy-load');
+                }
+            }
         });
     }
     // Setup brands scrollbar behavior

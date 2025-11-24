@@ -54,6 +54,9 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    /* Performance optimizations */
+    contain: layout style paint;
+    will-change: transform;
 }
 
 .car-card::before {
