@@ -1,0 +1,107 @@
+/* ========================================== */
+/* iOS CRITICAL FIXES - Load this last */
+/* ========================================== */
+
+/* iOS Safari has rendering bugs with opacity during scroll
+   This file contains aggressive fixes to prevent card disappearance */
+
+@supports (-webkit-overflow-scrolling: touch) {
+    /* Force hardware acceleration on iOS */
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Prevent iOS from hiding elements during scroll */
+    .car-card,
+    .car-card * {
+        -webkit-transform: translateZ(0) !important;
+        transform: translateZ(0) !important;
+        -webkit-backface-visibility: hidden !important;
+        backface-visibility: hidden !important;
+    }
+    
+    /* Override any opacity animations on iOS */
+    @media (max-width: 1400px) {
+        .car-card {
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block !important;
+            /* Force compositing layer */
+            -webkit-transform: translate3d(0, 0, 0) !important;
+            transform: translate3d(0, 0, 0) !important;
+        }
+        
+        /* Prevent transition glitches */
+        .car-card,
+        .car-card::before,
+        .car-card::after {
+            transition: box-shadow 0.2s ease, transform 0.2s ease !important;
+            /* Remove opacity transitions that cause glitching */
+            transition-property: box-shadow, transform !important;
+        }
+        
+        /* Force all card content to be visible */
+        .car-image,
+        .car-info,
+        .carousel-slide,
+        .carousel-slide img {
+            opacity: 1 !important;
+            visibility: visible !important;
+            -webkit-transform: translateZ(0) !important;
+            transform: translateZ(0) !important;
+        }
+        
+        /* Prevent grid from affecting card visibility */
+        .cars-grid {
+            -webkit-transform: translateZ(0) !important;
+            transform: translateZ(0) !important;
+            opacity: 1 !important;
+        }
+        
+        /* Disable problematic animations during scroll */
+        body.is-scrolling * {
+            -webkit-animation: none !important;
+            animation: none !important;
+        }
+    }
+    
+    /* Fix for carousel images disappearing */
+    .image-carousel,
+    .carousel-track,
+    .carousel-slide {
+        -webkit-transform: translateZ(0) !important;
+        transform: translateZ(0) !important;
+        -webkit-backface-visibility: hidden !important;
+        backface-visibility: hidden !important;
+    }
+    
+    /* Prevent webkit from optimizing away visible elements */
+    @media (max-width: 1400px) {
+        .car-card {
+            /* This forces iOS to keep the element in the render tree */
+            contain: none !important;
+            content-visibility: visible !important;
+        }
+    }
+}
+
+/* Additional fix for iPhone specifically */
+@supports (-webkit-touch-callout: none) {
+    @media (max-width: 1400px) {
+        /* Force immediate rendering without transitions */
+        .car-card.card-enter {
+            opacity: 1 !important;
+            -webkit-transform: none !important;
+            transform: none !important;
+        }
+        
+        /* Disable intersection observer effects on iOS */
+        .car-card.is-visible,
+        .car-card:not(.is-visible) {
+            opacity: 1 !important;
+            -webkit-transform: translateZ(0) !important;
+            transform: translateZ(0) !important;
+        }
+    }
+}

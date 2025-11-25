@@ -37,6 +37,32 @@
     justify-content: center;
 }
 
+/* Card entrance animation - CSS only for better performance */
+.car-card.card-enter {
+    opacity: 0;
+    transform: translateZ(0) translateY(20px);
+}
+
+.car-card.card-enter.visible {
+    opacity: 1;
+    transform: translateZ(0) translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Disable entrance animation on mobile to prevent glitching */
+@media (max-width: 1400px) {
+    .car-card.card-enter {
+        opacity: 1 !important;
+        transform: translateZ(0) !important;
+    }
+    
+    .car-card.card-enter.visible {
+        opacity: 1 !important;
+        transform: translateZ(0) !important;
+        transition: none !important;
+    }
+}
+
 .car-card {
     background: white;
     border-radius: 15px;

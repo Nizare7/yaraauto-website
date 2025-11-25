@@ -1438,22 +1438,59 @@
 
 /* Reduce animations during scroll for better performance */
 body.is-scrolling .car-card {
-    transition: none !important;
+    pointer-events: none; /* Prevent interactions during scroll */
 }
 
-body.is-scrolling .car-card::before {
+body.is-scrolling .car-card,
+body.is-scrolling .car-card::before,
+body.is-scrolling .carousel-slide img {
     transition: none !important;
+    animation: none !important;
 }
 
-/* Visible cards optimization */
+/* Visible cards optimization - IMPROVED */
+.car-card {
+    /* Always visible by default to prevent flickering */
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
 .car-card.is-visible {
-    /* Card is in viewport - full GPU acceleration */
-    transform: translateZ(0);
+    /* Card is in viewport - ensure full rendering */
+    content-visibility: auto;
 }
 
 .car-card:not(.is-visible) {
-    /* Card is outside viewport - reduce GPU load */
-    transform: none;
+    /* Card is far from viewport - hint browser to deprioritize */
+    content-visibility: auto;
+    contain-intrinsic-size: 350px 500px; /* Maintain layout space */
+}
+
+/* Critical fix for iOS: Force all cards to always render */
+@media (max-width: 1400px) {
+    .car-card,
+    .car-card.card-enter,
+    .car-card.card-enter.visible {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+    }
+    
+    /* Ensure grid doesn't hide cards */
+    .cars-grid {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Force card children to render */
+    .car-image,
+    .car-info,
+    .car-title,
+    .car-details,
+    .car-price {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
 }
 
 /* Prevent iOS elastic scroll bounce at boundaries */
@@ -1468,6 +1505,21 @@ body.is-scrolling .car-card::before {
         /* Prevent rubber band effect */
         overscroll-behavior-y: none;
         -webkit-overflow-scrolling: touch;
+    }
+    
+    /* iOS-specific fix for disappearing elements */
+    .car-card {
+        -webkit-transform: translateZ(0) !important;
+        -webkit-backface-visibility: hidden !important;
+        -webkit-perspective: 1000 !important;
+        /* Force repaint on iOS */
+        will-change: opacity;
+    }
+    
+    /* Prevent opacity glitches on iOS during scroll */
+    .cars-grid {
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
     }
 }
 

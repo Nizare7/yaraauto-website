@@ -320,12 +320,22 @@ class CarDealer {
 
     // Animate car cards entrance
     animateCarCards() {
+        // Check if mobile device
+        const isMobile = window.innerWidth <= 1400;
+        
         const carCards = document.querySelectorAll('.car-card');
         carCards.forEach((card, index) => {
-            setTimeout(() => {
+            if (isMobile) {
+                // On mobile, show immediately without animation to prevent glitching
+                card.classList.add('visible');
                 card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, index * 100); // Stagger animation
+                card.style.visibility = 'visible';
+            } else {
+                // On desktop, use staggered animation
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, index * 50);
+            }
         });
     }
 
@@ -685,10 +695,8 @@ class CarDealer {
             this.openCarDetailModal(car);
         });
 
-        // Entry animation
-        carCard.style.opacity = '0';
-        carCard.style.transform = 'translateY(20px)';
-        carCard.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        // Entry animation handled by CSS class
+        carCard.classList.add('card-enter');
 
         return carCard;
     }
