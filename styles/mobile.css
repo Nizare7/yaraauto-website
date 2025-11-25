@@ -9,6 +9,9 @@
     body {
         overflow-x: hidden;
         width: 100%;
+        /* Prevent scroll issues on mobile */
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: none;
     }
     
     /* Header mobile e tablet */
@@ -1419,5 +1422,79 @@
     .home-page-button {
         padding: 10px 16px;
         font-size: 0.9rem;
+    }
+}
+
+/* ========================================== */
+/* MOBILE PERFORMANCE & TOUCH OPTIMIZATIONS */
+/* ========================================== */
+
+/* Touch active state for cards */
+.car-card.touch-active {
+    transform: translateZ(0) scale(0.97);
+    box-shadow: 0 4px 16px rgba(217, 56, 41, 0.25);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Reduce animations during scroll for better performance */
+body.is-scrolling .car-card {
+    transition: none !important;
+}
+
+body.is-scrolling .car-card::before {
+    transition: none !important;
+}
+
+/* Visible cards optimization */
+.car-card.is-visible {
+    /* Card is in viewport - full GPU acceleration */
+    transform: translateZ(0);
+}
+
+.car-card:not(.is-visible) {
+    /* Card is outside viewport - reduce GPU load */
+    transform: none;
+}
+
+/* Prevent iOS elastic scroll bounce at boundaries */
+@supports (-webkit-overflow-scrolling: touch) {
+    /* Fix iOS scroll issues without breaking normal scroll */
+    html {
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+    }
+    
+    body {
+        /* Prevent rubber band effect */
+        overscroll-behavior-y: none;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Improve touch performance on all interactive elements */
+@media (max-width: 1400px) {
+    .car-card,
+    .carousel-nav,
+    .carousel-dot,
+    button,
+    a {
+        /* Smooth touch interactions */
+        -webkit-tap-highlight-color: rgba(217, 56, 41, 0.1);
+        touch-action: manipulation;
+    }
+    
+    /* Prevent text selection during touch interactions */
+    .cars-grid,
+    .car-card {
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    /* Allow text selection in card details */
+    .car-title,
+    .car-details,
+    .car-price {
+        -webkit-user-select: text;
+        user-select: text;
     }
 }

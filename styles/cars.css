@@ -42,7 +42,7 @@
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #e0e0e0;
     cursor: pointer;
     position: relative;
@@ -54,9 +54,12 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    /* Performance optimizations */
+    /* Performance optimizations for mobile */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
     contain: layout style paint;
-    will-change: transform;
 }
 
 .car-card::before {
@@ -73,17 +76,17 @@
     pointer-events: none;
 }
 
-/* Touch feedback with automatic reset */
+/* Touch feedback with automatic reset - mobile optimized */
 .car-card:active {
-    transform: translateY(-8px) scale(0.98);
-    box-shadow: 0 8px 20px rgba(217, 56, 41, 0.3);
-    transition: all 0.1s ease;
+    transform: translateZ(0) scale(0.98);
+    box-shadow: 0 4px 16px rgba(217, 56, 41, 0.2);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 /* Only apply hover effects on devices that support hover */
 @media (hover: hover) {
     .car-card:hover {
-        transform: translateY(-15px);
+        transform: translateY(-15px) translateZ(0);
         box-shadow: 0 15px 35px rgba(217, 56, 41, 0.5);
         cursor: pointer;
     }
