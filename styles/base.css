@@ -35,6 +35,7 @@ html {
 .main-content {
     margin-top: 20px;
     padding: 40px 20px;
+    padding-bottom: 200px; /* Extra space at bottom for mobile */
 }
 
 /* Hero section */
