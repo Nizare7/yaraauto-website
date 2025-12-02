@@ -1,5 +1,6 @@
 # Ignore admin folder
 admin/
+testing/
 
 # OS generated files
 .DS_Store
