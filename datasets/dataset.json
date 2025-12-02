@@ -34,7 +34,7 @@
           "posti": 5,
           "prezzo": 3500.0,
           "neopatentati": "NO",
-          "venduto": false,
+          "venduto": true,
           "aggiunto": true,
           "id": "audi-a6231001125",
           "gallery": [],
@@ -52,7 +52,41 @@
       "id": "citroen",
       "name": "Citroën",
       "logo": "../images/brand_logo/citroen.png",
-      "cars": []
+      "cars": [
+        {
+          "brand": "Citroën",
+          "name": "C3",
+          "sub_name": "",
+          "details": "",
+          "chilometraggio": 168000,
+          "condizioni": "Usato",
+          "anno": 2010,
+          "carburante": "Benzina-GPL",
+          "cilindrata": 1400,
+          "cavalli": 73,
+          "kw": 54,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5",
+          "posti": 5,
+          "prezzo": 4500.0,
+          "neopatentati": "SI",
+          "venduto": false,
+          "aggiunto": true,
+          "id": "citroen-c3217801225",
+          "date_added": "02-12-2025 20:49:37",
+          "image": "../cars/citroen/c3-c3217801225/main.jpg",
+          "gallery": [
+            "../cars/citroen/c3-c3217801225/main.jpg",
+            "../cars/citroen/c3-c3217801225/main1.jpg",
+            "../cars/citroen/c3-c3217801225/main2.jpg",
+            "../cars/citroen/c3-c3217801225/main3.jpg",
+            "../cars/citroen/c3-c3217801225/main4.jpg",
+            "../cars/citroen/c3-c3217801225/main5.jpg",
+            "../cars/citroen/c3-c3217801225/main6.jpg",
+            "../cars/citroen/c3-c3217801225/main7.jpg"
+          ]
+        }
+      ]
     },
     {
       "id": "dacia",
@@ -77,7 +111,7 @@
           "sub_name": "",
           "details": "",
           "chilometraggio": 220000,
-          "condizioni": "Usato",
+          "condizioni": "Usato Nuovo",
           "anno": 2006,
           "carburante": "Benzina",
           "cilindrata": 1200,
@@ -89,10 +123,20 @@
           "prezzo": 2500.0,
           "neopatentati": "SI",
           "venduto": false,
-          "aggiunto": false,
-          "id": "fiat-pnt222601125",
-          "date_added": "12-11-2025 19:49:54",
-          "gallery": []
+          "aggiunto": true,
+          "id": "fiat-pnt222601225",
+          "date_added": "02-12-2025 20:55:09",
+          "image": "../cars/fiat/punto-pnt222601225/main.jpg",
+          "gallery": [
+            "../cars/fiat/punto-pnt222601225/main.jpg",
+            "../cars/fiat/punto-pnt222601225/main1.jpg",
+            "../cars/fiat/punto-pnt222601225/main2.jpg",
+            "../cars/fiat/punto-pnt222601225/main3.jpg",
+            "../cars/fiat/punto-pnt222601225/main4.jpg",
+            "../cars/fiat/punto-pnt222601225/main5.jpg",
+            "../cars/fiat/punto-pnt222601225/main6.jpg",
+            "../cars/fiat/punto-pnt222601225/main7.jpg"
+          ]
         }
       ]
     },
@@ -185,7 +229,7 @@
           "sub_name": "",
           "details": "",
           "chilometraggio": 220000,
-          "condizioni": "Usato",
+          "condizioni": "Usato Nuovo",
           "anno": 2011,
           "carburante": "Benzina",
           "cilindrata": 1600,
@@ -193,14 +237,24 @@
           "kw": 55,
           "tipo_cambio": "Manuale",
           "euro": "Euro 5",
-          "posti": 5,
+          "posti": 4,
           "prezzo": 3900.0,
           "neopatentati": "SI",
-          "venduto": false,
+          "venduto": true,
           "aggiunto": true,
-          "id": "mini-cpr223101125",
-          "date_added": "12-11-2025 17:00:08",
-          "gallery": []
+          "id": "mini-cpr223101225",
+          "date_added": "02-12-2025 20:11:08",
+          "image": "../cars/mini/cooper-cpr223101225/main.jpg",
+          "gallery": [
+            "../cars/mini/cooper-cpr223101225/main.jpg",
+            "../cars/mini/cooper-cpr223101225/main1.jpg",
+            "../cars/mini/cooper-cpr223101225/main2.jpg",
+            "../cars/mini/cooper-cpr223101225/main3.jpg",
+            "../cars/mini/cooper-cpr223101225/main4.jpg",
+            "../cars/mini/cooper-cpr223101225/main5.jpg",
+            "../cars/mini/cooper-cpr223101225/main6.jpg",
+            "../cars/mini/cooper-cpr223101225/main7.jpg"
+          ]
         }
       ]
     },
@@ -232,7 +286,7 @@
           "posti": 5,
           "prezzo": 4500.0,
           "neopatentati": "SI",
-          "venduto": false,
+          "venduto": true,
           "aggiunto": true,
           "id": "mercedes-b18214401125",
           "gallery": [],
@@ -255,7 +309,7 @@
           "posti": 5,
           "prezzo": 7999.0,
           "neopatentati": "NO",
-          "venduto": false,
+          "venduto": true,
           "aggiunto": true,
           "id": "mercedes-c22217001125",
           "gallery": [],
@@ -309,7 +363,7 @@
         },
         {
           "brand": "Opel",
-          "name": "Corsa",
+          "name": "Crosa",
           "sub_name": "",
           "details": "",
           "chilometraggio": 150000,
@@ -322,13 +376,23 @@
           "tipo_cambio": "Manuale",
           "euro": "Euro 5",
           "posti": 5,
-          "prezzo": 3500.0,
-          "neopatentati": "SI",
+          "prezzo": 3900.0,
+          "neopatentati": "NO",
           "venduto": false,
-          "aggiunto": false,
-          "id": "opel-crs216101125",
-          "date_added": "12-11-2025 19:54:46",
-          "gallery": []
+          "aggiunto": true,
+          "id": "opel-crs216101225",
+          "date_added": "02-12-2025 20:30:41",
+          "image": "../cars/opel/crosa-crs216101225/main.jpg",
+          "gallery": [
+            "../cars/opel/crosa-crs216101225/main.jpg",
+            "../cars/opel/crosa-crs216101225/main1.jpg",
+            "../cars/opel/crosa-crs216101225/main2.jpg",
+            "../cars/opel/crosa-crs216101225/main3.jpg",
+            "../cars/opel/crosa-crs216101225/main4.jpg",
+            "../cars/opel/crosa-crs216101225/main5.jpg",
+            "../cars/opel/crosa-crs216101225/main6.jpg",
+            "../cars/opel/crosa-crs216101225/main7.jpg"
+          ]
         }
       ]
     },
@@ -344,7 +408,7 @@
           "details": "",
           "chilometraggio": 220000,
           "condizioni": "Usato",
-          "anno": 20099,
+          "anno": 2009,
           "carburante": "Diesel",
           "cilindrata": 1600,
           "cavalli": 209,
@@ -354,7 +418,7 @@
           "posti": 7,
           "prezzo": 3000.0,
           "neopatentati": "SI",
-          "venduto": false,
+          "venduto": true,
           "aggiunto": false,
           "id": "peugeot-3002031901125",
           "date_added": "12-11-2025 15:00:00",
@@ -420,7 +484,7 @@
           "posti": 5,
           "prezzo": 1200.0,
           "neopatentati": "SI",
-          "venduto": false,
+          "venduto": true,
           "aggiunto": false,
           "id": "toyota-yrs220001125",
           "date_added": "12-11-2025 19:48:40",
