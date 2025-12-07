@@ -2,20 +2,206 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YARAAUTO</title>
-    <script>
-        // Redirect immediately to homepage
-        window.location.replace('pages/homepage.html');
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="YaraAuto - Vendita auto usate garantite. Scopri le nostre offerte su Audi, BMW, Fiat e molto altro. Qualità, passione e fiducia al tuo servizio.">
+    <meta name="keywords" content="auto usate, concessionario, vendita auto, YaraAuto, occasioni auto, auto garantite">
+    <meta name="author" content="YaraAuto">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yaraauto.it/">
+    <meta property="og:title" content="YaraAuto - L'auto dei tuoi sogni">
+    <meta property="og:description" content="Scopri la nostra selezione di auto usate garantite. Trasformiamo i tuoi desideri in realtà.">
+    <meta property="og:image" content="images/site_logo/logo_full_2.webp">
+
+    <title>YARAAUTO - Vendita Auto Usate Garantite</title>
+
+    <link rel="icon" type="image/png" href="images/site_logo/minilogo.webp">
+    <link rel="shortcut icon" type="image/png" href="images/site_logo/minilogo.webp">
+    <link rel="apple-touch-icon" href="images/site_logo/minilogo.webp">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Homepage CSS - Only what's needed -->
+    <link rel="stylesheet" href="styles/loader.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/buttons.css">
+    <link rel="stylesheet" href="styles/carousel.css">
+    <link rel="stylesheet" href="styles/notifications.css">
+    <link rel="stylesheet" href="styles/mobile.css">
+    <!-- iOS critical fixes - must be loaded last -->
+    <link rel="stylesheet" href="styles/ios-fixes.css">
 </head>
-<body>
-    <!-- Fallback for browsers with JavaScript disabled -->
-    <noscript>
-        <meta http-equiv="refresh" content="0; url=pages/homepage.html">
-    </noscript>
-    <p style="text-align: center; margin-top: 50px;">
-        Reindirizzamento in corso... <a href="pages/homepage.html">Clicca qui</a> se non vieni reindirizzato automaticamente.
-    </p>
+<body class="loading">
+<a id="top"></a>
+
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo-container">
+        <img src="images/site_logo/logo5_2.webp" alt="Logo base" id="loader-logo-p1">
+        <img src="images/site_logo/logo5_p4.webp" alt="YARAAUTO" id="loader-logo-p2">
+    </div>
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Caricamento in corso...</p>
+</div>
+
+<!-- Fixed header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <!-- Show image first, then text fallback -->
+                <img src="images/site_logo/minilogo3.webp" alt="Logo AutoDealer" style="display: block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="logo-text" style="display: none;">
+                    <span class="auto">Auto</span>Dealer
+                </div>
+            </a>
+            
+            <!-- Desktop contacts -->
+            <div class="contact-info">
+                <div class="contact-column">
+                    <a href="tel:+39 320 613 8044" class="phone">
+                        <i class="fas fa-phone"></i>
+                        +39 320 613 8044
+                    </a>
+                    <a href="mailto:yaraautoo@gmail.com" class="email">
+                        <i class="fas fa-envelope"></i>
+                        yaraautoo@gmail.com
+                    </a>
+                </div>
+                <div class="contact-column social-column">
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/yaraautoo" target="_blank" title="Facebook Marketplace">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/yaraauto_srl/" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://wa.me/393206138044" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile contacts toggle button -->
+            <button class="mobile-contacts-toggle" id="mobileContactsToggle">
+                Contatti
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            
+            <!-- Mobile contacts dropdown menu -->
+            <div class="mobile-contacts-menu" id="mobileContactsMenu">
+                <a href="tel:+393206138044" class="phone">
+                    <i class="fas fa-phone"></i>
+                    +39 320 613 8044
+                </a>
+                <a href="mailto:yaraautoo@gmail.com" class="email">
+                    <i class="fas fa-envelope"></i>
+                    yaraautoo@gmail.com
+                </a>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/yaraautoo" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/yaraauto_srl/" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/393206138044" target="_blank" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dealership Gallery Section - Responsive -->
+    <section class="dealership-gallery" style="display: none;" role="region" aria-label="Galleria del concessionario">
+        <div class="dealership-carousel">
+            <div class="dealership-track">
+                <div class="dealership-slide">
+                    <img src="images/site_logo/logo_full_2.webp" alt="Concessionario 0">
+                </div>
+                <div class="dealership-slide">
+                    <img src="cars/place_holders/place_holder_1.webp" alt="Concessionario 1">
+                </div>
+                <div class="dealership-slide">
+                    <img src="cars/place_holders/place_holder_2.webp" alt="Concessionario 2">
+                </div>
+                <div class="dealership-slide">
+                    <img src="cars/place_holders/place_holder_3.webp" alt="Concessionario 3">
+                </div>
+                <div class="dealership-slide">
+                    <img src="cars/place_holders/place_holder_4.webp" alt="Concessionario 4">
+                </div>
+                <div class="dealership-slide">
+                    <img src="cars/place_holders/place_holder_5.webp" alt="Concessionario 5">
+                </div>
+            </div>
+            <!-- Navigation arrows -->
+            <button class="dealership-arrow dealership-arrow-left">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="dealership-arrow dealership-arrow-right">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <!-- Indicators -->
+            <div class="dealership-indicators">
+                <button class="dealership-dot active" data-slide="0"></button>
+                <button class="dealership-dot" data-slide="1"></button>
+                <button class="dealership-dot" data-slide="2"></button>
+                <button class="dealership-dot" data-slide="3"></button>
+                <button class="dealership-dot" data-slide="4"></button>
+                <button class="dealership-dot" data-slide="5"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero homepage-hero">
+            <div class="hero-content">
+                <p>Scopri l'auto che hai sempre <span class="highlight">sognato</span>, pronta a farti vivere nuove emozioni.
+                    <br>
+                    Da YARAAUTO non offriamo solo auto, ma trasformiamo i tuoi desideri in realtà, mettendo su strada il tuo sogno con <span class="highlight">passione</span>, <span class="highlight">qualità</span> e <span class="highlight">fiducia</span>.
+                </p>
+                
+                <!-- Call to Action Button -->
+                <div class="cta-container">
+                    <a href="pages/auto.html" class="cta-button">
+                        <i class="fas fa-car"></i>
+                        <span>Trova l'auto dei tuoi sogni</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to top button -->
+    <a href="#top" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="scripts/mobile-fixes.js"></script>
+    <script src="scripts/homepage.js"></script>
+    <script>
+        // Hide page loader when everything is ready
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('pageLoader');
+            const body = document.body;
+            
+            // Add a small delay for smooth transition
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                body.classList.remove('loading');
+            }, 500);
+        });
+    </script>
 </body>
 </html>
