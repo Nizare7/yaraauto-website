@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /testing/
+Disallow: /tests/
+Disallow: /styles/complete-original.css
+Disallow: /scripts/auto.js.old
+
+Sitemap: https://www.yaraauto.it/sitemap.xml

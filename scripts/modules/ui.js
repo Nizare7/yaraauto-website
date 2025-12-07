@@ -298,6 +298,7 @@ function createCarCard(car, isRecentlyAdded = false) {
         if (car.image && car.image.trim() !== '') {
             const img = document.createElement('img');
             img.src = car.image;
+            img.loading = 'lazy';
             img.alt = getCarTitle(car);
             img.style.width = '100%';
             img.style.height = '100%';
