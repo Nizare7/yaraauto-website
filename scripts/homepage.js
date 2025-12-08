@@ -84,6 +84,20 @@ function initDealershipCarousel() {
     const slides = carousel.querySelectorAll('.dealership-slide');
     const leftArrow = carousel.querySelector('.dealership-arrow-left');
     const rightArrow = carousel.querySelector('.dealership-arrow-right');
+    
+    // Generate dots dynamically based on number of slides
+    const indicatorsContainer = carousel.querySelector('.dealership-indicators');
+    if (indicatorsContainer) {
+        indicatorsContainer.innerHTML = ''; // Clear existing
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'dealership-dot';
+            dot.setAttribute('aria-label', `Vai alla slide ${index + 1}`);
+            if (index === 0) dot.classList.add('active');
+            indicatorsContainer.appendChild(dot);
+        });
+    }
+
     const dots = carousel.querySelectorAll('.dealership-dot');
     
     let currentIndex = 0;
