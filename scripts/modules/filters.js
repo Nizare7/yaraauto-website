@@ -3,17 +3,39 @@
  * Handles car filtering logic
  */
 
-import { hidePageLoader } from './utils.js';
+import { hidePageLoader, showNotification } from './utils.js';
 
 // Setup filters
 export function setupFilters(carDealer) {
     const filterForm = document.getElementById('carFilters');
     const resetBtn = document.getElementById('resetFilters');
     const expandBtn = document.getElementById('expandFilters');
+    const advancedFilters = document.getElementById('advancedFilters');
     const mobileFiltersToggle = document.getElementById('mobileFiltersToggle');
     const brandsFilterButton = document.getElementById('brandsFilterButton');
     
     setupFilterButtonsVisibility();
+    
+    // Handle expand/collapse advanced filters
+    if (expandBtn && advancedFilters) {
+        expandBtn.addEventListener('click', () => {
+            const isExpanded = advancedFilters.classList.contains('show');
+            
+            if (isExpanded) {
+                // Collapse
+                advancedFilters.classList.remove('show');
+                expandBtn.classList.remove('expanded');
+                if (filterForm) filterForm.classList.remove('expanded');
+                expandBtn.innerHTML = '<i class="fas fa-plus"></i> Altri filtri';
+            } else {
+                // Expand
+                advancedFilters.classList.add('show');
+                expandBtn.classList.add('expanded');
+                if (filterForm) filterForm.classList.add('expanded');
+                expandBtn.innerHTML = '<i class="fas fa-minus"></i> Meno filtri';
+            }
+        });
+    }
     
     if (filterForm) {
         // Prevent default submit
@@ -31,41 +53,38 @@ export function setupFilters(carDealer) {
             
             carDealer.generateCarSections(filters);
             
-            // On mobile, scroll to results
-            if (window.innerWidth <= 768) {
-                const resultsSection = document.querySelector('.filters-and-brands-section');
-                if (resultsSection) {
-                    resultsSection.scrollIntoView({ behavior: 'smooth' });
-                }
+            // Show notification
+            showNotification('Filtri applicati', 'success');
+            
+            // On mobile/tablet, scroll to first car section
+            if (window.innerWidth <= 1400) {
+                setTimeout(() => {
+                    const firstCarSection = document.querySelector('.cars-section');
+                    if (firstCarSection) {
+                        firstCarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 100);
             }
         });
         
         // Real-time filtering for select inputs
+        /* // DISABLED to match original behavior - only Apply button triggers search
         const selects = filterForm.querySelectorAll('select');
         selects.forEach(select => {
             select.addEventListener('change', () => {
                 filterForm.requestSubmit();
             });
         });
+        */
     }
     
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
             if (filterForm) filterForm.reset();
             carDealer.generateCarSections({});
-        });
-    }
-    
-    if (expandBtn) {
-        expandBtn.addEventListener('click', () => {
-            const advancedFilters = document.getElementById('advancedFilters');
-            if (advancedFilters) {
-                advancedFilters.classList.toggle('visible');
-                const isVisible = advancedFilters.classList.contains('visible');
-                expandBtn.innerHTML = isVisible ? 
-                    '<i class="fas fa-minus"></i> Meno filtri' : 
-                    '<i class="fas fa-plus"></i> Altri filtri';
-            }
+            
+            // Show notification
+            showNotification('Filtri rimossi', 'info');
         });
     }
     
@@ -73,11 +92,15 @@ export function setupFilters(carDealer) {
     if (mobileFiltersToggle) {
         mobileFiltersToggle.addEventListener('click', () => {
             const form = document.getElementById('carFilters');
-            form.classList.toggle('visible');
-            const isVisible = form.classList.contains('visible');
-            mobileFiltersToggle.innerHTML = isVisible ? 
-                '<i class="fas fa-filter"></i> Nascondi filtri <i class="fas fa-chevron-up"></i>' : 
-                '<i class="fas fa-filter"></i> Mostra filtri <i class="fas fa-chevron-down"></i>';
+            if (form) {
+                // The original code toggled 'visible' on form for mobile
+                // But let's check what CSS expects. Assuming 'visible'.
+                form.classList.toggle('visible');
+                const isVisible = form.classList.contains('visible');
+                mobileFiltersToggle.innerHTML = isVisible ? 
+                    '<i class="fas fa-filter"></i> Nascondi filtri <i class="fas fa-chevron-up"></i>' : 
+                    '<i class="fas fa-filter"></i> Mostra filtri <i class="fas fa-chevron-down"></i>';
+            }
         });
     }
 
@@ -86,12 +109,12 @@ export function setupFilters(carDealer) {
             const form = document.getElementById('carFilters');
             const mobileToggle = document.getElementById('mobileFiltersToggle');
             
-            form.classList.add('visible');
+            if (form) form.classList.add('visible');
             if (mobileToggle) {
                 mobileToggle.innerHTML = '<i class="fas fa-filter"></i> Nascondi filtri <i class="fas fa-chevron-up"></i>';
             }
             
-            // Logica per scrollare ai filtri
+            // Scroll to filters
             const filtersSection = document.querySelector('.filters-section');
             if (filtersSection) {
                 filtersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
