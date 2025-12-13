@@ -60,7 +60,7 @@ body, html {
     width: 50px; /* Leggermente più grande per adattarsi al logo */
     height: 50px; /* Leggermente più grande per adattarsi al logo */
     border: 5px solid rgba(255, 255, 255, 0.3); /* Bordo grigio chiaro */
-    border-top-color: #dd4027; /* *** AGGIORNATO: Colore della barra di caricamento *** */
+    border-top-color: var(--color-primary); /* *** AGGIORNATO: Colore della barra di caricamento *** */
     border-radius: 50%; /* Lo rende un cerchio */
     
     /* Applica l'animazione 'spin' */

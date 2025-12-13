@@ -168,7 +168,7 @@
           "posti": 5,
           "prezzo": 4500.0,
           "neopatentati": "SI",
-          "venduto": false,
+          "venduto": true, 
           "aggiunto": true,
           "id": "great-wall-std289101125",
           "date_added": "12-11-2025 20:40:39",
@@ -423,6 +423,39 @@
           "id": "peugeot-3002031901125",
           "date_added": "12-11-2025 15:00:00",
           "gallery": []
+        },
+        {
+          "brand": "Peugeot",
+          "name": "5008",
+          "sub_name": "",
+          "details": "",
+          "chilometraggio": 230000,
+          "condizioni": "Usato",
+          "anno": 2012,
+          "carburante": "Diesel",
+          "cilindrata": 1600,
+          "cavalli": 111,
+          "kw": 82,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5",
+          "posti": 5,
+          "prezzo": 3900.0,
+          "neopatentati": "SI",
+          "venduto": false,
+          "aggiunto": false,
+          "id": "peugeot-500224201225",
+          "date_added": "13-12-2025 15:39:01",
+          "image": "../cars/peugeot/5008-500224201225/main.jpg",
+          "gallery": [
+            "../cars/peugeot/5008-500224201225/main.jpg",
+            "../cars/peugeot/5008-500224201225/main1.jpg",
+            "../cars/peugeot/5008-500224201225/main2.jpg",
+            "../cars/peugeot/5008-500224201225/main3.jpg",
+            "../cars/peugeot/5008-500224201225/main4.jpg",
+            "../cars/peugeot/5008-500224201225/main5.jpg",
+            "../cars/peugeot/5008-500224201225/main6.jpg",
+            "../cars/peugeot/5008-500224201225/main7.jpg"
+          ]
         }
       ]
     },

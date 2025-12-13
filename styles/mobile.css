@@ -20,7 +20,7 @@
         top: 0;
         left: 0;
         right: 0;
-        background: #0D0D0D;
+        background: var(--color-bg-dark);
         padding: 0;
         z-index: 1000;
         height: 80px;
@@ -47,8 +47,9 @@
         flex: 0 0 auto;
         width: 100%;
         height: 100%;
+
         max-width: 80px;
-        background: #0D0D0D;
+        background: var(--color-bg-dark);
         border-radius: 0;
         display: flex;
         align-items: center;
@@ -107,7 +108,7 @@
     
     /* Colore rosso quando il menu è aperto */
     .mobile-contacts-toggle.active {
-        color: #D93829;
+        color: var(--color-primary);
     }
     
     .mobile-contacts-toggle i {
@@ -160,7 +161,7 @@
     .mobile-contacts-menu .phone:hover,
     .mobile-contacts-menu .email:hover {
         background: rgba(255,255,255,0.1);
-        color: #D93829;
+        color: var(--color-primary);
     }
     
     .mobile-contacts-menu .phone i,
@@ -196,8 +197,8 @@
     }
     
     .mobile-contacts-menu .social-links a:hover {
-        background: #D93829;
-        border-color: #D93829;
+        background: var(--color-primary);
+        border-color: var(--color-primary);
         transform: scale(1.1);
         color: white;
     }
@@ -293,9 +294,10 @@
         position: fixed;
         bottom: 30px;
         left: 30px;
+
         width: 50px;
         height: 50px;
-        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
         border: none;
         border-radius: 50%;
         color: white;
@@ -438,13 +440,13 @@
     }
     
     .mobile-filter-apply {
-        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);  /* Rosso come desktop */
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);  /* Rosso come desktop */
         color: white;
         box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
     }
     
     .mobile-filter-apply:hover {
-        background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+        background: linear-gradient(135deg, var(--color-primary-dark) 0%, #991b1b 100%);
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
     }
@@ -518,9 +520,10 @@
         position: absolute;
         bottom: 15px;
         left: 15px;
+
         width: 40px;
         height: 40px;
-        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
         border: none;
         border-radius: 50%;
         color: white;

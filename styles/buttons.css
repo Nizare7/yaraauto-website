@@ -8,7 +8,7 @@
     justify-content: flex-start;
     margin-bottom: 30px;
     margin-top: 100px; /* Spazio per l'header fisso */
-    max-width: 1200px;
+    max-width: var(--container-width);
     margin-left: auto;
     margin-right: auto;
     padding: 0 20px;
@@ -18,7 +18,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: white;
     text-decoration: none;
     padding: 12px 20px;
@@ -70,7 +70,7 @@
     display: inline-flex;
     align-items: center;
     gap: 15px;
-    background: linear-gradient(45deg, #dc2626, #ef4444);
+    background: linear-gradient(45deg, var(--color-primary), var(--color-primary-dark));
     color: #ffffff;
     text-decoration: none;
     padding: 18px 35px;
@@ -105,7 +105,7 @@
 .cta-button:hover {
     transform: translateY(-4px);
     box-shadow: 0 15px 40px rgba(220, 38, 38, 0.6), 0 0 0 3px rgba(220, 38, 38, 0.4), 0 0 20px rgba(220, 38, 38, 0.3);
-    background: linear-gradient(45deg, #b91c1c, #dc2626);
+    background: linear-gradient(45deg, var(--color-primary), var(--color-primary-dark));
 }
 
 .cta-button:active {
@@ -131,7 +131,7 @@
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: white;
     width: 50px;
     height: 50px;

@@ -582,7 +582,7 @@ class CarManagerApp:
         
         file_paths = filedialog.askopenfilenames(
             title="Seleziona immagini da aggiungere",
-            filetypes=[("Immagini", "*.jpg *.jpeg *.png *.gif")]
+            filetypes=[("Immagini", "*.jpg *.jpeg *.png *.gif *.webp")]
         )
         
         if file_paths:
@@ -760,7 +760,7 @@ class CarManagerApp:
     def select_image(self, img_type):
         file_path = filedialog.askopenfilename(
             title="Seleziona immagine",
-            filetypes=[("Immagini", "*.jpg *.jpeg *.png *.gif")]
+            filetypes=[("Immagini", "*.jpg *.jpeg *.png *.gif *.webp")]
         )
         if file_path:
             if img_type == 'main':
@@ -769,7 +769,7 @@ class CarManagerApp:
     def select_gallery_images(self):
         file_paths = filedialog.askopenfilenames(
             title="Seleziona immagini per la galleria",
-            filetypes=[("Immagini", "*.jpg *.jpeg *.png *.gif")]
+            filetypes=[("Immagini", "*.jpg *.jpeg *.png *.gif *.webp")]
         )
         if file_paths:
             self.gallery_paths.extend(file_paths)

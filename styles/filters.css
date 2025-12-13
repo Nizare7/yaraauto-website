@@ -9,7 +9,7 @@
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(220, 38, 38, 0.1);
-    max-width: 1200px;
+    max-width: var(--container-width);
     overflow: hidden;
     margin-bottom: 60px;
 }
@@ -22,7 +22,7 @@
 
 .filters-section h2 {
     text-align: center;
-    color: #1f2937;
+    color: var(--color-text-main);
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
     font-weight: 700;
@@ -136,7 +136,7 @@
 
 .filter-group label {
     font-weight: 600;
-    color: #374151;
+    color: var(--color-text-main);
     font-size: 0.9rem;
     height: 22px; /* Altezza fissa per i label */
     display: flex;
@@ -173,7 +173,7 @@
 .filter-group input:focus,
 .filter-group select:focus {
     outline: none;
-    border-color: #dc2626;
+    border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
 }
 
@@ -207,7 +207,7 @@
 }
 
 .apply-filters {
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: white;
     box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
 }
@@ -242,7 +242,7 @@
     display: none;
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: white;
     border: none;
     border-radius: 50px;
