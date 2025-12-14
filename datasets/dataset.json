@@ -39,6 +39,39 @@
           "id": "audi-a6231001125",
           "gallery": [],
           "date_added": "12-11-2025 19:00:00"
+        },
+        {
+          "brand": "Audi",
+          "name": "Q3S Tronic",
+          "sub_name": "",
+          "details": "",
+          "chilometraggio": 230000,
+          "condizioni": "Usato Nuovo",
+          "anno": 2013,
+          "carburante": "Diesel",
+          "cilindrata": 2000,
+          "cavalli": 177,
+          "kw": 130,
+          "tipo_cambio": "Automatico",
+          "euro": "Euro 5",
+          "posti": 5,
+          "prezzo": 14500.0,
+          "neopatentati": "NO",
+          "venduto": false,
+          "aggiunto": true,
+          "id": "audi-qst224301225",
+          "date_added": "14-12-2025 15:00:38",
+          "image": "../cars/audi/q3stronic-qst224301225/main.jpg",
+          "gallery": [
+            "../cars/audi/q3stronic-qst224301225/main.jpg",
+            "../cars/audi/q3stronic-qst224301225/main1.jpg",
+            "../cars/audi/q3stronic-qst224301225/main2.jpg",
+            "../cars/audi/q3stronic-qst224301225/main3.jpg",
+            "../cars/audi/q3stronic-qst224301225/main4.jpg",
+            "../cars/audi/q3stronic-qst224301225/main5.jpg",
+            "../cars/audi/q3stronic-qst224301225/main6.jpg",
+            "../cars/audi/q3stronic-qst224301225/main7.jpg"
+          ]
         }
       ]
     },
@@ -168,7 +201,7 @@
           "posti": 5,
           "prezzo": 4500.0,
           "neopatentati": "SI",
-          "venduto": true, 
+          "venduto": true,
           "aggiunto": true,
           "id": "great-wall-std289101125",
           "date_added": "12-11-2025 20:40:39",
@@ -346,7 +379,7 @@
           "prezzo": 5500.0,
           "neopatentati": "SI",
           "venduto": false,
-          "aggiunto": true,
+          "aggiunto": false,
           "id": "opel-str220001125",
           "image": "../cars/opel/astra-str220001125/main.webp",
           "gallery": [
