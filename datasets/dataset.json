@@ -72,6 +72,39 @@
             "../cars/audi/q3stronic-qst224301225/main6.jpg",
             "../cars/audi/q3stronic-qst224301225/main7.jpg"
           ]
+        },
+        {
+          "brand": "Audi",
+          "name": "A4",
+          "sub_name": "",
+          "details": "",
+          "chilometraggio": 150000,
+          "condizioni": "Usato Nuovo",
+          "anno": 2013,
+          "carburante": "Diesel",
+          "cilindrata": 2000,
+          "cavalli": 143,
+          "kw": 105,
+          "tipo_cambio": "Manuale",
+          "euro": "Euro 5B",
+          "posti": 5,
+          "prezzo": 12500.0,
+          "neopatentati": "SI",
+          "venduto": false,
+          "aggiunto": true,
+          "id": "audi-a4216300126",
+          "date_added": "01-01-2026 17:24:17",
+          "image": "../cars/audi/a4-a4216300126/main.jpg",
+          "gallery": [
+            "../cars/audi/a4-a4216300126/main.jpg",
+            "../cars/audi/a4-a4216300126/main1.jpg",
+            "../cars/audi/a4-a4216300126/main2.jpg",
+            "../cars/audi/a4-a4216300126/main3.jpg",
+            "../cars/audi/a4-a4216300126/main4.jpg",
+            "../cars/audi/a4-a4216300126/main5.jpg",
+            "../cars/audi/a4-a4216300126/main6.jpg",
+            "../cars/audi/a4-a4216300126/main7.jpg"
+          ]
         }
       ]
     },
@@ -343,7 +376,7 @@
           "prezzo": 7999.0,
           "neopatentati": "NO",
           "venduto": true,
-          "aggiunto": true,
+          "aggiunto": false,
           "id": "mercedes-c22217001125",
           "gallery": [],
           "date_added": "12-11-2025 18:00:00"
@@ -379,7 +412,7 @@
           "prezzo": 5500.0,
           "neopatentati": "SI",
           "venduto": false,
-          "aggiunto": false,
+          "aggiunto": true,
           "id": "opel-str220001125",
           "image": "../cars/opel/astra-str220001125/main.webp",
           "gallery": [
